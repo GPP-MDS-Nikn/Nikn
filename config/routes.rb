@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
 
   #get '/ongs/new' => 'ongs#new'
   #post 'ongs' => 'ongs#create'
@@ -16,6 +17,12 @@ Rails.application.routes.draw do
   devise_for :ongs, :controllers => { registrations: 'registrations' }
   get 'signup' => 'ongs#new'
   resources :ongs
+
+  get "portal/list" => "portal_posts#list"
+  get "portal/new" => "portal_posts#new"
+  post "portal/new" => "portal_posts#create"
+  resources :portal_posts
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
