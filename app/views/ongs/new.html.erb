@@ -1,0 +1,13 @@
+  <!--This will render fields to enter the content of ong creation -->
+    <h1>Create ONG</h1>
+  
+  <!--f.label will name the field, and f.text_area will be the fields -->
+    <%= form_for(@ong) do |f| %>  
+    <%= f.label :name %>
+    <%= f.text_area :name %>
+    <%= f.label :description %> 
+    <%= f.text_area :description %> 
+    <!--In next commits, we got to add the 'submit' option in here, that will link this page to 'create' option-->
+<% end %>
+
+
