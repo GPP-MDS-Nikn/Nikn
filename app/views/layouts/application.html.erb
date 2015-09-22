@@ -9,25 +9,10 @@
 	  <%= render 'layouts/shim' %>
 	</head>
 	<body>
-
+ 
+ 		<!-- Partial header -->
 		<%= render 'layouts/header' %>
-
-	<!-- LUAN implementation of the site layout, it is subject to changes -->
-		<header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <%= link_to "Nikn", '#', id: "logo" %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   '#' %></li>
-            <li><%= link_to "Eventos",   '#' %></li>
-            <li><%= link_to "Ajuda",   '#' %></li>
-            <li><%= link_to "ONG Log in", '#' %></li>
-          </ul>
-        </nav>
-      </div>
-
-  <!-- END of LUAN implementation of site layout -->
-
+		
 		<div class = "container">
 			<%= yield %>
 
