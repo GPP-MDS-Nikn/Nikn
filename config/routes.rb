@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :parsers do
     collection { post :import }
   end
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   resources :events
 
   #get '/ongs' => 'ongs#index'
+  get '/ongs/new' => 'ongs#new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
