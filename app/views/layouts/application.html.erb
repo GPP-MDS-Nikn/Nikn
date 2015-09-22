@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Nikn</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+	  <title>Nikn</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
 
-<%= yield %>
+	  <%= render 'layouts/shim' %>
+	</head>
+	<body>
 
-</body>
+		<%= render 'layouts/header' %>
+
+	<!-- LUAN implementation of the site layout, it is subject to changes -->
+		<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "Nikn", '#', id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",   '#' %></li>
+            <li><%= link_to "Eventos",   '#' %></li>
+            <li><%= link_to "Ajuda",   '#' %></li>
+            <li><%= link_to "ONG Log in", '#' %></li>
+          </ul>
+        </nav>
+      </div>
+
+  <!-- END of LUAN implementation of site layout -->
+
+		<div class = "container">
+			<%= yield %>
+
+			<!-- This displays some useful information about each page using the built-in debug method and params variable -->
+			<%= debug(params) if Rails.env.development? %>
+		</div>
+
+	</body>
 </html>
