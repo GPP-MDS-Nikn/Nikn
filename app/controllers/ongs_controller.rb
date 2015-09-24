@@ -9,16 +9,20 @@ class OngsController < ApplicationController
   	end
   	
   	def create 
-	  @ong = Ong.new(ong_params) 
-	  if @ong.save 
-	  	redirect_to '/ongs' 
-	  else 
-	  	render 'new' 
-	  end
-  	end 
-  	#the private method ong_params determine what will be created from the fields on new.html.erb, the 'new' page.
-  	private
+  	  @ong = Ong.new(ong_params) 
+  	  if @ong.save 
+  	  	redirect_to '/ongs' 
+  	  else 
+  	  	render 'new' 
+  	  end
+  	end
 
+  def update
+    @ong = Ong.find(params[:id])
+  end
+
+  	private
+#the private method ong_params determine what will be created from the fields on new.html.erb, the 'new' page.
 	def ong_params
 		params.require(:ong).permit(:name, :adress)
 	end
