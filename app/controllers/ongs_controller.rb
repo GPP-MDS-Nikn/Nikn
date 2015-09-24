@@ -17,8 +17,11 @@ class OngsController < ApplicationController
   	  end
   	end
 
-  def update
+  def edit
     @ong = Ong.find(params[:id])
+  end
+
+  def update
   end
 
   	private
