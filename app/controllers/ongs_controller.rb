@@ -1,8 +1,8 @@
 class OngsController < ApplicationController
   
 	def index
-    
-  	end
+    @ong = Ong.all  
+  end
   	#new and create shall add new ongs to database
 	def new
   		@ong = Ong.new
@@ -22,6 +22,13 @@ class OngsController < ApplicationController
   end
 
   def update
+    @ong = Ong.find(params[:id])
+      if @ong.update(ong_params)
+        redirect_to @ong
+      else
+        render 'edit'
+      end
+  end
   end
 
   	private
@@ -29,4 +36,3 @@ class OngsController < ApplicationController
 	def ong_params
 		params.require(:ong).permit(:name, :adress)
 	end
-end

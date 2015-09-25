@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   get '/ongs/new' => 'ongs#new'
   post 'ongs' => 'ongs#create'
+  get '/ongs/:id/edit' => 'ongs#edit'
+  patch '/ongs/:id' => 'ongs#update'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

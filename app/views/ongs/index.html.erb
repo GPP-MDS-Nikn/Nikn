@@ -1,2 +1,8 @@
 <!--This will link the index page to the 'new' page -->
 <%= link_to 'New Ong', "ongs/new" %>
+
+<% @ong.each do |ong| %>
+<%= ong.name %>
+
+<%= link_to "Edit", {:action => 'edit', :id => ong.id}, :class => 'action edit' %>
+<% end %>
