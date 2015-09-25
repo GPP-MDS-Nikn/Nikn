@@ -1,13 +1,15 @@
 class OngsController < ApplicationController
   
+  #Display ongs on database
 	def index
     @ong = Ong.all  
   end
-  	#new and create shall add new ongs to database
-	def new
+  
+  #new and create shall add new ongs to database
+  def new
   		@ong = Ong.new
   	end
-  	
+  #..
   	def create 
   	  @ong = Ong.new(ong_params) 
   	  if @ong.save 
@@ -16,11 +18,11 @@ class OngsController < ApplicationController
   	  	render 'new' 
   	  end
   	end
-
+  #edit ongs on database
   def edit
     @ong = Ong.find(params[:id])
   end
-
+  #update database for edited ongs
   def update
     @ong = Ong.find(params[:id])
       if @ong.update(ong_params)

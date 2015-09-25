@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   get '/ongs/new' => 'ongs#new'
   post 'ongs' => 'ongs#create'
-  get '/ongs/:id/edit' => 'ongs#edit'
-  patch '/ongs/:id' => 'ongs#update'
+
+  get '/ongs/:id/edit' => 'ongs#edit' #Here and...
+  patch '/ongs/:id' => 'ongs#update' # ...here  are the routs for editing and updating ongs. Rails is not recognizing my routes!
 
 
   # The priority is based upon order of creation: first created -> highest priority.
