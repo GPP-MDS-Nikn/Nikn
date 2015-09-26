@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Nikn</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+	  <title>Nikn</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
 
-<%= yield %>
+	  <%= render 'layouts/shim' %>
+	</head>
+	<body>
+ 
+ 		<!-- Partial header -->
+		<%= render 'layouts/header' %>
 
-</body>
+		<div class = "container">
+			<%= yield %>
+
+			<!-- This displays some useful information about each page using the built-in debug method and params variable -->
+			<%= debug(params) if Rails.env.development? %>
+
+			<%= render 'layouts/footer' %>
+		</div>
+	</body>
 </html>
