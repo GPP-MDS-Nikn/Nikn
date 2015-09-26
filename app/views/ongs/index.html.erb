@@ -7,4 +7,6 @@
 <!--This will link to the Edit page, passing the current ong ID to the action Edit on controller -->
 <%= link_to "Edit", {:action => 'edit', :id => ong.id}, :class => 'action edit' %>
 <%= link_to "Show", {:action => 'show', :id => ong.id}, :class => 'action show' %>
+<%= link_to "delete", ong, method: :delete, data: { confirm: "You sure?" } %>
+
 <% end %>
