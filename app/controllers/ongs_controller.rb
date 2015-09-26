@@ -4,20 +4,25 @@ class OngsController < ApplicationController
 	def index
     @ong = Ong.all  
   end
+  #Display individual ongs when selected
+  def show
+    @ong = Ong.find(params[:id])
+  end
+
   
   #new and create shall add new ongs to database
   def new
   		@ong = Ong.new
   	end
   #..
-  	def create 
+  def create 
   	  @ong = Ong.new(ong_params) 
-  	  if @ong.save 
-  	  	redirect_to '/ongs' 
-  	  else 
-  	  	render 'new' 
-  	  end
-  	end
+    if @ong.save 
+    	redirect_to '/ongs' 
+    else 
+    	render 'new' 
+    end
+  end
   #edit ongs on database
   def edit
     @ong = Ong.find(params[:id])
