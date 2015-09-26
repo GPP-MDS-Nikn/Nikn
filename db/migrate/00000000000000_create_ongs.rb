@@ -5,6 +5,7 @@ class CreateOngs < ActiveRecord::Migration
       t.text :name
       t.text :description
       t.text :adress
+      t.string :password_digest
 
       t.timestamps null: false
     end
