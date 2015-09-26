@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="w">Dados de Unidades de Atendimento a Mulher</h1>
+
+<div class="img-responsive aspect data_background"></div>
+<table class="table table-striped w">
+  <thead>
+    <tr>
+      <th>Municipio</th>
+      <th>estado</th>
+      <th>uf</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @units.each do |unit| %>
+    <tr>
+      <td><%= unit.municipio %></td>
+      <td><%= unit.estado %></td>
+      <td><%= unit.uf %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

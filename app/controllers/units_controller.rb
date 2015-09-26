@@ -16,6 +16,6 @@ class UnitsController < ApplicationController
   end
 
   def unit_params
-    params.require(:unit).permit
+      params.require(:unit).permit(:municipio, :estado, :cod_mun7, :cod_mun6, :uf, :localizacao)
   end
 end
