@@ -36,6 +36,12 @@ class OngsController < ApplicationController
         render 'edit'
       end
   end
+
+  def destroy
+    Ong.find(params[:id]).destroy
+    flash[:success] = "Ong deleted"
+    redirect_to ongs_url
+
   end
 
   	private
@@ -43,3 +49,4 @@ class OngsController < ApplicationController
 	def ong_params
 		params.require(:ong).permit(:name, :adress)
 	end
+end
