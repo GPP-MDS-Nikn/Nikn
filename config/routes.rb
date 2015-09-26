@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+
   #get '/ongs/new' => 'ongs#new'
   #post 'ongs' => 'ongs#create'
-
+  #Routes every request to a controller action
+  get 'signup' => 'ongs#new'
+  resources :ongs
   #get '/ongs/:id/edit' => 'ongs#edit' #Here and...
   #patch '/ongs/:id' => 'ongs#update' # ...here  are the routs for editing and updating ongs. Rails is not recognizing my routes!
   #Routes every request to a controller action
