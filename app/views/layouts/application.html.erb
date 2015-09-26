@@ -16,10 +16,9 @@
 		<div class = "container">
 			<%= yield %>
 
+			<%= render 'layouts/footer' %>
 			<!-- This displays some useful information about each page using the built-in debug method and params variable -->
 			<%= debug(params) if Rails.env.development? %>
-
-			<%= render 'layouts/footer' %>
 		</div>
 	</body>
 </html>
