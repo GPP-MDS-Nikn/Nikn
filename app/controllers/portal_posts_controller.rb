@@ -14,7 +14,8 @@ class PortalPostsController < ApplicationController
 	def create
     @portal_post = PortalPost.new(portal_post_params)
     if @portal_post.save
-      redirect_to '/portal/list'
+
+      redirect_to '/portal_posts', notice: 'Postagem criada com sucesso.'
     else
       render 'new'
     end
