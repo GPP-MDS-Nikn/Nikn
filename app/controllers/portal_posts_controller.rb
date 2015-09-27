@@ -1,9 +1,13 @@
 class PortalPostsController < ApplicationController
-  before_action :set_portal_post, only: [:edit, :update, :destroy]
+  before_action :set_portal_post, only: [:show, :edit, :update, :destroy]
 
   # GET /portal_posts
   def index
     @portal_posts = PortalPost.all
+	end
+
+  # GET /portal_posts/<post:id>
+  def show
   end
 	def list
 		@portal_posts = PortalPost.all
@@ -21,11 +25,18 @@ class PortalPostsController < ApplicationController
     end
   end
 
-  private
-  	def portal_post_params
-		params.require(:portal_post).permit(:author,:title,:content)
+  # DELETE /portal_posts/<post:id>
+  def destroy
+    @portal_post.destroy
+    redirect_to portal_posts_url, notice: 'Postagem excluída com sucesso.'
   end
 
+  private
+    def set_portal_post
+      @portal_post = PortalPost.find(params[:id])
+    end
 
-
+    def portal_post_params
+    params.require(:portal_post).permit(:author,:title,:content)
+    end
 end

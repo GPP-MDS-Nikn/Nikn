@@ -1,6 +1,13 @@
+<% provide(:title, "| Portal") %>
+
+<h1>Nova Postagem</h1>
+
+<%= link_to 'Voltar', portal_posts_path %></br></br>
+
 <%= form_for(@portal_post) do |f| %>
-	<%= f.text_field :author %>
-  <%= f.text_field :title %>
-  <%= f.text_field :body %>
+	<%= f.text_field :author, :placeholder => "Autor" %>
+  <%= f.text_field :title, :placeholder => "Título" %>
+  <%= f.text_field :body, :placeholder => "Texto" %>
   <%= f.submit "Criar"%> 
 <% end %>
+</br>

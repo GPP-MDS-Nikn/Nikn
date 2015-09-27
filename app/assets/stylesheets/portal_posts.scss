@@ -6,52 +6,45 @@ body {
 	background-color: #ededed;
 }
 
-.portal_posts {
+.portal-posts {
   margin: 40px 0;
 }
 
 .container {
-  width: 600px;
-  margin: 0 auto;
+  width: 800px;
+  margin: auto;
 }
 
-.portal_post {
+.portal-post {
   background-color: #fff;
   padding: 16px;
   margin-bottom: 10px;
+  /*max-height: 200px;*/
 }
-
-.portal_post .title {
+.show-post {
+  background-color: #fff;
+  padding: 16px;
+  margin: 20px;
+}
+.title {
 	color: black;
-  font-size: 18px;
+  font-size: 24px;
+  display: inline-block;
 }
-
-.portal_post .subtitle {
+.subtitle {
 	color: gray;
   font-size: 10px;
 }
-
-
 .portal_post .content {
 .portal_post .body {
+.body {
   margin-top: 10px;
 	color: black;
   font-size: 12px;
 }
-
-.portal_posts a {
-	position: auto;
-  background-color: blue;
-  border: none;
-  border-radius: 1px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 14px;
-  margin-top: 10px;
-  padding: 12px 24px;
+.portal-button {
   text-decoration: none;
 }
-
 .portal_posts a:hover {
   background-color: green;
 
@@ -59,3 +52,5 @@ body {
 
 }
 
+  text-decoration: none;
+}
