@@ -8,17 +8,18 @@
 			<!-- This is necessary to display wrong inputs messages -->
 			<%= render 'shared/error_messages' %>
 
-			<%= field.label :name %>
+			<p>Nome do evento: </p>
 			<%= field.text_field :name, class: 'form-control' %>
 
-			<%= field.label :local %>
+			<p>Local do evento:</p>
 			<%= field.text_field :local, class: 'form-control' %>
 
-			<%= field.label :date %>
-			<%= field.datetime_field :date, class: 'form-control' %>
+			<p>Data e horário: </p>
+			<%= datetime_select :event, :date,use_month_numbers: true, use_two_digit_numbers: true, :start_year => Date.today.year, class: "date_time"%>
+			<br><br>
 
-			<%= field.label :description %>
-			<%= field.text_field :description, class: 'form-control' %>
+			<p>Descrição: </p>
+			<%= field.text_area :description, class: 'form-control' %>
 
 			<%= field.submit "Criar novo evento", class: "btn btn-primary" %>
 		<% end %>
