@@ -1,13 +1,11 @@
   <!--This will render fields to enter the content of ong creation -->
-    <h1>Create ONG</h1>
-  
-  <!--f.label will name the field, and f.text_area will be the fields -->
-    <%= form_for(@ong) do |f| %>  
-    <%= f.label :name %>
-    <%= f.text_area :name %>
-    <%= f.label :description %> 
-    <%= f.text_area :description %> 
-    <%= f.submit "Create" %> 
+    <h1>Ong signup</h1>
+  <ul>
+  <!--This will create fields for account creation -->
+    <%= form_for(@ong) do |f| %> 
+    <li><%= f.text_field :name, :placeholder => "Name" %> </li>
+    <li><%= f.text_field :description, :placeholder => "Description" %></li>
+    <li><%= f.text_field :adress, :placeholder => "Adress" %></li>
+    <li><%= f.password_field :password, :placeholder => "Password" %></li>
+    <li><%= f.submit "Create" %> </li>
 <% end %>
-
-
