@@ -1,4 +1,10 @@
 class PortalPostsController < ApplicationController
+  before_action :set_portal_post, only: [:edit, :update, :destroy]
+
+  # GET /portal_posts
+  def index
+    @portal_posts = PortalPost.all
+  end
 	def list
 		@portal_posts = PortalPost.all
 	end
@@ -13,9 +19,12 @@ class PortalPostsController < ApplicationController
       render 'new'
     end
   end
-  
-  private 
+
+  private
   	def portal_post_params
 		params.require(:portal_post).permit(:author,:title,:content)
   end
+
+
+
 end

@@ -11,6 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+=======
+ActiveRecord::Schema.define(version: 20150926213700) do
+>>>>>>> Include only the application template in the view_portal branch
 
 ActiveRecord::Schema.define(version: 20150921100000) do
 
@@ -21,6 +25,14 @@ ActiveRecord::Schema.define(version: 20150921100000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
 
+  end
+
+  create_table "portal_posts", force: :cascade do |t|
+    t.string   "author"
+    t.string   "title"
+    t.string   "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
