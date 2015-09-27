@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get "portal/list" => "portal_posts#list"
-  get "portal/new" => "portal_posts#new"
-  post "portal/new" => "portal_posts#create"
+  root 'portal_posts#index'
   resources :portal_posts
 
   # The priority is based upon order of creation: first created -> highest priority.
