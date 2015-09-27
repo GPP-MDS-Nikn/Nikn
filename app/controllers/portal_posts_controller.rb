@@ -16,7 +16,7 @@ class PortalPostsController < ApplicationController
     @portal_post = PortalPost.new(portal_post_params)
     
     if @portal_post.save
-      redirect_to @portal_post, notice: 'User was successfully created.'
+      redirect_to '/portal_posts', notice: 'Postagem criada com sucesso.'
     else
       render :new
     end
