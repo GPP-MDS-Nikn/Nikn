@@ -14,6 +14,10 @@ class EventsController < ApplicationController
 		@event = Event.new(event_params)
 
 		if @event.save
+
+			# Display a success message after render the next page
+			flash[:success] = "O evento \"#{ @event.name }\" foi criado com sucesso."
+			
 			# We could have used the equivalent
 			# redirect_to @event
 			redirect_to event_url(@event)
