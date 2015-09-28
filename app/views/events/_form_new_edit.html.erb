@@ -1,0 +1,29 @@
+<h1><%= action_name %></h1>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_for(@event) do |field| %>
+
+            <!-- This is necessary to display wrong inputs messages -->
+            <%= render 'shared/error_messages' %>
+
+            <p>Nome do evento: </p>
+            <%= field.text_field :name, class: 'form-control' %>
+
+            <p>Local do evento:</p>
+            <%= field.text_field :local, class: 'form-control' %>
+
+            <p>Data e horário: </p>
+            <%= datetime_select :event, :date,use_month_numbers: true, use_two_digit_numbers: true, :start_year =>Date.today.year, class: "date_time"%>
+            <br><br>
+
+            <p>Descrição: </p>
+            <%= field.text_area :description, class: 'form-control' %>
+
+            <p>Adicione um banner para o evento:
+            <%= field.file_field :image_file, class: 'form-control' %></p>
+
+            <%= field.submit action_command, class: "btn btn-primary" %>
+        <% end %>
+    </div>
+</div>

@@ -11,8 +11,8 @@ class EventsController < ApplicationController
 
 	# editar evento preexistente
 	def edit
-		#user validation is here
 		@event = Event.find(params[:id])
+		#user validation is here
 	end
 
 	def create

@@ -1,19 +1,2 @@
-<% provide(:title, @event) %>
-
-<% @event.errors.full_messages.each do |message| %>
-    <div class="error_msg">
-        <%=message%>
-    </div>
-
-<%end%>
-
-<div class="row">
-    <aside class="col-md-4">
-        <section class="event_info">
-            <h1>
-                <%= @event.name %><br/>
-                <%= @event.date %><br/>
-            </h1>
-        </section>
-    </aside>
-</div>
+<% provide(:title, @event.name) %>
+<%= render 'form_new_edit' , {action_name: "Editar evento", action_command: "Salvar modificações"} %>
