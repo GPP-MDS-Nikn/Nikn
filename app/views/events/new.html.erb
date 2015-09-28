@@ -15,11 +15,14 @@
 			<%= field.text_field :local, class: 'form-control' %>
 
 			<p>Data e horário: </p>
-			<%= datetime_select :event, :date,use_month_numbers: true, use_two_digit_numbers: true, :start_year => Date.today.year, class: "date_time"%>
+			<%= datetime_select :event, :date,use_month_numbers: true, use_two_digit_numbers: true, :start_year =>Date.today.year, class: "date_time"%>
 			<br><br>
 
 			<p>Descrição: </p>
 			<%= field.text_area :description, class: 'form-control' %>
+
+			<p>Adicione um banner para o evento:
+			<%= field.file_field :image_file, class: 'form-control' %></p>
 
 			<%= field.submit "Criar novo evento", class: "btn btn-primary" %>
 		<% end %>

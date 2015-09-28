@@ -43,6 +43,7 @@ class EventsController < ApplicationController
 		# a way to describe which fields could be written.
 		def event_params
 			return params.require(:event).permit(:name, :local,
-								  :description, :date, :photo_path)
+								  :description, :date, :image_file)
+
 		end
 end
