@@ -9,6 +9,12 @@ class EventsController < ApplicationController
 		@event = Event.new
 	end
 
+	# editar evento preexistente
+	def edit
+		#user validation is here
+		@event = Event.find(params[:id])
+	end
+
 	def create
 		# Construct with permitted params
 		@event = Event.new(event_params)
@@ -17,7 +23,7 @@ class EventsController < ApplicationController
 
 			# Display a success message after render the next page
 			flash[:success] = "O evento \"#{ @event.name }\" foi criado com sucesso."
-			
+
 			# We could have used the equivalent
 			# redirect_to @event
 			redirect_to event_url(@event)
@@ -36,7 +42,7 @@ class EventsController < ApplicationController
 		# parts of our db tables, so, Rails ( > 4.0) implements
 		# a way to describe which fields could be written.
 		def event_params
-			return params.require(:event).permit(:name, :local, 
+			return params.require(:event).permit(:name, :local,
 								  :description, :date, :photo_path)
 		end
 end
