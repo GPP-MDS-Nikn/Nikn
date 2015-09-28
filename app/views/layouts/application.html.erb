@@ -14,6 +14,13 @@
 		<%= render 'layouts/header' %>
 
 		<div class = "container">
+
+			<!-- Display flash messages, go to the controller files to modify each message -->
+			<% flash.each do |message_type, message| %>
+        		<div class="alert alert-<%= message_type %>"><%= message %></div>
+      		<% end %>
+
+      		<!-- Render the content of each page -->
 			<%= yield %>
 
 			<%= render 'layouts/footer' %>
