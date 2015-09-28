@@ -3,6 +3,7 @@
 	<aside class="col-md-4">
 		<section class="event_info">
 			<h1>
+				<%= image_tag @event.image_file.url(:medium) %>
 				<%= @event.name %><br>
 				<%= @event.local %><br>
 				<%= @event.description %><br>
