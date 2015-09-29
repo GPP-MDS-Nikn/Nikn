@@ -15,6 +15,10 @@ class PortalPostsController < ApplicationController
     @portal_post = PortalPost.new
   end
   
+  # GET /portal_posts/<post:id>/edit
+  def edit
+  end
+  
   # POST /portal_posts 
   def create
     @portal_post = PortalPost.new(portal_post_params)
@@ -23,6 +27,15 @@ class PortalPostsController < ApplicationController
       redirect_to portal_posts_url, notice: 'Postagem criada com sucesso.'
     else
       render :new
+    end
+  end
+
+  # PATCH/PUT /portal_posts/<post:id>
+  def update
+    if @portal_post.update(portal_post_params)
+      redirect_to @portal_post, notice: 'Postagem atualizada com sucesso.'
+    else
+      render :edit
     end
   end
   

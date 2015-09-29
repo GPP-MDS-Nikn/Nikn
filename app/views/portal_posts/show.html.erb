@@ -9,7 +9,7 @@
 		<div class="post-title">
 			<p class="title"><%= @portal_post.title %></p>
 			<div class="btn-group pull-right" role="group" aria-label="...">
-				<%= link_to(edit_portal_post_path(@portal_post), type: "button", class: "btn btn-default", :disabled => true) do %>
+				<%= link_to(edit_portal_post_path(@portal_post), type: "button", class: "btn btn-default") do %>
 					<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
 				<% end %>
 				<%= link_to(@portal_post, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>					
