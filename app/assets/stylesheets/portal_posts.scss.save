@@ -3,7 +3,7 @@ html, body, p {
 }
 
 body {
-	background-color: white;
+	background-color: ;
 }
 
 .portal-posts {
@@ -16,7 +16,7 @@ body {
 }
 
 .portal-post {
-  background-color: #ededed;
+  background-color: #fff;
   padding: 16px;
   margin-bottom: 10px;
   /*max-height: 200px;*/
@@ -35,8 +35,6 @@ body {
 	color: gray;
   font-size: 10px;
 }
-.portal_post .content {
-.portal_post .body {
 .body {
   margin-top: 10px;
 	color: black;
@@ -46,11 +44,5 @@ body {
   text-decoration: none;
 }
 .portal_posts a:hover {
-  background-color: green;
-
-}
-
-}
-
   text-decoration: none;
 }
