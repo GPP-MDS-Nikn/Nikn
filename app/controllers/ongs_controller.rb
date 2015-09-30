@@ -21,7 +21,7 @@ class OngsController < ApplicationController
       session[:ong_id] = @ong.id
       redirect_to '/ongs'
     else
-      redirect_to '/signup'
+      redirect_to '/ongs'
     end
   end
   #edit ongs on database
