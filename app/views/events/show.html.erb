@@ -1,14 +1,26 @@
-<% provide(:title, @event) %>
+<% provide(:title, "| Editar Evento") %>
+
+</br><%= link_to 'Voltar', events_path %></br>
+
 <div class="row">
 	<aside class="col-md-4">
 		<section class="event_info">
 			<h1>
-				<%= image_tag @event.image_file.url(:medium) %>
+				<div>
+					<%= image_tag @event.image_file.url(:medium) %>
+					<div class="btn-group pull-right" role="group" aria-label="...">
+						<%= link_to(edit_event_path(@event), type: "button", class: "btn btn-default") do %>
+							<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
+						<% end %>
+						<%= link_to(@event, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default", :disabled => true) do %>					
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						<% end %>
+					</div>
+				</div>
 				<%= @event.name %><br>
 				<%= @event.local %><br>
 				<%= @event.description %><br>
 				<%= @event.date %><br>
-				<%= link_to "Editar", edit_event_path(@event.id), class:"btn btn-primary" %>
 			</h1>
 		</section>
 	</aside>

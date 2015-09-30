@@ -3,8 +3,9 @@
 <h1>Eventos</h1>
 
 <% @events.each do |event| %>
-  <h2><%= event.name %></h2>
-  <%= link_to "Detalhes", event %><br/>
+  <%= link_to(event) do %>
+		<h2><%= event.name %></h2>
+	<% end %>
 <%end%>
 
 <a href="/events/new">
