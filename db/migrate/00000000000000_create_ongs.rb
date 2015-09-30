@@ -2,7 +2,6 @@ class CreateOngs < ActiveRecord::Migration
   def change
     create_table :ongs do |t|
     #Creates ongs with the respective fields on database
-      t.integer :id
       t.string :name
       t.text :description
       t.text :adress
