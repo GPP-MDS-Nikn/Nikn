@@ -7,7 +7,11 @@
 		<section class="event_info">
 			<h1>
 				<div>
-					<%= image_tag @event.image_file.url(:medium) %>
+					<%if @event.image_file.present? %>
+						<%= image_tag @event.image_file.url(:medium) %>
+					<%else%>
+						<%= image_tag("nikn_default_banner.png")  %>
+					<%end%>
 					<div class="btn-group pull-right" role="group" aria-label="...">
 						<%= link_to(edit_event_path(@event), type: "button", class: "btn btn-default") do %>
 							<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
