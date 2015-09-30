@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-	before_action :set_event, only: [:show, :edit, :update]
+	before_action :set_event, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@events = Event.all
@@ -50,6 +50,11 @@ class EventsController < ApplicationController
       render :edit
     end
 	end
+
+	def destroy
+    @event.destroy
+    redirect_to events_url, notice: 'Evento excluído com sucesso.'
+  end
 
 	private
 		def set_event

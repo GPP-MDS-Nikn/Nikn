@@ -16,7 +16,7 @@
 						<%= link_to(edit_event_path(@event), type: "button", class: "btn btn-default") do %>
 							<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
 						<% end %>
-						<%= link_to(@event, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default", :disabled => true) do %>					
+						<%= link_to(@event, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>					
 							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 						<% end %>
 					</div>
