@@ -1,4 +1,9 @@
 class EventsController < ApplicationController
+
+	def index
+		@events = Event.all
+	end
+
 	def show
 		# This is a useful way to make a individual page
 		# to each event registered at database
