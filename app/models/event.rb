@@ -5,8 +5,8 @@ class Event < ActiveRecord::Base
 
 
 	# Impossible to create an event without a name
-	validates(:name, presence: true)
-	validates(:name, length: {in: 3..60})
+	validates(:title, presence: true)
+	validates(:title, length: {in: 3..60})
 
 	# Impossible to create an event without a local
 	validates(:local, presence: true)
