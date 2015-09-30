@@ -1,8 +1,17 @@
-<% @events.each do |event| %>
+<% provide(:title, "| Eventos") %>
+
+		<!-- Display fullcalendar -->
+		<br><br>
 		<div id="calendar"></div>
-    <h2><%= event.name %></h2>
-    <%= link_to "Detalhes", event %>
-    <hr/>
 
-
+<% @events.each do |event| %>
+  <%= link_to(event) do %>
+		<h2><%= event.name %></h2>
+	<% end %>
 <%end%>
+
+<a href="/events/new">
+	<button type="button" class="btn btn-default center-block" aria-label="Left Align">
+		<p>Novo Evento</p>
+	</button>
+</a>
