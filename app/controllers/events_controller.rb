@@ -28,7 +28,7 @@ class EventsController < ApplicationController
 		if @event.save
 
 			# Display a success message after render the next page
-			flash[:success] = "O evento \"#{ @event.name }\" foi criado com sucesso."
+			flash[:success] = "O evento \"#{ @event.title }\" foi criado com sucesso."
 
 			# We could have used the equivalent
 			# redirect_to @event
@@ -45,7 +45,7 @@ class EventsController < ApplicationController
 	def update
 		if @event.update(event_params)
       redirect_to @event
-      flash[:success] = "O evento \"#{ @event.name }\" foi atualizado com sucesso."
+      flash[:success] = "O evento \"#{ @event.title }\" foi atualizado com sucesso."
     else
       render :edit
     end
@@ -64,7 +64,7 @@ class EventsController < ApplicationController
 		# parts of our db tables, so, Rails ( > 4.0) implements
 		# a way to describe which fields could be written.
 		def event_params
-			return params.require(:event).permit(:name, :local, :description, :date, :image_file)
+			return params.require(:event).permit(:title, :local, :description, :start_time, :end_time, :image_file)
 
 		end
 end
