@@ -16,7 +16,10 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 # Use paperclip for upload image files
 gem "paperclip", "~> 4.3"
-
+# Please, run "sudo apt-get install imagemagick"
+# Use fullcalendar-rails
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -4,8 +4,10 @@
 	  <title>Nikn</title>
 	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	 	<%= stylesheet_link_tag "application-print", :media => "print" %>
 	  <%= csrf_meta_tags %>
 
+		<%= render 'layouts/fullcalendar_setup' %>
 	  <%= render 'layouts/shim' %>
 	</head>
 	<body>
