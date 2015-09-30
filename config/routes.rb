@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   root          'static_pages#home'
   get 'help' => 'static_pages#help'
-  get 'new_event' => 'events#new'
   resources :events
 
 

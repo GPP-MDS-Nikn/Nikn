@@ -1,8 +1,14 @@
+<% provide(:title, "| Eventos") %>
+
+<h1>Eventos</h1>
+
 <% @events.each do |event| %>
-
-    <h2><%= event.name %></h2>
-    <%= link_to "Detalhes", event %>
-    <hr/>
-
-
+  <h2><%= event.name %></h2>
+  <%= link_to "Detalhes", event %><br/>
 <%end%>
+
+<a href="/events/new">
+	<button type="button" class="btn btn-default center-block" aria-label="Left Align">
+		<p>Novo Evento</p>
+	</button>
+</a>
