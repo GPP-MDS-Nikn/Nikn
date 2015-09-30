@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #get '/ongs/:id/edit' => 'ongs#edit' #Here and...
   #patch '/ongs/:id' => 'ongs#update' # ...here  are the routs for editing and updating ongs. Rails is not recognizing my routes!
   #Routes every request to a controller action
-  resources :ongs
+  devise_for :ongs
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
