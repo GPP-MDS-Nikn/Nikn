@@ -3,11 +3,15 @@
 	<aside class="col-md-4">
 		<section class="event_info">
 			<h1>
+			<%if @event.image_file.present? %>
 				<%= image_tag @event.image_file.url(:medium) %>
+			<%else%>
+				<%= image_tag("nikn_default_banner.png")  %>
+			<%end%>
 				<%= @event.name %><br>
 				<%= @event.local %><br>
 				<%= @event.description %><br>
-				<%= @event.date %><br>
+				<%= @event.date.strftime("%d/%m/%Y - %Hh %Mmin") %><br>
 				<%= link_to "Editar", edit_event_path(@event.id), class:"btn btn-primary" %>
 			</h1>
 		</section>
