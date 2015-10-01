@@ -1,0 +1,26 @@
+<% provide(:title, "| Portal") %>
+
+<h1>Portal de Informações</h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="portal-posts">
+	<div class="container">	
+		<% @portal_posts.each do |post| %> 
+			<div class="portal-post">
+				<%= link_to(post) do %>
+					<p class="title"><%= post.title %></p>
+				<% end %>
+				<p class="subtitle"><%= post.created_at %>, por <%= post.author %> -</p>
+				<p class="body"><%= post.body %></p>
+			</div>
+		<% end %>
+		
+		<a href="/portal_posts/new">
+			<button type="button" class="btn btn-default center-block" aria-label="Left Align">
+				<p>Nova Postagem</p>
+			</button>
+		</a>
+	</div>
+</div>
+

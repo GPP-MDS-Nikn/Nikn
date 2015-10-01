@@ -1,0 +1,24 @@
+<h1><%= action_name %></h1>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+        <%= link_to 'Voltar', portal_posts_path %></br>
+
+        <%= form_for(@portal_post) do |field| %>
+            <p>Autor da postagem: </p>
+            <%= field.text_field :author, class: 'form-control' %>
+
+            <p>Título da postagem: </p>
+            <%= field.text_field :title, class: 'form-control' %>
+
+            <p>Texto: </p>
+            <%= field.text_area :body, class: 'form-control' %>
+
+            <p>Imagem: </p>
+            <%= field.file_field :image_file, class: 'form-control' %>
+            
+            </br><%= field.submit action_command, class: "btn btn-primary" %></br></br>
+        <% end %>
+    </div>
+</div>
