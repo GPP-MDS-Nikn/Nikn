@@ -1,0 +1,28 @@
+<% provide(:title, "| Eventos") %>
+
+		<!-- Display fullcalendar -->
+<script>
+	$(document).ready(function() {
+  		//page is now ready, initialize the calendar
+    	$('#calendar').fullCalendar({
+        	// put your options and callbacks here
+        	// calls views/events/index.jaseon.jbuilder 
+        	events: '/events.json'
+	 	})               
+  	});
+</script>
+
+<br><br>
+<div id="calendar"></div>
+
+<% @events.each do |event| %>
+  <%= link_to(event) do %>
+		<h2><%= event.title %></h2>
+	<% end %>
+<%end%>
+
+<a href="/events/new">
+	<button type="button" class="btn btn-default center-block" aria-label="Left Align">
+		<p>Novo Evento</p>
+	</button>
+</a>
