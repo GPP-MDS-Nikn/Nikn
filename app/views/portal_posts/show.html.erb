@@ -16,8 +16,8 @@
 					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 				<% end %>
 			</div>
-			<%if @event.image_file.present? %>
-				<%= image_tag @event.image_file.url(:large) %>
+			<%if @portal_post.image_file.present? %>
+				<%= image_tag @portal_post.image_file.url(:large) %>
 			<%else%>
 				<%= image_tag("nikn_default_banner.png")  %>
 			<%end%>
