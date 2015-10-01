@@ -1,0 +1,13 @@
+<%if ong_signed_in? %>
+<%= link_to 'Edit', edit_ong_registration_path, :method => :edit %>
+<%end%>
+<ul>
+<%@ong.each do |ong|%>
+
+<li>
+	<%= ong.name %>
+	<%= ong.email %>
+	<%= ong.description %>
+</li>
+<%end%>
+</ul>
