@@ -15,6 +15,9 @@
             <p>Texto: </p>
             <%= field.text_area :body, class: 'form-control' %>
 
+            <p>Imagem: </p>
+            <%= field.file_field :image_file, class: 'form-control' %>
+            
             </br><%= field.submit action_command, class: "btn btn-primary" %></br></br>
         <% end %>
     </div>

@@ -8,7 +8,7 @@
 			<h1>
 				<div>
 					<%if @event.image_file.present? %>
-						<%= image_tag @event.image_file.url(:medium) %>
+						<%= image_tag @event.image_file.url(:large) %>
 					<%else%>
 						<%= image_tag("nikn_default_banner.png")  %>
 					<%end%>
