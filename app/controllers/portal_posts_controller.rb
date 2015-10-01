@@ -51,6 +51,6 @@ class PortalPostsController < ApplicationController
     end
 
     def portal_post_params
-      params.require(:portal_post).permit(:author, :title, :body)
+      params.require(:portal_post).permit(:author, :title, :body, :image_file)
     end
 end
