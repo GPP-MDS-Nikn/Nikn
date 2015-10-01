@@ -1,20 +1,20 @@
 class OngsController < ApplicationController
-  
+
   #Display ongs on database
 	def index
-    @ong = Ong.all  
+    @ong = Ong.all
   end
   #Display individual ongs when selected
   def show
     @ong = Ong.find(params[:id])
   end
 
-  
+
   #new and create shall add new ongs to database
   def new
   		@ong = Ong.new
   	end
-  #..  
+  #..
   def create
     @ong = Ong.new(ong_params)
     if @ong.save
@@ -49,4 +49,5 @@ class OngsController < ApplicationController
 #the private method ong_params determine what will be created from the fields on new.html.erb, the 'new' page.
 	def ong_params
 		params.require(:ong).permit(:name, :description, :adress, :password)
-	endend
+	end
+end
