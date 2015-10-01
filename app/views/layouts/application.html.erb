@@ -34,10 +34,14 @@
 
 <body>
 
+
+
+<%if ong_signed_in?%>
+<%= link_to "Sign Out", destroy_ong_session_path, method: :delete %><br>
+<%else%>
 <%= link_to "Sign In", new_ong_session_path %><br>
 <%= link_to "Sign Up", new_ong_registration_path %><br>
-<%= link_to "Sign Out", destroy_ong_session_path, method: :delete %><br>
-
+<%end%>
 
 <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
