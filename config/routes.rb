@@ -9,12 +9,17 @@ Rails.application.routes.draw do
   #patch '/ongs/:id' => 'ongs#update' # ...here  are the routs for editing and updating ongs. Rails is not recognizing my routes!
   #Routes every request to a controller action
 
+
+  #get 'page/home'
+  #get 'page/about'
+  #get 'page/contact'
+
   devise_for :ongs, :controllers => { registrations: 'registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'page#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

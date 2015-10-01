@@ -33,6 +33,12 @@
 </head>
 
 <body>
+
+<%= link_to "Sign In", new_ong_session_path %><br>
+<%= link_to "Sign Up", new_ong_registration_path %><br>
+<%= link_to "Sign Out", destroy_ong_session_path, method: :delete %><br>
+
+
 <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 
