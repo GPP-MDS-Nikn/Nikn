@@ -5,6 +5,6 @@ class ParsersController < ApplicationController
   end
 
   def parser_params
-    params.require(:unit).permit(:municipio, :estado, :cod_mun7, :cod_mun6, :uf, :localizacao)
+    params.require(:care_unit).permit(:municipio, :estado, :cod_mun7, :cod_mun6, :uf, :localizacao)
   end
 end
