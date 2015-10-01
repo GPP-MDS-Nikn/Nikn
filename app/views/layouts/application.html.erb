@@ -1,33 +1,128 @@
 <!DOCTYPE html>
-<html>
-	<head>
-	  <title>Nikn</title>
-	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	 	<%= stylesheet_link_tag "application-print", :media => "print" %>
-	  <%= csrf_meta_tags %>
+<html lang="en">
 
-		<%= render 'layouts/fullcalendar_setup' %>
-	  <%= render 'layouts/shim' %>
-	</head>
-	<body>
- 
- 		<!-- Partial header -->
-		<%= render 'layouts/header' %>
+<head>
 
-		<div class = "container">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-			<!-- Display flash messages, go to the controller files to modify each message -->
-			<% flash.each do |message_type, message| %>
-        		<div class="alert alert-<%= message_type %>"><%= message %></div>
-      		<% end %>
+      <title>NIKN - Auxílio às mulheres vítimas de violência</title>
 
-      		<!-- Render the content of each page -->
-			<%= yield %>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-			<%= render 'layouts/footer' %>
-			<!-- This displays some useful information about each page using the built-in debug method and params variable -->
-			<%= debug(params) if Rails.env.development? %>
-		</div>
-	</body>
+    <!-- Custom CSS -->
+    <link href="css/business-casual.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+    <div class="brand">NIKN</div>
+    <div class="address-bar">https://github.com/GPP-MDS-Nikn/Nikn/tree/crud_event</div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+                <a class="navbar-brand" href="index.html">Business Casual</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">Sobre</a>
+                    </li>
+                    <li>
+                        <a href="/units">Unidades</a>
+                    </li>
+                    <li>
+                        <a href="/events">Eventos</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contate-nos</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="container">
+
+
+        <!-- Carregar as páginas -->
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                  <% flash.each do |message_type, message| %>
+                  <div class="alert alert-<%= message_type %>"><%= message %></div>
+                  <% end %>
+
+                  <!-- Render the content of each page -->
+                  <%= yield %>
+                  <%= render 'layouts/footer' %>
+            			<!-- This displays some useful information about each page using the built-in debug method and params variable
+            			<%= debug(params) if Rails.env.development? %> -->
+                </div>
+              </div>
+        </div>
+
+      
+    </div>
+    <!-- /.container -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; NIKN 2015</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+</body>
+
 </html>
