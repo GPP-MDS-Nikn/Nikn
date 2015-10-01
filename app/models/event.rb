@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
 	# Paperclip gem sintax for upload image files.
 	has_attached_file :image_file, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  	validates_attachment_content_type :image_file, :content_type => /\Aimage\/.*\Z/
+		validates_attachment_content_type :image_file, :content_type => /\Aimage\/.*\Z/
 
 
 	# Impossible to create an event without a name
@@ -23,4 +23,10 @@ class Event < ActiveRecord::Base
 	# subject to changes.
 	validates(:description, length: {in: 20..1000})
 
+	searchable do
+		text :title
+		#text :local
+		#time :start_time
+		#time :end_time
+	end
 end

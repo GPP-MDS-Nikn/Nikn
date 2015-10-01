@@ -1,15 +1,19 @@
 <% provide(:title, "| Eventos") %>
 
-		<!-- Display fullcalendar -->
+<%= form_tag search_events_path do %>
+	<p><%= text_field_tag :query, params[:query] %> <%= submit_tag "Search!" %></p>
+<% end %>
+
+<!-- Display fullcalendar -->
 <script>
 	$(document).ready(function() {
-  		//page is now ready, initialize the calendar
-    	$('#calendar').fullCalendar({
-        	// put your options and callbacks here
-        	// calls views/events/index.jaseon.jbuilder 
-        	events: '/events.json'
-	 	})               
-  	});
+		//page is now ready, initialize the calendar
+  	$('#calendar').fullCalendar({
+    	// put your options and callbacks here
+    	// calls views/events/index.jaseon.jbuilder 
+    	events: '/events.json'
+ 		})               
+	});
 </script>
 
 <br><br>
