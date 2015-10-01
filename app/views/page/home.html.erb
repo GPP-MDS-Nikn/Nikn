@@ -1,5 +1,7 @@
+<%= link_to 'Destroy', ong_registration_path, :confirm => 'Are you sure you want to destroy your account?', :method => :delete %>
 <ul>
 <%@ong.each do |ong|%>
+
 <li>
 	<%= ong.name %>
 	<%= ong.email %>
