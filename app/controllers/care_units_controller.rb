@@ -18,5 +18,4 @@ class CareUnitsController < ApplicationController
   def unit_params
       params.require(:care_unit).permit(:municipio, :estado, :cod_mun7, :cod_mun6, :uf, :localizacao)
   end
-  end
 end
