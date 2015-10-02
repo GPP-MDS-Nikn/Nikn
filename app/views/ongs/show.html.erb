@@ -1,0 +1,10 @@
+<%if ong_signed_in? %>
+<%= link_to 'Editar', edit_ong_registration_path, :get => :edit %>
+<%end%>
+<ul>
+<li><%=@ong.name%></li>
+<li><%=@ong.description%></li>
+<li><%=@ong.email%></li>
+<li><%=@ong.adress%></li>
+
+<%= link_to 'Back to Index', "/ongs" %>

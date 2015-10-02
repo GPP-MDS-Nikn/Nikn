@@ -4,4 +4,8 @@ class OngsController < ApplicationController
 		@ong = Ong.all
 	end
 
+	def show
+    @ong = Ong.find(params[:id])
+  end
+
 end

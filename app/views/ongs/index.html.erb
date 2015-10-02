@@ -1,6 +1,15 @@
-<%if ong_signed_in? %>
+ <%if ong_signed_in? %>
 <%= link_to 'Editar', edit_ong_registration_path, :get => :edit %>
-<%end%>
+<ul>
+<li>
+	<%= current_ong.name %>
+	<%= current_ong.email %>
+	<%= current_ong.description %>
+	<%= link_to "Ver detalhes", {:action => 'show', :id => current_ong.id}, :class => 'action show' %>
+</li>
+</ul>
+
+<%else%>
 <ul>
 <%@ong.each do |ong|%>
 
@@ -8,6 +17,8 @@
 	<%= ong.name %>
 	<%= ong.email %>
 	<%= ong.description %>
+	<%= link_to "Ver detalhes", {:action => 'show', :id => ong.id}, :class => 'action show' %>
 </li>
 <%end%>
 </ul>
+<%end%>
