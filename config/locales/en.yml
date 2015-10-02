@@ -18,6 +18,22 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        ong:
+          attributes:
+            email:
+              blank: "Por favor, insira um email"
+              taken: "Email em uso, por favor, escolha outro"
+              invalid: "Por favor, use um formato válido de email"
+            password:
+              blank: "Escolha uma senha"
+              confirmation: "Senhas não confere com confirmação"
+            password_confirmation:
+              blank: "Por favor, confirme a senha"
+            name:
+              blank: "Por favor, escolha um nome"
+            name:
+              too_short: "Nome precisa ter pelo menos 2 caracteres"

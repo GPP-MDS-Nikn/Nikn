@@ -4,6 +4,6 @@ class Ong < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :name, presence: true
-  validates :name, :length => {:minimum => 2, :message => "must have at least 2 characters"}
-  validates :name, :uniqueness => {:message => "already taken"}
+  validates :name, :length => {:minimum => 2}
+  validates :name, uniqueness: true
 end
