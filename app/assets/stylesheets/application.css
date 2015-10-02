@@ -219,3 +219,9 @@
   max-height: 843px;
 
  }
+
+.nikn-navbar {
+  float: none;
+  margin: 0 auto;
+  text-align: center;
+}
