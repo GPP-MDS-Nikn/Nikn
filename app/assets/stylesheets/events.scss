@@ -1,0 +1,40 @@
+.border{
+	border: 1px solid black;
+}
+
+.event_image{
+	margin-top: 10%;
+	clear: both;
+	display: inline-block;
+	padding: 0;
+	width: 100%;
+	float: left;
+}
+
+.description{
+	clear: both;
+	display: block;
+	text-align: left;
+	padding: 5%;
+}
+
+.description h1{
+	text-transform: none;
+	text-align: center;
+}
+
+.description h4{
+	text-transform: none;
+	text-align: center;
+}
+
+.basic_information{
+	float: left;
+	text-align: left;
+	padding-left: 5%;
+	padding-top: 5%;
+}
+
+.no_padding{
+	padding: 0;
+}
