@@ -36,15 +36,7 @@
 
 
 
-<%if ong_signed_in?%>
-<%= link_to "Encerrar Sessão", destroy_ong_session_path, method: :delete %><br>
-<%else%>
-<%= link_to "Entrar", new_ong_session_path %><br>
-<%= link_to "Cadastrar", new_ong_registration_path %><br>
-<%end%>
 
-<p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
 
     <div class="brand">NIKN</div>
     <div class="address-bar">https://github.com/GPP-MDS-Nikn/Nikn/tree/crud_event</div>
@@ -79,7 +71,19 @@
                         <a href="/events">Eventos</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contate-nos</a>
+                    <%if ong_signed_in?%>
+                        <a href="/ongs">Meu perfil</a>
+                    </li>
+                    <li>
+                        <%= link_to "Encerrar Sessão", destroy_ong_session_path, method: :delete %>
+                    </li>
+                    <li>
+                    <%else%>
+                    <%= link_to "Entrar", new_ong_session_path %>
+                    </li>
+                    <li>
+                    <%= link_to "Cadastrar", new_ong_registration_path %>
+                    <%end%>
                     </li>
                 </ul>
             </div>
@@ -95,9 +99,17 @@
         <div class="row">
             <div class="box">
                 <div class="col-lg-12 text-center">
-                  <% flash.each do |message_type, message| %>
-                  <div class="alert alert-<%= message_type %>"><%= message %></div>
-                  <% end %>
+
+<div id="message">
+    <div style="padding: 5px;">
+        <div id="inner-message" class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+            <% end %>
+        </div>
+    </div>
+</div>
 
                   <!-- Render the content of each page -->
                   <%= yield %>
@@ -108,7 +120,7 @@
               </div>
         </div>
 
-      
+
     </div>
     <!-- /.container -->
 
