@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-<<<<<<< HEAD
-
   #get '/ongs/new' => 'ongs#new'
   #post 'ongs' => 'ongs#create'
   #Routes every request to a controller action

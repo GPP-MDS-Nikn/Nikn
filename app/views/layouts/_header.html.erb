@@ -1,7 +1,6 @@
 <header>
 	<div class="brand">NIKN</div>
 	<div class="address-bar">Auxílio às mulheres vítimas de violência</div>
-
 	<!-- Navigation -->
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container">
@@ -31,11 +30,19 @@
 					<%= link_to "Eventos", events_path %>
 				</li>
 				<li>
-					<%= link_to "Sobre", "/about" %>
-				</li>
-				<li>
-					<%= link_to "Contato", "/contact" %>
-				</li>
+           <%if ong_signed_in?%>
+        		<a href="/ongs">Meu perfil</a>
+        </li>
+        <li>
+            <%= link_to "Encerrar Sessão", destroy_ong_session_path, method: :delete %>
+        </li>
+        <li>
+            <%else%>
+            <%= link_to "Entrar", new_ong_session_path %>
+        </li>
+        <li>
+        		<%end%>
+        </li>
 			</ul>
 			<!-- /.navbar-collapse -->
 		</div>

@@ -33,60 +33,8 @@
 </head>
 
 <body>
-    <div class="brand">NIKN</div>
-    <div class="address-bar">https://github.com/GPP-MDS-Nikn/Nikn/tree/crud_event</div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">Business Casual</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a href="about.html">Sobre</a>
-                    </li>
-                    <li>
-                        <a href="/units">Unidades</a>
-                    </li>
-                    <li>
-                        <a href="/events">Eventos</a>
-                    </li>
-                    <li>
-                    <%if ong_signed_in?%>
-                        <a href="/ongs">Meu perfil</a>
-                    </li>
-                    <li>
-                        <%= link_to "Encerrar Sessão", destroy_ong_session_path, method: :delete %>
-                    </li>
-                    <li>
-                    <%else%>
-                    <%= link_to "Entrar", new_ong_session_path %>
-                    </li>
-                    <li>
-                    <%= link_to "Cadastrar", new_ong_registration_path %>
-                    <%end%>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
     <%= render "layouts/header" %>
     <div class="container">
 
