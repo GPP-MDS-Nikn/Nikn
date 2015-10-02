@@ -1,11 +1,12 @@
 <% provide(:title, "| Portal") %>
 
-<p id="notice"><%= notice %></p>
-
 <div class="show-post">
 	
 	<div class="post-title col-md-12">
-		<p class="title pull-left"><%= @portal_post.title %></p>
+		<div class="title-subtitle pull-left">
+			<p class="title pull-left"><%= @portal_post.title %></p>
+			<p class="subtitle pull-left"><%= @portal_post.created_at %>, por <%= @portal_post.author %> -</p>
+		</div>
 		<div class="btn-group pull-right" role="group" aria-label="...">
 			<%= link_to(edit_portal_post_path(@portal_post), type: "button", class: "btn btn-default") do %>
 				<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
@@ -14,7 +15,6 @@
 				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 			<% end %>
 		</div>
-		<p class="subtitle"><%= @portal_post.created_at %>, por <%= @portal_post.author %> -</p>
 	</div>
 
 	<%if @portal_post.image_file.present? %>

@@ -35,6 +35,7 @@ class PortalPostsController < ApplicationController
   def update
     if @portal_post.update(portal_post_params)
       flash[:success] = "A postagem \"#{ @portal_post.title }\" foi atualizada com sucesso."
+
       redirect_to @portal_post
     else
       render :edit
