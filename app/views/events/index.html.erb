@@ -17,6 +17,11 @@
 
 <% @events.each do |event| %>
   <%= link_to(event) do %>
+  	<%if event.image_file.present? %>
+			<%= image_tag event.image_file.url(:large) %>
+		<%else%>
+			<%= image_tag("nikn_default_banner.png")  %>
+		<%end%>
 		<h2><%= event.title %></h2>
 	<% end %>
 <%end%>
