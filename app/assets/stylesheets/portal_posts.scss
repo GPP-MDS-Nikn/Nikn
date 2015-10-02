@@ -1,8 +1,11 @@
 .portal-posts {
+  margin-top: 0;
   margin-bottom: 30px;
   padding: 0;
+  font-family:"Josefin Slab";
 }
 .portal-post {
+  margin-top: 0;
   margin: 10px;
   padding: 1px;
   width: 30%;
@@ -24,10 +27,18 @@
   font-size: 20px;
   display: inline-block;
 }
+.portal-post img{
+  width: auto;
+ height: 700x;
+ max-height: 700px;
+
+}
 .show-post {
   display: inline-block;
   padding: 0px 16px 0px 16px;
   margin: 0px;
+  font-family:"Josefin Slab";
+
 }
 .show-post .post-title {
   display: block;

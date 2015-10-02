@@ -57,15 +57,45 @@
 
                   <!-- Render the content of each page -->
                   <%= yield %>
-                  <%= render 'layouts/footer' %>
             			<!-- This displays some useful information about each page using the built-in debug method and params variable
             			<%= debug(params) if Rails.env.development? %> -->
                 </div>
+
               </div>
         </div>
-
-
+				<div class="row">
+						<div class="box">
+								<div class="col-lg-12 text-center">
+									<div class="col-lg-12">
+										<hr>
+											<h2 class="intro-text text-center">O sistema
+													<strong>Trata</strong></h2>
+										<hr>
+					<p>								Nikn visa prover informações sobre a violência contra as mulheres no Brasil e oferecer
+							suporte às pessoas que sofrem com isso. Usamos os dados abertos fornecidos pelo governo e
+							os organizamos de maneira útil e facilitada, oferecendo uma melhor opção para o acesso a
+							informação.
+					 </p>
+									</div>
     </div>
+	</div>
+</div>
+		<div class="row">
+				<div class="box">
+
+
+					<div class="col-lg-12">
+							<hr>
+							<h2 class="intro-text text-center">Calendário de <strong>Eventos</strong></h2>
+							<hr>
+							<div class="text-center">
+									<a href="/events" class="btn btn-lg btn-primary">Acompanhe nosso Calendário!</a>
+							</div>
+							<%= render 'layouts/footer' %>
+
+					</div>
+				</div>
+</div>
     <!-- /.container -->
 
     <footer>

@@ -214,9 +214,9 @@
    }
  }
  .carousel-inner img{
-   width: auto;
-  height: 843px;
-  max-height: 843px;
+  width: auto;
+  height: 600px;
+  max-height: 600px;
 
  }
 

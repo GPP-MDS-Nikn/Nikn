@@ -3,9 +3,9 @@
 <h1>Portal de Informações</h1>
 
 <div class="portal-posts">
-	<% @portal_posts.each do |post| %> 
+	<% @portal_posts.each do |post| %>
 		<%= link_to(post) do %>
-			<div class="portal-post center-block">
+			<div class="portal-post ">
 				<%if post.image_file.present? %>
 					<%= image_tag(post.image_file.url(), class: "image center-block") %>
 				<%else%>
