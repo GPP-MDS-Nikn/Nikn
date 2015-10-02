@@ -2,29 +2,29 @@
 
 <p id="notice"><%= notice %></p>
 
-</br><%= link_to 'Voltar', portal_posts_path %>
-
 <div class="show-post">
-	<div>
-		<div class="post-title">
-			<p class="title"><%= @portal_post.title %></p>
-			<div class="btn-group pull-right" role="group" aria-label="...">
-				<%= link_to(edit_portal_post_path(@portal_post), type: "button", class: "btn btn-default") do %>
-					<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
-				<% end %>
-				<%= link_to(@portal_post, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>					
-					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-				<% end %>
-			</div>
-			<%if @portal_post.image_file.present? %>
-				<%= image_tag @portal_post.image_file.url(:large) %>
-			<%else%>
-				<%= image_tag("nikn_default_banner.png")  %>
-			<%end%>
+	
+	<div class="post-title col-md-12">
+		<p class="title pull-left"><%= @portal_post.title %></p>
+		<div class="btn-group pull-right" role="group" aria-label="...">
+			<%= link_to(edit_portal_post_path(@portal_post), type: "button", class: "btn btn-default") do %>
+				<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
+			<% end %>
+			<%= link_to(@portal_post, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>					
+				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+			<% end %>
 		</div>
 		<p class="subtitle"><%= @portal_post.created_at %>, por <%= @portal_post.author %> -</p>
-		<p class="body"><%= @portal_post.body %></p>
 	</div>
+
+	<%if @portal_post.image_file.present? %>
+		<%= image_tag(@portal_post.image_file.url(), class: "image center-block") %>
+	<%else%>
+		<%= image_tag("nikn_default_banner.png", class: "image center-block") %>
+	<%end%>
+
+	<p class="body"><%= @portal_post.body %></p>
+
 </div>
 
 <!--
