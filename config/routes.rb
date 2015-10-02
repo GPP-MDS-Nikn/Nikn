@@ -41,17 +41,15 @@ Rails.application.routes.draw do
   end
   resources :care_units
 
-  root          'static_pages#home'
+  root 'static_pages#home'
 
-  #get '/ongs' => 'ongs#index'
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  get 'contact' => 'static_pages#contact'
+  get 'help' => 'static_pages#help'
+  get 'about'=> 'static_pages#about'
 
   resources :units
   resources :events
   resources :portal_posts
 
-  get 'contact' => 'static_pages#contact'
-  get 'help' => 'static_pages#help'
-  get 'about'=> 'static_pages#about'
 end
+
