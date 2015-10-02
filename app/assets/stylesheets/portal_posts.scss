@@ -1,56 +1,64 @@
-html, body, p {
-  margin: 0;
-}
-
-body {
-	background-color: white;
-}
-
 .portal-posts {
-  margin: 40px 0;
+  margin-bottom: 30px;
+  padding: 0;
 }
-
-.container {
-  width: 800px;
-  margin: auto;
-}
-
 .portal-post {
-  background-color: #ededed;
-  padding: 16px;
-  margin-bottom: 10px;
-  /*max-height: 200px;*/
+  margin: 10px;
+  padding: 1px;
+  width: 30%;
+  display: inline-block;
+  background-color: #e8b8f8;
 }
-.show-post {
-  background-color: #fff;
-  padding: 16px;
-  margin: 20px;
+.portal-post:hover {
+  background-color: #d8a8f8;
 }
-.title {
-	color: black;
-  font-size: 24px;
+.portal-post .image {
+  clear: both;
+  display: block;
+  padding: 0px;
+  width: 100%;
+}
+.portal-post .title {
+  padding: 5px;
+  color: black;
+  font-size: 20px;
   display: inline-block;
 }
-.subtitle {
-	color: gray;
-  font-size: 10px;
+.show-post {
+  display: inline-block;
+  padding: 0px 16px 0px 16px;
+  margin: 0px;
 }
-.portal_post .content {
-.portal_post .body {
-.body {
-  margin-top: 10px;
-	color: black;
+.show-post .post-title {
+  display: block;
+  margin: 0px;
+}
+.show-post .title-subtitle {
+  display: inline-block;
+}
+.show-post .title {
+  color: black;
+  font-size: 28px;
+  display: block;
+  margin: 0px;
+}
+.show-post .subtitle {
+  color: gray;
   font-size: 12px;
+  float: left;
+  display: block;
+  clear: left;
 }
-.portal-button {
-  text-decoration: none;
+.show-post .body {
+  color: black;
+  font-size: 16px;
+  text-align: left;
+  padding: 10px 16px 0px 16px;
+  clear: both;
 }
-.portal_posts a:hover {
-  background-color: green;
-
-}
-
-}
-
-  text-decoration: none;
+.show-post .image {
+  clear: both;
+  display: block;
+  padding: 10px;
+  width: 100%;
 }
