@@ -1,7 +1,11 @@
 class ParsersController < ApplicationController
   def import
-    Parser.import(params[:file])
-    redirect_to root_path, notice:  'CSV importado com sucesso'
+    begin
+      Parser.import(params[:file])
+      redirect_to root_path, notice:  'CSV importado com sucesso'
+    rescue
+      redirect_to action: "new", notice:  'O arquivo tem formato inválido ou está em branco'
+    end
   end
 
   def parser_params
