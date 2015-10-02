@@ -1,10 +1,10 @@
-<h2>Sign up</h2>
+<h2>Cadastro</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "Nome" %><br />
     <%= f.text_field :name, autofocus: true %>
   </div>
 
@@ -14,30 +14,30 @@
   </div>
 
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description, "Descrição" %><br />
     <%= f.text_field :description%>
   </div>
 
   <div class="field">
-    <%= f.label :adress %><br />
+    <%= f.label :adress, "Endereço" %><br />
     <%= f.text_field :adress%>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, "Senha" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(pelo menos <%= @minimum_password_length %> caracteres)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "Confirme sua senha" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Cadastrar" %>
   </div>
 <% end %>
 

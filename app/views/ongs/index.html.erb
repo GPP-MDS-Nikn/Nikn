@@ -1,5 +1,5 @@
 <%if ong_signed_in? %>
-<%= link_to 'Edit', edit_ong_registration_path, :method => :edit %>
+<%= link_to 'Editar', edit_ong_registration_path, :get => :edit %>
 <%end%>
 <ul>
 <%@ong.each do |ong|%>

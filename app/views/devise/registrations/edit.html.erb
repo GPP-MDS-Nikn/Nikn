@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Editar <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -13,42 +13,42 @@
   <% end %>
 
    <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "Nome" %><br />
     <%= f.text_field :name%>
   </div>
 
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description, "Descrição" %><br />
     <%= f.text_field :description%>
   </div>
 
   <div class="field">
-    <%= f.label :adress %><br />
+    <%= f.label :adress, "Endereço" %><br />
     <%= f.text_field :adress%>
   </div>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password, "Senha" %> <i>(Deixe em branco se não quiser alterar sua senha)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "Confirme sua senha" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password, "Senha atual" %> <i>(Precisamos de sua senha atual para efetuar as mudanças)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Salvar Mudanças" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>Cancelar minha conta</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Deseja deletar sua conta e seus dados de Nikn? <%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Está certo disso?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Voltar", :back %>
