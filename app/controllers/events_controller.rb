@@ -1,14 +1,18 @@
 class EventsController < ApplicationController
+	# Tells rails to execute set_event method inside each method in symbol list.
 	before_action :set_event, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@events = Event.all
+
+		# Find the five next events
+		@next_five_events = Event.where("start_time >= :start_date AND end_time <= :end_date",
+			{start_date: DateTime.now, end_date: 10.days.from_now})
 	end
 
 	def show
 		# This is a useful way to make a individual page
 		# to each event registered at database
-		#@event = Event.find(params[:id])
 	end
 
 	def new

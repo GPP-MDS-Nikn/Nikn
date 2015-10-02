@@ -1,6 +1,11 @@
+
+/* Developer utils */
 .border{
 	border: 1px solid black;
 }
+
+
+/* Show view */
 
 .event_image{
 	margin-top: 10%;
@@ -37,4 +42,41 @@
 
 .no_padding{
 	padding: 0;
+}
+
+/* Index view */
+
+.next_events h3{
+	text-transform: none;
+	text-align: center;
+}
+
+.next_event_image{
+	margin-top: 10%;
+	margin-left: 7%;
+	clear: both;
+	display: inline-block;
+	padding: 0;
+	width: 90%;
+	float: left;
+}
+
+.event_creation_bar{
+	clear: both;
+}
+
+.event_creation_bar hr{
+	padding: 10%;
+}
+
+.basic_next_event_information{
+	float: left;
+	text-align: left;
+	padding-left: 2%;
+	padding-top: 6.2%;
+}
+
+.basic_next_event_information h3{
+	text-transform: none;
+	text-align: left;
 }
