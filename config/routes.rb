@@ -48,5 +48,12 @@ Rails.application.routes.draw do
   resources :events
   resources :portal_posts
 
+  resources :care_units
+  resources :events
+  resources :portal_posts
+  
+  get 'contact' => 'static_pages#contact'
+  get 'help' => 'static_pages#help'
+  get 'about'=> 'static_pages#about'
 end
 
