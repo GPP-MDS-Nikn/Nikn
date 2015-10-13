@@ -157,10 +157,12 @@
    section {
      padding: 10px 0;
      margin-top: 20px;
+
      &:first-child {
        border: 0;
        padding-top: 0;
      }
+
      span {
        display: block;
        margin-bottom: 3px;
@@ -217,7 +219,6 @@
   width: auto;
   height: 600px;
   max-height: 600px;
-
  }
 
 .nikn-navbar {

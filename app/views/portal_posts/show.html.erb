@@ -1,6 +1,5 @@
 <% provide(:title, "| Portal") %>
 
-<<<<<<< HEAD
 <div class="show-post">
 
 	<div class="post-title col-md-12">
@@ -9,12 +8,12 @@
 			<p class="subtitle pull-left"><%= @portal_post.created_at %>, por <%= @portal_post.author %> -</p>
 		</div>
 		<div class="btn-group pull-right" role="group" aria-label="...">
-		<p>	<%= link_to(edit_portal_post_path(@portal_post), type: "button", class: "btn btn-default") do %>
+			<%= link_to(edit_portal_post_path(@portal_post), type: "button", class: "btn btn-default") do %>
 				<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
 			<% end %>
 			<%= link_to(@portal_post, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>
 				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-			<% end %></p>
+			<% end %>
 		</div>
 	</div>
 
