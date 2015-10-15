@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :mortality_rates
+
   #get '/ongs/new' => 'ongs#new'
   #post 'ongs' => 'ongs#create'
   #Routes every request to a controller action
@@ -34,7 +36,9 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   resources :parsers do
-    collection { post :import }
+    collection { post :importCare }
+    collection { post :importRate }
+
   end
   resources :care_units
 
@@ -51,9 +55,8 @@ Rails.application.routes.draw do
   resources :care_units
   resources :events
   resources :portal_posts
-  
+
   get 'contact' => 'static_pages#contact'
   get 'help' => 'static_pages#help'
   get 'about'=> 'static_pages#about'
 end
-
