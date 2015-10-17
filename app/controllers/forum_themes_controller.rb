@@ -1,0 +1,2 @@
+class ForumThemesController < ApplicationController
+end
