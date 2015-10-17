@@ -1,7 +1,7 @@
 class ForumTopicsController < ApplicationController
 
 	def index
-		@topic = Topic.all
+		@forum_topic = ForumTopic.all
 	end
 
 
