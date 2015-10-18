@@ -10,5 +10,6 @@
   <%= @forum_post.content %>
 </p>
 
-<%= link_to 'Edit', edit_forum_post_path(@forum_post) %> |
-<%= link_to 'Back', forum_posts_path %>
+<%= link_to 'Editar', edit_forum_post_path(@forum_post) %> |
+<%= link_to 'Apagar', forum_post_path(@forum_post), method: :delete, data: { confirm: 'Deseja apagar o post?' } %> |
+<%= link_to 'Voltar', forum_posts_path %>
