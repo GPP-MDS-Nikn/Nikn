@@ -3,7 +3,7 @@ class CreateForumTopics < ActiveRecord::Migration
     create_table :forum_topics do |t|
       t.string :author
       t.string :title
-      t.string :body
+      t.text :body
       t.timestamps null: false
     end
   end

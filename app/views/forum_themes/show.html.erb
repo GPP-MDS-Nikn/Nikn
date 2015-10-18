@@ -1,0 +1,9 @@
+<%= @tag.title %>
+<ul>
+	<% @forum_topics.each do |ft| %>
+	    <li>
+	    	<h2><%= ft.title %>
+	        <p><%= ft.body %></p>
+	    </li>
+	<%end%>
+</ul>
