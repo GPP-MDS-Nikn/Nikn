@@ -18,5 +18,10 @@ class ForumTopicsController < ApplicationController
 		end
 	end
 
+	private
+
+	  	def forum_topic_params
+	    	params.require(:forum_topic).permit(:title, :body, :author)
+	  	end
 
 end

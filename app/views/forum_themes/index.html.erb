@@ -2,10 +2,9 @@
 <%@forum_theme.each do |theme|%>
 
 <li>
-	<%= ong.name %>
-	<%= ong.email %>
-	<%= ong.description %>
-	<%= link_to "Ver detalhes", {:action => 'show', :id => ong.id}, :class => 'action show' %>
+	<%= theme.title %>
+	<%= theme.description %>
+	
 </li>
 <%end%>
 </ul>
