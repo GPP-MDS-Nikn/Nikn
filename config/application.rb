@@ -24,5 +24,9 @@ module Nikn
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Add custom validators path
+    # Read more: http://www.rails-dev.com/custom-validators-in-ruby-on-rails-4
+    config.autoload_paths += %W["#{config.root}/app/validators/"]
   end
 end
