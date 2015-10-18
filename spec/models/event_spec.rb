@@ -61,15 +61,34 @@ describe Event do
 			expect(event.valid?).to be false
 		end
 
+		# DateTime tests
+		it "should be invalid without a start time" do
+			event = create_event(start_time: nil)
+			expect(event.valid?).to be false
+		end
+
+		it "should be invalid without an end time" do
+			event = create_event(end_time: nil)
+			expect(event.valid?).to be false
+		end
+
+		it "should be invalid beggining in the past" do
+			event = create_event(start_time: DateTime.now - 2.days)
+			expect(event.valid?).to be false
+		end
+
 	end
 
 	private
-		# Default settings to test
+		# Default settings to test.
+		# Only valid fields.
 		def create_event(options={})
 			Event.create({
 				title: "Event's name",
 				local: "Event's local",
-				description: "Event's test description"
+				description: "Event's test description",
+				start_time: DateTime.now,
+				end_time: 2.days.from_now
 			}.merge(options))
 		end
 
