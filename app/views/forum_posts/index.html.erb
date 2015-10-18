@@ -5,9 +5,11 @@
         <%= link_to forum_post.title, forum_post %>
       </h2>
       <p class="date">
-        Published at
+        Publicado há
         <%= time_ago_in_words(forum_post.created_at) %>
       </p>
     </div>
   <% end %>
 </div>
+
+<%= link_to 'Novo Post', new_forum_post_path %>
