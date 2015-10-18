@@ -33,4 +33,11 @@ class Event < ActiveRecord::Base
 	# subject to changes.
 	validates(:description, length: {in: DESCRIPTION_MIN_LENGTH..DESCRIPTION_MAX_LENGTH})
 
+	# Impossible to create an event without a date
+	validates(:start_time, presence: true)
+	validates(:end_time, presence: true)
+
+	# Impossible to create an event in the past
+	# It is a custom validator, read more at /app/validators/start_time_validator.rb
+	validates(:start_time, start_time: true)
 end
