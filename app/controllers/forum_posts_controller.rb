@@ -1,7 +1,5 @@
-class PostsController < ApplicationController
-
-	class PostsController < ApplicationController
-
+class ForumPostsController < ApplicationController
+	
 	def index
 	end
 
@@ -11,11 +9,6 @@ class PostsController < ApplicationController
 
 	def create
 		@post = Post.new(post_params)
-
-		if @post.save
-			redirect_to @post
-		else
-			render 'new'
 	end
 
 private 
@@ -23,5 +16,6 @@ private
 	def post_params
 		params.require(:post).permit(:title, :content)
 	end
+
 
 end
