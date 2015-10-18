@@ -15,7 +15,7 @@ class ForumThemesController < ApplicationController
 		@forum_theme = ForumTheme.new(forum_theme_params)
 
 		if @forum_theme.save
-			redirect_to @forum_theme
+			redirect_to '/forum_themes'
 		else
 			render 'new'
 		end
