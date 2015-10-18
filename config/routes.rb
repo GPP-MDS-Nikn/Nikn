@@ -22,6 +22,11 @@ Rails.application.routes.draw do
 
   resources :portal_posts
 
+  resources :forum_posts
+  get "forum/posts" => "forum_posts#index"
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
