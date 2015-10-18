@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :mortality_rates
 
   resources :forum_topics
-
+  resources :forum_themes
   #get '/ongs/new' => 'ongs#new'
   #post 'ongs' => 'ongs#create'
   #Routes every request to a controller action
