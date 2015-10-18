@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :mortality_rates
 
-  resources :forum_topics
-  resources :forum_themes
+  resources :forum_themes do
+    resources :forum_topics
+  end
   #get '/ongs/new' => 'ongs#new'
   #post 'ongs' => 'ongs#create'
   #Routes every request to a controller action

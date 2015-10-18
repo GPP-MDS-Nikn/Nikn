@@ -4,17 +4,25 @@ class ForumTopicsController < ApplicationController
 		@forum_topic = ForumTopic.all
 	end
 
-	def new
-		@forum_topic = ForumTopic.new
-	end
+	def show
+	    @forum_topic = ForumTopic.find(params[:id])
+  	end
+
+  	def new
+  		@forum_theme = ForumTheme.find(params[:forum_theme_id])
+  		@forum_topic = @forum_theme.forum_topics.create
+  		#order.baskets.create()
+  	end
+
 
 	def create
-		@forum_topic = ForumTopic.new(forum_topic_params)
-
+		@forum_theme = ForumTheme.find(params[:forum_theme_id])
+		@forum_topic = @forum_theme.forum_topics.create(params[:forum_topic].permit(:title, :body))
+		@forum_topic.save
 		if @forum_topic.save
-			redirect_to @forum_topic
+			redirect_to forum_theme_path(@forum_theme)
 		else
-			render 'new'
+			redirect_to "/forum_themes"
 		end
 	end
 

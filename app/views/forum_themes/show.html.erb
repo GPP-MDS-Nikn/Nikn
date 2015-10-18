@@ -1,14 +1,11 @@
-<%= @forum_theme.title %>
+<p><%= @forum_theme.title %></p>
+<p><%= @forum_theme.description %></p>
+<p><%= @forum_theme.id %></p>
 <h1>
 	</h1>
-<%=link_to 'Novo Tópico', new_forum_topic_path %>
-<ul>
-	<% unless @forum_topics.nil? %>
+<%= link_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme)%>
+	
 		<% @forum_topics.each do |ft| %>
-		    <li>
 		    	<h2><%= ft.title %></h2>
 		        <p><%= ft.body %></p>
-		    </li>
 		<%end%>
-	<%end%>
-</ul>

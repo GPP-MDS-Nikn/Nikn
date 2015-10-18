@@ -4,7 +4,8 @@ class ForumThemesController < ApplicationController
 	end
 	
 	def show 
-	  	@forum_theme = ForumTheme.find(params[:id]) 
+	  	@forum_theme = ForumTheme.find(params[:id])
+	  	@forum_topics = @forum_theme.forum_topics
 	end
 
 	def new
