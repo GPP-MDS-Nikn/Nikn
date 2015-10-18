@@ -4,17 +4,27 @@ class ForumPostsController < ApplicationController
 	end
 
 	def new
-		@post = ForumPost.new
+		@forum_post = ForumPost.new
+	end
+
+	def show
+		@forum_post = ForumPost.find(params[:id])
 	end
 
 	def create
-		@post = ForumPost.new(post_params)
+		@forum_post = ForumPost.new(forum_post_params)
+
+		if @forum_post.save
+			redirect_to @forum_post
+		else
+			render 'new'
+		end
 	end
 
 private 
 
-	def post_params
-		params.require(:forum_posts).permit(:title, :content)
+	def forum_post_params
+		params.require(:forum_post).permit(:title, :content)
 	end
 
 
