@@ -33,6 +33,7 @@ class ForumPostsController < ApplicationController
 	end
 
 	def destroy
+		find_forum_post
 		@forum_post.destroy
 		redirect_to root_path
 	end

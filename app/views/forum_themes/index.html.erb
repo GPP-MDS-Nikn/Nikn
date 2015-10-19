@@ -5,7 +5,9 @@
 <li>
 	<%= theme.title %>
 	<%= theme.description %>
-	<%= link_to "ver Tema", {:action => 'show', :id => theme.id}, :class => 'action show' %>
+	<%= link_to "ver", {:action => 'show', :id => theme.id}, :class => 'action show' %>
+	<%= link_to "editar", edit_forum_theme_path(theme) %>
+	<%= link_to 'excluir', theme, method: :delete, data: { confirm: 'Tem certeza?'} %>
 </li>
 <%end%>
 </ul>

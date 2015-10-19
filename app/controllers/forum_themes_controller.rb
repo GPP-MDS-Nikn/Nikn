@@ -4,7 +4,7 @@ class ForumThemesController < ApplicationController
 	end
 	
 	def show 
-	  	@forum_theme = ForumTheme.find(params[:id])
+	  	set_forum_theme
 	  	@forum_topics = @forum_theme.forum_topics
 	end
 
@@ -22,7 +22,32 @@ class ForumThemesController < ApplicationController
 		end
 	end
 
+	def edit
+		set_forum_theme
+	end
+
+	def update
+		set_forum_theme
+	    if @forum_theme.update(forum_theme_params)
+	      flash[:success] = "Tema atualizado!"
+
+	      redirect_to @forum_theme
+	    else
+	      render :edit
+	    end
+  	end
+
+	def destroy 
+		set_forum_theme
+		@forum_theme.destroy
+		redirect_to forum_themes_path
+	end
+
 	private
+
+	 def set_forum_theme
+      @forum_theme = ForumTheme.find(params[:id])
+    end
 
   	def forum_theme_params
     	params.require(:forum_theme).permit(:title, :description)
