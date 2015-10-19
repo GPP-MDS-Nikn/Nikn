@@ -5,8 +5,4 @@
 </h1>
 <%= link_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme)%>
 	
-<% @forum_topics.each do |ft| %>
-	
-	<h2><%= ft.title %></h2>
-	<p><%= ft.body %></p>
-<%end%>
+<%= render 'forum_topics/index' %>
