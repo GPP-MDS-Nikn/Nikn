@@ -6,16 +6,14 @@ class ForumPostsController < ApplicationController
 	end
 
 	def new
-		@forum_post = ForumPost.new
-	end
-
-	def show
-		
+		@forum_topic = ForumTopic.find(params[:forum_topic_id])
+		@forum_post = @forum_topic.forum_posts.create
 	end
 
 	def create
-		@forum_post = ForumPost.new(forum_post_params)
-
+		@forum_topic = ForumTopic.find(params[:forum_topic_id])
+		@forum_post = @forum_topic.forum_posts.create(forum_post_params)
+		@forum_post.save
 		if @forum_post.save
 			redirect_to @forum_post
 		else

@@ -1,1 +1,4 @@
-Forum Topics index
+<% @forum_topics.each do |ft| %>
+	<h2><%= ft.title %></h2>
+	<p><%= ft.body %></p>
+<%end%>

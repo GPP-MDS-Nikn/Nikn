@@ -2,10 +2,10 @@
 <p><%= @forum_theme.description %></p>
 <p><%= @forum_theme.id %></p>
 <h1>
-	</h1>
+</h1>
 <%= link_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme)%>
 	
-		<% @forum_topics.each do |ft| %>
-		    	<h2><%= ft.title %></h2>
-		        <p><%= ft.body %></p>
-		<%end%>
+<% @forum_topics.each do |ft| %>
+	<h2><%= ft.title %></h2>
+	<p><%= ft.body %></p>
+<%end%>
