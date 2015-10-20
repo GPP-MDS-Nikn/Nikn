@@ -5,23 +5,24 @@ class ForumTopicsController < ApplicationController
 	end
 
 	def show
-	    set_forum_topic
+		@forum_theme = ForumTheme.find(params[:forum_theme_id])
+	    @forum_topic = @forum_theme.forum_topics.find(params[:id])
   	end
 
   	def new
   		@forum_theme = ForumTheme.find(params[:forum_theme_id])
-  		@forum_topic = @forum_theme.forum_topics.create
+  		@forum_topic = @forum_theme.forum_topics.build
   	end
 
 
 	def create
 		@forum_theme = ForumTheme.find(params[:forum_theme_id])
-		@forum_topic = @forum_theme.forum_topics.create(params[:forum_topic].permit(:title, :body))
+		@forum_topic = @forum_theme.forum_topics.build(forum_topic_params)
 		@forum_topic.save
 		if @forum_topic.save
 			redirect_to forum_theme_path(@forum_theme)
 		else
-			redirect_to "/forum_themes"
+			render 'new'
 		end
 	end
 
@@ -49,7 +50,7 @@ class ForumTopicsController < ApplicationController
 	private
 
 	def set_forum_topic
-		@forum_topic = ForumTopic.find(params[:id])
+		@forum_topic = ForumTopic.find(params[:id]).includes(:forum_themes)
 	end
 
   	def forum_topic_params

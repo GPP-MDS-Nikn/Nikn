@@ -1,8 +1,12 @@
-<p><%= @forum_theme.title %></p>
-<p><%= @forum_theme.description %></p>
-<p><%= @forum_theme.id %></p>
-<h1>
-</h1>
-<%= link_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme)%>
+<h2><%= @forum_theme.title %></h2>
+<%= @forum_theme.description %>
+
+<p><%= link_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme)%></p>
+
+
+<% @forum_topics.each do |topic| %>
+	<h2><%= link_to topic.title, forum_theme_forum_topic_path(@forum_theme, topic.forum_theme) %></h2>
+	<%= topic.body %>
+	<%#= link_to 'excluir', topic.forum_theme, method: :delete, data: { confirm: 'Tem certeza?'} %>
 	
-<%= render 'forum_topics/index' %>
+<%end%>
