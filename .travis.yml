@@ -1,0 +1,21 @@
+language: ruby
+
+script:
+  - bundle exec rake db:migrate
+  - bundle exec rake db:seed
+  - bundle exec rake
+
+rvm:
+  - 2.2.1
+notifications:
+  email:
+    recipients:
+      - victorfgcabeceira@gmail.com
+      - ricardocdzg@hotmail.com
+      - danielhmarinho@gmail.com
+      - caio.nardelli@hotmail.com
+      - brasil.eduardo1@gmail.com
+
+branches:
+  only:
+    - master
