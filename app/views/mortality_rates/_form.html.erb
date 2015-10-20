@@ -1,0 +1,29 @@
+<%= form_for(@mortality_rate) do |f| %>
+  <% if @mortality_rate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mortality_rate.errors.count, "error") %> prohibited this mortality_rate from being saved:</h2>
+
+      <ul>
+      <% @mortality_rate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :regiao %><br>
+    <%= f.text_field :regiao %>
+  </div>
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :taxa %><br>
+    <%= f.text_field :taxa %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

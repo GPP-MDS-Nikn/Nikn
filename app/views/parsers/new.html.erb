@@ -4,14 +4,23 @@
         <div class="panel-body">
 
           <div class="page-header">
-            <h1>Importar Novo Parser</h1>
+            <h1>Importar Nova Taxa de Homicídio</h1>
           </div>
           <br>
-          <%= form_tag import_parsers_path, multipart: true do%>
+          <%= form_tag importRate_parsers_path, multipart: true do%>
                   <%= file_field_tag :file%>
                   <%= submit_tag "Importar CSV"%>
               <%end%>
         </div>
+        <div class="page-header">
+          <h1>Importar Nova UDA</h1>
+        </div>
+        <br>
+        <%= form_tag importCare_parsers_path, multipart: true do%>
+                <%= file_field_tag :file%>
+                <%= submit_tag "Importar CSV"%>
+            <%end%>
+      </div>
       </div>
     </div>
 
