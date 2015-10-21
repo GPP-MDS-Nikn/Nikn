@@ -1,6 +1,106 @@
 <p id="notice"><%= notice %></p>
 
+<!-- Render basic configuration of the mortality rate chart -->
+<%= render 'mortality_rate_chart' %>
+
+<!-- Top title of the page -->
 <h1>Lista de Mortalidade com as microregiões com taxas mais elevada</h1>
+
+<!-- Place where is displayed the mortality rate chart -->
+<div id="container" style="min-width: 420px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+
+
+<!-- Here, we put all available data in repective 'tr' container to display in the chart view -->
+<div style="display:none">
+
+	<table id="freq" border="0" cellspacing="0" cellpadding="0">
+
+		<!-- This 'tr' won't be displayed -->
+		<tr nowrap bgcolor="#CCCCFF">
+			<th colspan="9" class="hdr">Gráfico de Mortalidade</th> 
+		</tr>
+
+		<!-- This is the subtitles of the chart -->
+		<tr nowrap bgcolor="#CCCCFF">
+			<!-- Here, the first 'th' will never be displayed -->
+      <th class="freq">Taxas</th>
+			<th class="freq">&lt; 5 %</th>
+			<th class="freq">5-20 %</th>
+			<th class="freq">20-40 %</th>
+			<th class="freq">40-60 %</th>
+			<th class="freq">60-80 %</th>
+			<th class="freq">&gt; 80 %</th>
+		</tr>
+
+		<!-- Begginig in this section, all the rate data of each region
+		should be displayed in the respective block. -->
+
+		<!-- NORTE -->
+		<tr nowrap>
+			<td class="dir">Norte</td>
+			<td class="data">18.1</td>
+			<td class="data">17.8</td>
+			<td class="data">1.60</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">37.50</td>
+		</tr>
+
+		<!-- NORDESTE -->
+		<tr nowrap>
+			<td class="dir">Nordeste</td>
+			<td class="data">8.00</td>
+			<td class="data">8.20</td>
+			<td class="data">7.00</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">17.10</td>
+		</tr>
+
+		<!-- SUDESTE -->
+		<tr nowrap bgcolor="#DDDDDD">
+			<td class="dir">Sudeste</td>
+			<td class="data">5.90</td>
+			<td class="data">1.22</td>
+			<td class="data">0.07</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">18.08</td>
+		</tr>
+
+		<!-- SUL -->
+		<tr nowrap>
+			<td class="dir">Sul</td>
+			<td class="data">6.2</td>
+			<td class="data">22.0</td>
+			<td class="data">04.9</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">33.2</td>
+		</tr>
+
+		<!-- CENTRO-OESTE -->
+		<tr nowrap bgcolor="#DDDDDD">
+			<td class="dir">Centro-Oeste</td>
+			<td class="data">12.2</td>
+			<td class="data">20.1</td>
+			<td class="data">15.5</td>
+			<td class="data">03.0</td>
+			<td class="data">01.3</td>
+			<td class="data">0.00</td>
+			<td class="data">0.00</td>
+			<td class="data">52.0</td>
+		</tr>
+	</table>
+</div>
 
 <table>
   <thead>
