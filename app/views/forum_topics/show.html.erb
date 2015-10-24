@@ -1,7 +1,8 @@
 <ul>
 <li><%=@forum_topic.title%></li>
 <li><%=@forum_topic.body%></li>
-<%= link_to 'novo post', new_forum_theme_forum_topic_forum_post_path(@forum_theme, @forum_topic) %>
-<li><%=@forum_topic.forum_posts%></li>
-
-</ul>posts%></li>
+<%@forum_topic.forum_posts.each do |post|%>
+	<li> <%= post.content %> </li>
+	<% end %>
+</ul>
+<%= render 'forum_posts/form' %>

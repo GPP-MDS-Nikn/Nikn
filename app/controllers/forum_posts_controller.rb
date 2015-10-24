@@ -6,29 +6,32 @@ class ForumPostsController < ApplicationController
 #	end
 #
 #	def new
-#		@forum_topic = ForumTopic.find(params[:forum_topic_id])
+#		@forum_theme = ForumTheme.find(params[:forum_theme_id])
+#	    @forum_topic = @forum_theme.forum_topics.find(params[:forum_topic_id])
 #		@forum_post = @forum_topic.forum_posts.build
 #	end
 
 	def create
-		find_forum_topic
-		@forum_post = @forum_topic.forum_posts.create(forum_post_params)
+		#find_forum_topic
+		@forum_theme = ForumTheme.find(params[:forum_theme_id])
+	    @forum_topic = @forum_theme.forum_topics.find(params[:forum_topic_id])
+		@forum_post = @forum_topic.forum_posts.build(forum_post_params)
 		@forum_post.save
 		if @forum_post.save
-			redirect_to @forum_topic
+			redirect_to forum_theme_forum_topic_path(@forum_theme, @forum_topic)
 		else
 			render 'new'
 		end
 	end
 
 	def edit
-		find_forum_topic
+		#find_forum_topic
 		@forum_post = @forum_topic.forum_posts.find(params[:id])
 
 	end
 
 	def update
-		find_forum_topic
+		#find_forum_topic
 		@forum_post = @forum_topic.forum_posts.find(params[:id])
 
 		if @forum_post.update(forum_post_params)
@@ -39,7 +42,7 @@ class ForumPostsController < ApplicationController
 	end
 
 	def destroy
-		find_forum_topic
+		#find_forum_topic
 		@forum_post = @forum_topic.forum_posts.find(params[:id])
 		@forum_post.destroy
 		redirect_to @forum_topic
@@ -51,9 +54,6 @@ private
 		@forum_post = ForumPost.find(params[:id])
 	end
 
-	def find_forum_topic
-		@forum_topic = ForumTopic.find(params[:forum_topic_id])
-	end
 
 
 	def forum_post_params
