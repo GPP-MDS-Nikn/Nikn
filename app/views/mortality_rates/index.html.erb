@@ -38,14 +38,9 @@
 		<!-- NORTE -->
 		<tr nowrap>
 			<td class="dir">Norte</td>
-			<td class="data">18.1</td>
-			<td class="data">17.8</td>
-			<td class="data">1.60</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">37.50</td>
+			<%= @north_mortality_rates_frequencies.each do |each_north_mortality_rate_frequency| %>
+				<th class="data"><%= each_north_mortality_rate_frequency %></th>
+			<% end %>
 		</tr>
 
 		<!-- NORDESTE -->
@@ -101,31 +96,6 @@
 		</tr>
 	</table>
 </div>
-
-<table>
-  <thead>
-    <tr>
-      <th>Regiao</th>
-      <th>Nome</th>
-      <th>Taxa</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @mortality_rates.each do |mortality_rate| %>
-      <tr>
-        <td><%= mortality_rate.regiao %></td>
-        <td><%= mortality_rate.nome %></td>
-        <td><%= mortality_rate.taxa %></td>
-        <td><%= link_to 'Show', mortality_rate %></td>
-        <td><%= link_to 'Edit', edit_mortality_rate_path(mortality_rate) %></td>
-        <td><%= link_to 'Destroy', mortality_rate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
 
 <%= link_to 'New Mortality rate', new_mortality_rate_path %>
