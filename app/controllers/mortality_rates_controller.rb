@@ -1,19 +1,34 @@
 class MortalityRatesController < ApplicationController
   before_action :set_mortality_rate, only: [:show, :edit, :update, :destroy]
 
+  # This method creates a list with the mortality rate's frequencies 
+  # for each region. The list contains indicators (in percentage) to
+  # show mortality rate's seriousness. 
+  # Each list contains 6 positions, in each position there are a percentage 
+  # value that refers to how many cities are included in a arbitrary 
+  # mortality rate range. 
+  # For example, the first position indicates the frequency of cities with less 
+  # than 5% in mortality rate's avaliations to a particular region.
   def index
-    @north_mortality_rates_frequencies = get_region_mortality_rate_frequency('Norte')
-    @northeast_mortality_rates_frequencies = get_region_mortality_rate_frequency('Nordeste')
+    # [TODO] The variables below should be a hash (dictionary)
+    @north_mortality_rates_frequencies      = get_region_mortality_rate_frequency('Norte')
+    @northeast_mortality_rates_frequencies  = get_region_mortality_rate_frequency('Nordeste')
     @centerwest_mortality_rates_frequencies = get_region_mortality_rate_frequency('Centro-Oeste')
-    @south_mortality_rates_frequencies = get_region_mortality_rate_frequency('Sul')
-    @southeast_mortality_rates_frequencies = get_region_mortality_rate_frequency('Sudeste')
+    @south_mortality_rates_frequencies      = get_region_mortality_rate_frequency('Sul')
+    @southeast_mortality_rates_frequencies  = get_region_mortality_rate_frequency('Sudeste')
   end
 
+  # Returns a new MortalityRate Model Object to be manually configured in the view form.
   def new
+    # [TODO] This method should not exists unless it is used in the MortalityRate Parser.
     @mortality_rate = MortalityRate.new
   end
 
+  # Tries to create and save a new MortalityRate object in the database and
+  # redirects to the corresponding view.
   def create
+    # [TODO] This method should not exists unless it is used in the MortalityRate Parser.
+
     @mortality_rate = MortalityRate.new(mortality_rate_params)
 
     respond_to do |format|
@@ -28,6 +43,7 @@ class MortalityRatesController < ApplicationController
   end
 
   def update
+    # [TODO] This method should not exists unless it is used in the MortalityRate Parser.
     respond_to do |format|
       if @mortality_rate.update(mortality_rate_params)
         format.html { redirect_to @mortality_rate, notice: 'Taxa de mortalidade foi alterada com sucesso' }
@@ -40,6 +56,7 @@ class MortalityRatesController < ApplicationController
   end
 
   def destroy
+    # [TODO] This method should not exists unless it is used in the MortalityRate Parser.
     @mortality_rate.destroy
     respond_to do |format|
       format.html { redirect_to mortality_rates_url, notice: 'Taxa de mortalidade foi excluída com sucesso.' }
@@ -48,65 +65,125 @@ class MortalityRatesController < ApplicationController
   end
 
   private
+
+    # Takes an argument with the region name and returns a list with the
+    # mortality rate's frequencies..
+    # The list contains 6 positions, in each position there are a percentage 
+    # value that refers to how many cities are included in a arbitrary 
+    # mortality rate range. 
     def get_region_mortality_rate_frequency (region = nil)
+      logger.debug "[DEBUG] Argument region: #{region}"
+      logger.info "[INFO] Trying to get the mortality rate's frequencies list. Region: #{region}"
+
+      # First, we need to verify if the region is registered as valid
       if is_region_valid? region
+        logger.debug "[DEBUG] Region name validation method returned true."
+        logger.info "[INFO] Region name is valid, continue."
 
-        logger.debug "Valid region: #{region}."
-
+        # Is necessary to get the number of registered region's data to calculate the average
         number_of_data_for_region = MortalityRate.where(regiao: region).count
         
-        rate_ranges = [[0.0, 5.0],
-                       [5.0, 20.0],
-                       [20.0, 40.0],
-                       [40.0, 60.0],
-                       [60.0, 80.0],
-                       [80.0, 100.0]]
+        if number_of_data_for_region != 0
+          # All the values below were arbitrarily selected, however it was designed to
+          # give users a best experience reading the data.
+          # Each nested list is a range with two limits, in percentage.
+          # The first is the limit down, the second, limit up.
+          rate_ranges = [[ 0.0 ,   5.0],
+                        [ 5.0 ,  20.0],
+                        [20.0 ,  40.0],
+                        [40.0 ,  60.0],
+                        [60.0 ,  80.0],
+                        [80.0 , 100.0]]
 
-        region_rates_frequency = []
-        rate_ranges.each do |each_range|
-          rates_per_range_counter = count_number_of_rates_in_limits(region, each_range[0], each_range[1])
+          region_rates_frequency = [] # It will store the 6 frequency values.
 
-          rates_per_range_frequency = (rates_per_range_counter.to_f/number_of_data_for_region.to_f)*100.0
+          # Iterate over rate ranges and, for each range, calculate the frequency of cities
+          # that belongs to the region and has the mortality rate included in the range.
+          rate_ranges.each do |each_range|
+            rates_per_range_counter = count_number_of_rates_in_limits(region, each_range[0], each_range[1])
+            rates_per_range_frequency = (rates_per_range_counter.to_f/number_of_data_for_region.to_f)*100.0
 
-          logger.debug "DEBUG: RANGE: #{each_range
-          }, NUMBER OF RATES: #{rates_per_range_counter
-          }, TOTAL RATES: #{number_of_data_for_region
-          }, FREQUENCY: #{rates_per_range_frequency}"
+            logger.debug "[DEBUG] each_range: #{each_range
+            }, rates_per_range_counter: #{rates_per_range_counter
+            }, number_of_data_for_region: #{number_of_data_for_region
+            }, rates_per_range_frequency: #{rates_per_range_frequency}"
 
-          region_rates_frequency << rates_per_range_frequency
+            region_rates_frequency << rates_per_range_frequency # Append the calculated frequency.
+          end
+
+          logger.debug "[DEBUG] Exited rate_ranges loop with region_rates_frequency: #{region_rates_frequency}"
+          return region_rates_frequency
+        else
+          # There is no data available to be calculated for this region
+          logger.info "[INFO] There is no data for this region name."
+          logger.debug "[DEBUG] number_of_data_for_region: 0"
+          logger.warn "[WARN] There is no data for the region named \"#{region}\""
+
+          return [0, 0, 0, 0, 0, 0] # Displays nothing in the chart
         end
-
-        logger.debug "DEBUG: Array of frequecies per region #{region_rates_frequency}"
-        return region_rates_frequency
       else
+        # The region name is invalid
+        logger.debug "[DEBUG] Region name validation method returned false."
+        logger.info "[INFO] Region name is invalid, break."
         # [TODO] raise an exception for region name error
       end
     end
 
+    # Takes three arguments, the first is the region name, necessary to
+    # load all region rows of the database. The second and third arguments
+    # are the limits. It returns how many region's cities have the mortality rate
+    # between limits.
+    # This method takes on region as valid data, please, be sure you've verified this before
     def count_number_of_rates_in_limits(region, limit_down, limit_up)
-      # This method takes on region as valid data 
-      if limit_down.class == Float && limit_up.class == Float
-        rates_in_limits_counter = 0
+      logger.info "[INFO] Trying to count region's rates in the limits (#{limit_down} , #{limit_up})"
 
-      region_mortality_rate = MortalityRate.where(regiao: region)
-      region_mortality_rate.each do |each_rate| 
-          rate_value = each_rate.taxa.gsub(',','.').to_f
+      if (is_limit_valid? limit_down) && (is_limit_valid? limit_up) # Verify if limits are valid
+        rates_in_limits_counter = 0 # Counter of cities that rates are included in the limits.
 
-          logger.debug "DEBUG: REGION: #{region}, NAME: #{each_rate.nome}, RATE(String): #{each_rate.taxa}, RATE(Float Converted): #{rate_value}."
-          if rate_value >= limit_down && rate_value < limit_up
+        region_mortality_rate = MortalityRate.where(regiao: region) # Get all database's rows with the region name
+
+        # Iterate over the loaded rows objects and increase the counter when find any that fits
+        region_mortality_rate.each do |each_rate| 
+
+          # This step is necessary because in the database's "taxa" column, the
+          # data is storad as a string and instead of being separated by a dot, it
+          # is separated by a comma, preventing direct convertion to float.
+          fixed_rate_value = each_rate.taxa.gsub(',','.').to_f
+
+          logger.debug "[DEBUG] region: #{region
+          }, each_rate.nome: #{each_rate.nome
+          }, each_rate.taxa: #{each_rate.taxa
+          }, fixed_rate_value: #{fixed_rate_value}."
+
+          if fixed_rate_value >= limit_down && fixed_rate_value < limit_up
             rates_in_limits_counter += 1
           else
             # Do nothing and continue
           end
         end
-
-        logger.debug "DEBUG: Rates in the limits (#{limit_down}, #{limit_up}) | Got: #{rates_in_limits_counter}."
+        
+        logger.info "[INFO] Found #{rates_in_limits_counter} rates to the region: \"#{region}\""
+        logger.debug "[DEBUG] Rates in the limits (#{limit_down}, #{limit_up}) | Got: #{rates_in_limits_counter}."
         return rates_in_limits_counter
       else
+        # Limits are invalid
+        logger.warn "[WARN] Limits are invalid!"
+        logger.debug "[DEBUG] Invalid limit_down: #{limit_down} or limit_up: #{limit_up}"
         # [TODO] raise an exception for Float error
       end
     end
 
+    # Verify if limit is a valid value
+    # It is a percentage value, so it
+    # must be 0 <= x <= 100 and a float value.
+    def is_limit_valid?(limit)
+      return (limit.class == Float &&
+              limit >= 0.0         &&
+              limit <= 100.0)
+    end
+
+    # All the available region's name.
+    # To add another region, take care with the index method and the view,
     def is_region_valid?(region)
       permitted_regions = ['Norte', 'Nordeste', 'Sul', 'Sudeste', 'Centro-Oeste']
       return permitted_regions.include? region
