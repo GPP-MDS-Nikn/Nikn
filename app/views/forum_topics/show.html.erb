@@ -1,4 +1,7 @@
 <ul>
 <li><%=@forum_topic.title%></li>
 <li><%=@forum_topic.body%></li>
-</ul>
+<%= link_to 'novo post', new_forum_theme_forum_topic_forum_post_path(@forum_theme, @forum_topic) %>
+<li><%=@forum_topic.forum_posts%></li>
+
+</ul>posts%></li>
