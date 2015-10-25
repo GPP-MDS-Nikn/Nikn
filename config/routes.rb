@@ -1,18 +1,4 @@
 Rails.application.routes.draw do
-  resources :mortality_rates
-
-  #get '/ongs/new' => 'ongs#new'
-  #post 'ongs' => 'ongs#create'
-  #Routes every request to a controller action
-
-  #get '/ongs/:id/edit' => 'ongs#edit' #Here and...
-  #patch '/ongs/:id' => 'ongs#update' # ...here  are the routs for editing and updating ongs. Rails is not recognizing my routes!
-  #Routes every request to a controller action
-
-
-  #get 'page/home'
-  #get 'page/about'
-  #get 'page/contact'
 
   devise_for :ongs, :controllers => { registrations: 'registrations' }
   get 'signup' => 'ongs#new'
@@ -22,7 +8,6 @@ Rails.application.routes.draw do
   get "portal/new" => "portal_posts#new"
   post "portal/new" => "portal_posts#create"
 
-  resources :portal_posts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -40,24 +25,15 @@ Rails.application.routes.draw do
     collection { post :importRate }
 
   end
-  resources :care_units
 
   root 'static_pages#home'
-
   get 'contact' => 'static_pages#contact'
   get 'help' => 'static_pages#help'
   get 'about'=> 'static_pages#about'
   get 'opendata' => 'static_pages#opendata'
-
+  resources :mortality_rates
   resources :units
-  resources :events
-  resources :portal_posts
-
   resources :care_units
   resources :events
   resources :portal_posts
-
-  get 'contact' => 'static_pages#contact'
-  get 'help' => 'static_pages#help'
-  get 'about'=> 'static_pages#about'
 end
