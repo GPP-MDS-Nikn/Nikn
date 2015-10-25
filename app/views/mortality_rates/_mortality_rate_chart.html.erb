@@ -7,7 +7,6 @@
 
 <script>
 	$(function () {
-
     // Parse the data from an inline table using the Highcharts Data plugin
     $('#container').highcharts({
         data: {
@@ -16,35 +15,28 @@
             endRow: 6,	 // Control of the number of slices of the chart.
             endColumn: 6 // Control of the number of subtitles.
         },
-
         chart: {
             polar: true,
             type: 'column'
         },
-
         title: {
             text: 'Taxa de mortlidade entre mulheres vítimas de violência.'
         },
-
         subtitle: {
             text: 'Fonte: dadosabertos.gov.br'
         },
-
         pane: {
             size: '85%'
         },
-
         legend: {
             align: 'right',
             verticalAlign: 'top',
             y: 100,
             layout: 'vertical'
         },
-
         xAxis: {
             tickmarkPlacement: 'on'
         },
-
         yAxis: {
             min: 0,
             endOnTick: false,
@@ -59,11 +51,9 @@
             },
             reversedStacks: false
         },
-
         tooltip: {
             valueSuffix: '%'
         },
-
         plotOptions: {
             series: {
                 stacking: 'normal',

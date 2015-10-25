@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <!-- Render basic configuration of the mortality rate chart -->
-<%= render 'mortality_rate_chart' %>
+<!-- This sintax is necessary to render javascript when the request comes from a link -->
+<%= render(:partial =>'mortality_rate_chart', :format => :js) %>
 
 <!-- Top title of the page -->
 <h1>Lista de Mortalidade com as microregiões com taxas mais elevada</h1>
