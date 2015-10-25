@@ -27,20 +27,21 @@ class ForumTopicsController < ApplicationController
 	end
 
 	def update
-		find_forum_topic
+		@forum_topic = ForumTopic.find(params[:id])
 	    if @forum_topic.update(forum_topic_params)
 	      flash[:success] = "Tópico atualizado!"
 
-	      redirect_to @forum_topic
+	      redirect_to forum_topic_path
 	    else
 	      render :edit
 	    end
   	end
 
 	def destroy 
-		find_forum_topic
+		@forum_theme = ForumTheme.find(params[:forum_theme_id])
+		@forum_topic = ForumTopic.find(params[:id])
 		@forum_topic.destroy
-		redirect_to forum_topic_path
+		redirect_to @forum_theme
 	end
 
 	private
