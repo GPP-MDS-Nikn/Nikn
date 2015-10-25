@@ -2,9 +2,11 @@
 <li><%=@forum_topic.title%></li>
 <li><%=@forum_topic.body%></li>
 <%@forum_topic.forum_posts.each do |post|%>
-	<li> <%= post.content %>
-		 <%= link_to 'apagar post', forum_topic_forum_post_path(@forum_topic, post),
-            :confirm => 'Are you sure?', :method => :delete %></li>
+	<li><%= post.content %>
+		<%= link_to 'apagar', forum_topic_forum_post_path(@forum_topic, post),
+            :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to 'editar', edit_forum_topic_forum_post_path(@forum_topic, post) %>
+        </li>
 	<% end %>
 </ul>
 <%= render 'forum_posts/form' %>

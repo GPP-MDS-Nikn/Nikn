@@ -11,12 +11,14 @@ class ForumPostsController < ApplicationController
 	end
 
 	def edit
-		@forum_post = @forum_topic.forum_posts.find(params[:id])
+		@forum_topic = ForumTopic.find(params[:forum_topic_id])
+    	@forum_post = ForumPost.find(params[:id])
 
 	end
 
 	def update
-		@forum_post = @forum_topic.forum_posts.find(params[:id])
+		@forum_topic = ForumTopic.find(params[:forum_topic_id])
+    	@forum_post = ForumPost.find(params[:id])
 
 		if @forum_post.update(forum_post_params)
 			redirect_to @forum_topic

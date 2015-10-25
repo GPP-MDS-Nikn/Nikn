@@ -1,6 +1,10 @@
 <h1>Editing Forum Post</h1>
 
-<%= render 'form' %>
+<%=form_for ([@forum_topic, @forum_post]) do |f| -%>
+  <%= f.label :content, "conteúdo" %>
+  <%= f.text_field :content%>
+  <%= f.submit %>
+<% end -%>
 
-<%= link_to 'Exibir Post', @forum_post %> |
-<%= link_to 'Cancelar', forum_posts_path %>
+<%#= link_to 'Exibir Post', @forum_post %>
+<%#= link_to 'Cancelar', forum_posts_path %>
