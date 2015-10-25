@@ -12,10 +12,10 @@
 	<title>NIKN - Auxílio às mulheres vítimas de violência</title>
 
 	<!-- Bootstrap Core CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Custom CSS -->
-	<link href="css/business-casual.css" rel="stylesheet">
+	<link href="assets/business-casual.css" rel="stylesheet">
 
 	<!-- Fonts -->
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
@@ -33,32 +33,44 @@
 </head>
 
 <body>
-    <!-- Navigation -->
-    <%= render "layouts/header" %>
-    <div class="container">
-
-
-        <!-- Carregar as páginas -->
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12 text-center">
-
-<% flash.each do |message_type, message| %>
-  <%= content_tag :div, class: "alert alert-#{message_type}" do -%>
-  <%= message %>
-  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <% end -%>
-<% end %>
-
-                  <!-- Render the content of each page -->
-                  <%= yield %>
-            			<!-- This displays some useful information about each page using the built-in debug method and params variable
-            			<%= debug(params) if Rails.env.development? %> -->
-                </div>
-
-              </div>
+  <!-- Navigation -->
+  <%= render "layouts/header" %>
+  <div class="container">
+    <div class="row">
+      <div class="box">
+        <div class="col-lg-12 text-center">
+          <% flash.each do |message_type, message| %>
+            <%= content_tag :div, class: "alert alert-#{message_type}" do -%>
+              <%= message %>
+              <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+              </button>
+            <% end -%>
+          <% end %>
         </div>
+        <!-- Render the content of each page -->
+        <%= yield %>
+        <!-- This displays some useful information about each page using the built-in debug method and params variable
+        <%= debug(params) if Rails.env.development? %> -->
+      </div>
+    </div>
+  </div>
 
   <%= render "layouts/footer" %>
+
+  <!-- [TO FIX] The following line are bugging the javascript applications to be correctly rendered -->
+  <!-- jQuery -->
+  <!--<script src="assets/jquery.js"></script>-->
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="assets/bootstrap.min.js"></script>
+
+  <!-- Script to Activate the Carousel -->
+  <script>
+  $('.carousel').carousel({
+      interval: 5000 //changes the speed
+  })
+  </script>
 </body>
 </html>
