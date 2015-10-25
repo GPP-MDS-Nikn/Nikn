@@ -1,4 +1,18 @@
 <header>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
 	<div class="brand">NIKN</div>
 	<div class="address-bar">Auxílio às mulheres vítimas de violência</div>
 	<!-- Navigation -->
@@ -29,20 +43,19 @@
 				<li>
 					<%= link_to "Eventos", events_path %>
 				</li>
+                <li>
+                  <%= link_to "Dados Abertos", "/opendata" %>
+                </li>
 				<li>
-           <%if ong_signed_in?%>
-        		<a href="/ongs">Meu perfil</a>
-        </li>
-        <li>
-            <%= link_to "Encerrar Sessão", destroy_ong_session_path, method: :delete %>
-        </li>
-        <li>
-            <%else%>
-            <%= link_to "Entrar", new_ong_session_path %>
-        </li>
-        <li>
-        		<%end%>
-        </li>
+                  <%if ong_signed_in?%>
+                      <a href="/ongs">Meu perfil</a>
+                    </li>
+                    <li>
+                      <%= link_to "Encerrar Sessão", destroy_ong_session_path, method: :delete %>
+                  <%else%>
+                    <%= link_to "Entrar", new_ong_session_path %>
+                  <%end%>
+                </li>
 			</ul>
 			<!-- /.navbar-collapse -->
 		</div>
