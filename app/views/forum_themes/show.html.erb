@@ -5,7 +5,7 @@
 
 
 <% @forum_topics.each do |topic| %>
-	<h2><%= link_to topic.title, forum_theme_forum_topic_path(@forum_theme, topic.forum_theme) %></h2>
+	<h2><%= link_to topic.title, forum_topic_path(topic) %></h2>
 	<%= topic.body %>
 	<%#= link_to 'excluir', topic.forum_theme, method: :delete, data: { confirm: 'Tem certeza?'} %>
 	

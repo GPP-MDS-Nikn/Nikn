@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   resources :mortality_rates
 
   resources :forum_themes do
-    resources :forum_topics do
+    resources :forum_topics    
+  end
+
+  resources :forum_topics do
       resources :forum_posts
-    end
   end
   #get '/ongs/new' => 'ongs#new'
   #post 'ongs' => 'ongs#create'

@@ -1,4 +1,4 @@
-<%= form_for [@forum_theme, @forum_topic, @forum_post] do |f| %>
+<%= form_for ([@forum_topic, @forum_topic.forum_posts.build]) do |f| %>
   <%= f.label :content, "novo post" %>
   <%= f.text_field :content%>
   <%= f.submit %>
