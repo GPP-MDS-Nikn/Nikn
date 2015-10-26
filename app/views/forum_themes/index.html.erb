@@ -2,8 +2,9 @@
 
 <%@forum_theme.each do |theme|%>
 	<div class="list-group">
-		<div class="list-group-item"><h4><%= link_to theme.title, forum_theme_path(theme) %></h4></div>
-			<%= button_to "editar", edit_forum_theme_path(theme), :class => "button", :method => :get %>
-			<%= button_to 'excluir', theme, method: :delete, data: { confirm: 'Tem certeza?'}, :class => "button", :method => :delete  %>
+		<div class="list-group-item"><h4><%= link_to theme.title, forum_theme_path(theme) %></h4>
+			<p><%= link_to "editar", edit_forum_theme_path(theme)%></p>
+			<p><%= link_to 'excluir', theme, method: :delete, data: { confirm: 'Tem certeza?'}%></p>
 		</div>
+	</div>
 <%end%>
