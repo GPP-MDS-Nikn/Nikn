@@ -11,21 +11,38 @@ describe ForumPosts do
 
     context "Trying to create objetcs and validate with invalid data" do
 
+        #Title tests
         it "shouldn't create a valid object with empty title" do
     	    forum_post = create_forum_post(:title nil)
     	    expect(forum_post.valid?).to be false
         end
 
         it "shouldn't create a valid object with short title" do
-          forum_post = create_forum_post(title: "a" * (ForumPosts::TITLE_MIN_LENGTH - 1))
+          forum_post = create_forum_post(title: "a" * (ForumPost::TITLE_MIN_LENGTH - 1))
           expect(forum_post.valid?).to be false
         end
 
         it "shouldn't create a valid object with too long titles" do
-          forum_post = create_forum_post(title: "a" * (ForumPosts::TITLE_MAX_LENGTH + 1))
-          
-
+          forum_post = create_forum_post(title: "a" * (ForumPost::TITLE_MAX_LENGTH + 1))
+          expect(forum_post.valid?).to be false
         end
+
+        # Content tests
+        it "shouldn't create a valid object without content" do
+          forum_post = create_forum_post(CONTENT: nil)
+          expect(forum_post.valid?).to be false
+        end
+
+        it "shouldn't create a valid object with short CONTENT" do
+          forum_post = create_forum_post(CONTENT: "a" * (ForumPost::CONTENT_MIN_LENGTH - 1))
+          expect(forum_post.valid?).to be false
+        end
+
+        it "shouldn't create a valid object with too long CONTENT" do
+          forum_post = create_forum_post(CONTENT: "a" * (ForumPost::CONTENT_MAX_LENGTH + 1))
+          expect(forum_post.valid?).to be false
+        end
+
     end
 
     private
