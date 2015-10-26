@@ -11,12 +11,21 @@ describe Ong do
 
     context "Trying to create objetcs and validate with invalid data" do
 
-        it "shouldn't create a valid object with empty name" do
-    	    ong = create_ong(:name nil)
+        it "shouldn't create a valid object with empty email" do
+    	    ong = create_ong(:email nil)
     	    expect(ong.valid?).to be false
 
         end
 
+    end
+
+    private
+
+    def create_ong(options={})
+      Ong.create({
+        email: "ong_test@email.com",
+        encrypted_password: "12345678"
+      }.merge(options))
     end
 
 end
