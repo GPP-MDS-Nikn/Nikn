@@ -7,7 +7,7 @@ class ForumPost < ActiveRecord::Base
 	CONTENT_MAX_LENGTH = 1000	# characters
 
 
-	belongs_to :forum_theme
+	#belongs_to :forum_theme
 	belongs_to :forum_topic
 
 	validates(:title, presence: true)

@@ -1,4 +1,6 @@
 class ForumTheme< ActiveRecord::Base
 	has_many :forum_topics, dependent: :destroy
-	has_many :forum_posts
+	validates :title, presence: true, :length => {:minimum => 2}, uniqueness: true
+	validates :description, presence: true, :length => {:minimum => 2}
+
 end

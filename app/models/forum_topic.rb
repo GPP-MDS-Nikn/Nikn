@@ -1,4 +1,5 @@
 class ForumTopic < ActiveRecord::Base
-	belongs_to :forum_theme
-	has_many :forum_post, dependent: :destroy
+	has_many :forum_posts, dependent: :destroy
+	validates :title, presence: true, :length => {:minimum => 2}, uniqueness: true
+	validates :body, presence: true, :length => {:minimum => 2}
 end

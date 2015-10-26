@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   resources :mortality_rates
 
   resources :forum_themes do
-    resources :forum_topics do
+    resources :forum_topics    
+  end
+
+  resources :forum_topics do
       resources :forum_posts
-    end
   end
   #get '/ongs/new' => 'ongs#new'
   #post 'ongs' => 'ongs#create'
@@ -29,8 +31,8 @@ Rails.application.routes.draw do
 
   resources :portal_posts
 
-  resources :forum_posts
-  get "forum_posts" => "forum_posts#index"
+  #resources :forum_posts
+  #get "forum_posts" => "forum_posts#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

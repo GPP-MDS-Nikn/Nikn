@@ -1,7 +1,6 @@
 class ForumThemesController < ApplicationController
 	def index
 		@forum_theme = ForumTheme.all
-		@forum_topic = ForumTopic.all
 	end
 	
 	def show 
