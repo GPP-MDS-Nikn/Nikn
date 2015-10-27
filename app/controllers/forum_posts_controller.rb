@@ -4,9 +4,11 @@ class ForumPostsController < ApplicationController
 		@forum_post = @forum_topic.forum_posts.build(forum_post_params)
 		@forum_post.save
 		if @forum_post.save
+			flash[:success] = "Postagem criada com sucesso."
 			redirect_to forum_topic_path(@forum_topic)
 		else
-			render 'new'
+			flash[:warning] = "A postagem precisa ter pelo menos 2 caracteres e no máximo 1000."
+			redirect_to forum_topic_path(@forum_topic)
 		end
 	end
 
