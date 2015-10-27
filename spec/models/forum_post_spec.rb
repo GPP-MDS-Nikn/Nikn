@@ -29,17 +29,17 @@ describe ForumPosts do
 
         # Content tests
         it "shouldn't create a valid object without content" do
-          forum_post = create_forum_post(CONTENT: nil)
+          forum_post = create_forum_post(content: nil)
           expect(forum_post.valid?).to be false
         end
 
         it "shouldn't create a valid object with short CONTENT" do
-          forum_post = create_forum_post(CONTENT: "a" * (ForumPost::CONTENT_MIN_LENGTH - 1))
+          forum_post = create_forum_post(content: "a" * (ForumPost::CONTENT_MIN_LENGTH - 1))
           expect(forum_post.valid?).to be false
         end
 
         it "shouldn't create a valid object with too long CONTENT" do
-          forum_post = create_forum_post(CONTENT: "a" * (ForumPost::CONTENT_MAX_LENGTH + 1))
+          forum_post = create_forum_post(content: "a" * (ForumPost::CONTENT_MAX_LENGTH + 1))
           expect(forum_post.valid?).to be false
         end
 
