@@ -1,5 +1,5 @@
 <%= form_for ([@forum_topic, @forum_topic.forum_posts.build]) do |f| %>
   <%= f.label :content, "conteúdo" %>
-  <%= f.text_field :content%>
-  <%= f.submit %>
+  <%= f.text_field :content, :placeholder => "escreva seu post aqui..."%>
+  <%= f.submit "criar post" %>
 <% end %>
