@@ -38,7 +38,6 @@ describe ForumThemes do
           expect(forum_theme.valid?).to be false
         end
 
-
     end
 
     private
