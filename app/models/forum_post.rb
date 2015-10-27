@@ -2,8 +2,8 @@ class ForumPost < ActiveRecord::Base
 
 	TITLE_MIN_LENGTH = 3  # characters
 	TITLE_MAX_LENGTH = 30 # characters
-	
-	CONTENT_MIN_LENGTH = 10	# characters
+
+	CONTENT_MIN_LENGTH = 2	# characters
 	CONTENT_MAX_LENGTH = 1000	# characters
 
 
@@ -14,6 +14,6 @@ class ForumPost < ActiveRecord::Base
 	validates(:title, length: {in: 3..30})
 
 	validates(:content, presence: true)
-	validates(:content, length: {in: 10..1000})
+	validates(:content, length: {in: 2..1000})
 
 end
