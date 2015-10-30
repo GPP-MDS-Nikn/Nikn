@@ -47,53 +47,33 @@
 		<!-- NORDESTE -->
 		<tr nowrap>
 			<td class="dir">Nordeste</td>
-			<td class="data">8.00</td>
-			<td class="data">8.20</td>
-			<td class="data">7.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">17.10</td>
+			<%= @northeast_mortality_rates_frequencies.each do |each_northeast_mortality_rate_frequency| %>
+				<th class="data"><%= each_northeast_mortality_rate_frequency %></th>
+			<% end %>
 		</tr>
 
 		<!-- SUDESTE -->
 		<tr nowrap bgcolor="#DDDDDD">
-			<td class="dir">Sudeste</td>
-			<td class="data">5.90</td>
-			<td class="data">1.22</td>
-			<td class="data">0.07</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">18.08</td>
+			<td class="dir">Sudoeste</td>
+			<%= @southeast_mortality_rates_frequencies.each do |each_southeast_mortality_rate_frequency| %>
+				<th class="data"><%= each_southeast_mortality_rate_frequency %></th>
+			<% end %>
 		</tr>
 
 		<!-- SUL -->
 		<tr nowrap>
 			<td class="dir">Sul</td>
-			<td class="data">6.2</td>
-			<td class="data">22.0</td>
-			<td class="data">04.9</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">33.2</td>
+			<%= @south_mortality_rates_frequencies.each do |each_south_mortality_rate_frequency| %>
+				<th class="data"><%= each_south_mortality_rate_frequency %></th>
+			<% end %>
 		</tr>
 
 		<!-- CENTRO-OESTE -->
 		<tr nowrap bgcolor="#DDDDDD">
 			<td class="dir">Centro-Oeste</td>
-			<td class="data">12.2</td>
-			<td class="data">20.1</td>
-			<td class="data">15.5</td>
-			<td class="data">03.0</td>
-			<td class="data">01.3</td>
-			<td class="data">0.00</td>
-			<td class="data">0.00</td>
-			<td class="data">52.0</td>
+			<%= @centerwest_mortality_rates_frequencies.each do |each_centerwest_mortality_rate_frequency| %>
+				<th class="data"><%= each_centerwest_mortality_rate_frequency %></th>
+			<% end %>
 		</tr>
 	</table>
 </div>
