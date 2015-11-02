@@ -24,7 +24,7 @@
 		<!-- This is the subtitles of the chart -->
 		<tr nowrap bgcolor="#CCCCFF">
 			<!-- Here, the first 'th' will never be displayed -->
-      <th class="freq">Taxas</th>
+            <th class="freq">Taxas</th>
 			<th class="freq">&lt; 8 %</th>
 			<th class="freq">8-10 %</th>
 			<th class="freq">10-12 %</th>
@@ -36,45 +36,14 @@
 		<!-- Begginig in this section, all the rate data of each region
 		should be displayed in the respective block. -->
 
-		<!-- NORTE -->
-		<tr nowrap>
-			<td class="dir">Norte</td>
-			<%= @north_mortality_rates_frequencies.each do |each_north_mortality_rate_frequency| %>
-				<th class="data"><%= each_north_mortality_rate_frequency %></th>
-			<% end %>
-		</tr>
-
-		<!-- NORDESTE -->
-		<tr nowrap>
-			<td class="dir">Nordeste</td>
-			<%= @northeast_mortality_rates_frequencies.each do |each_northeast_mortality_rate_frequency| %>
-				<th class="data"><%= each_northeast_mortality_rate_frequency %></th>
-			<% end %>
-		</tr>
-
-		<!-- SUDESTE -->
-		<tr nowrap bgcolor="#DDDDDD">
-			<td class="dir">Sudoeste</td>
-			<%= @southeast_mortality_rates_frequencies.each do |each_southeast_mortality_rate_frequency| %>
-				<th class="data"><%= each_southeast_mortality_rate_frequency %></th>
-			<% end %>
-		</tr>
-
-		<!-- SUL -->
-		<tr nowrap>
-			<td class="dir">Sul</td>
-			<%= @south_mortality_rates_frequencies.each do |each_south_mortality_rate_frequency| %>
-				<th class="data"><%= each_south_mortality_rate_frequency %></th>
-			<% end %>
-		</tr>
-
-		<!-- CENTRO-OESTE -->
-		<tr nowrap bgcolor="#DDDDDD">
-			<td class="dir">Centro-Oeste</td>
-			<%= @centerwest_mortality_rates_frequencies.each do |each_centerwest_mortality_rate_frequency| %>
-				<th class="data"><%= each_centerwest_mortality_rate_frequency %></th>
-			<% end %>
-		</tr>
+        <%= @mortality_rates_frequencies.each do |region_name, frequencies_of_rates| %>
+          <tr nowrap>
+            <td class="dir"><%= region_name.to_s %></td>
+            <%= frequencies_of_rates.each do |each_mortality_rate_frequency| %>
+			  <th class="data"><%= each_mortality_rate_frequency %></th>
+            <% end %>
+          </tr>
+        <% end %>
 	</table>
 </div>
 <br>
