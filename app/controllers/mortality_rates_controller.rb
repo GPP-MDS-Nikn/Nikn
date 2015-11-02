@@ -88,12 +88,12 @@ class MortalityRatesController < ApplicationController
           # give users a best experience reading the data.
           # Each nested list is a range with two limits, in percentage.
           # The first is the limit down, the second, limit up.
-          rate_ranges = [[ 0.0 ,   5.0],
-                        [ 5.0 ,  20.0],
-                        [20.0 ,  40.0],
-                        [40.0 ,  60.0],
-                        [60.0 ,  80.0],
-                        [80.0 , 100.0]]
+          rate_ranges = [[ 0.0 ,   8.0],
+                        [ 8.0 ,  10.0],
+                        [10.0 ,  12.0],
+                        [12.0 ,  15.0],
+                        [15.0 ,  20.0],
+                        [20.0 , 100.0]]
 
           region_rates_frequency = [] # It will store the 6 frequency values.
 

@@ -20,10 +20,10 @@ Rails.application.routes.draw do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
+  # Needed to import csv data for populating the mortality rate and careunit's databases
   resources :parsers do
     collection { post :importCare }
     collection { post :importRate }
-
   end
 
   root 'static_pages#home'
