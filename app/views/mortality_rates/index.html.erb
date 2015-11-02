@@ -5,7 +5,7 @@
 <%= render(:partial =>'mortality_rate_chart', :format => :js) %>
 
 <!-- Top title of the page -->
-<h1>Lista de Mortalidade com as microregiões com taxas mais elevada</h1>
+<h1>Lista de mortalidade das 5 regiões do Brasil</h1>
 
 <!-- Place where is displayed the mortality rate chart -->
 <div id="container" style="min-width: 420px; max-width: 600px; height: 400px; margin: 0 auto"></div>
@@ -25,12 +25,12 @@
 		<tr nowrap bgcolor="#CCCCFF">
 			<!-- Here, the first 'th' will never be displayed -->
       <th class="freq">Taxas</th>
-			<th class="freq">&lt; 5 %</th>
-			<th class="freq">5-20 %</th>
-			<th class="freq">20-40 %</th>
-			<th class="freq">40-60 %</th>
-			<th class="freq">60-80 %</th>
-			<th class="freq">&gt; 80 %</th>
+			<th class="freq">&lt; 8 %</th>
+			<th class="freq">8-10 %</th>
+			<th class="freq">10-12 %</th>
+			<th class="freq">12-15 %</th>
+			<th class="freq">15-20 %</th>
+			<th class="freq">&gt; 20 %</th>
 		</tr>
 
 		<!-- Begginig in this section, all the rate data of each region
