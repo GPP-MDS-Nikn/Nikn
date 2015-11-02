@@ -1,0 +1,11 @@
+<div class="list-group">
+	<div class="list-group-item"><%=@forum_topic.title%></div>
+	<div class="list-group-item-info"><%=@forum_topic.body%></div>
+</div>
+<%@forum_topic.forum_posts.each do |post|%>
+	<p><%= post.content %>
+		<%= link_to 'apagar', forum_topic_forum_post_path(@forum_topic, post),
+            :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to 'editar', edit_forum_topic_forum_post_path(@forum_topic, post) %> </p>
+	<% end %>
+<%= render 'forum_posts/form' %>

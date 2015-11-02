@@ -1,0 +1,13 @@
+<h3><%=@forum_topic.title%></h3>
+
+<h1><%= action_name %></h1>
+
+        <%= form_for @forum_topic do |f| %>
+            <p>Título: </p>
+            <%= f.text_field :title%>
+
+            <p>Texto: </p>
+            <%= f.text_field :body%>
+            
+            <%= f.submit%>
+        <% end %>
