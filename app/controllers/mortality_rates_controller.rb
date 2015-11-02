@@ -1,6 +1,10 @@
 class MortalityRatesController < ApplicationController
-  before_action :set_mortality_rate, only: [:show, :edit, :update, :destroy]
+  before_action :set_mortality_rate, only: [:show, :ediit, :update, :destroy]
 
+  # The frequencies list must have this size
+  # Be careful changing this line, some modifications must be done in the
+  # controllers, HTMLs and JavaScripts of the application's charts.
+  FREQUENCIES_LIST_SIZE = 6
   # This method creates a list with the mortality rate's frequencies 
   # for each region. The list contains indicators (in percentage) to
   # show mortality rate's seriousness. 
@@ -10,12 +14,17 @@ class MortalityRatesController < ApplicationController
   # For example, the first position indicates the frequency of cities with less 
   # than 5% in mortality rate's avaliations to a particular region.
   def index
-    # [TODO] The variables below should be a hash (dictionary)
-    @north_mortality_rates_frequencies      = get_region_mortality_rate_frequency('Norte')
-    @northeast_mortality_rates_frequencies  = get_region_mortality_rate_frequency('Nordeste')
-    @centerwest_mortality_rates_frequencies = get_region_mortality_rate_frequency('Centro-Oeste')
-    @south_mortality_rates_frequencies      = get_region_mortality_rate_frequency('Sul')
-    @southeast_mortality_rates_frequencies  = get_region_mortality_rate_frequency('Sudeste')
+    regions = ['Norte', 'Nordeste', 'Centro-Oeste', 'Sul', 'Sudeste']
+    @mortality_rates_frequencies = Hash.new
+
+    regions.each do |region_name|
+      begin
+        # Get a list of frequencies for each region
+        @mortality_rates_frequencies[region_name.to_sym] = get_region_mortality_rate_frequency(region_name)
+      rescue Errors::RegionNameError
+        logger.info "[INFO] Skip the region #{region_name} and continue."
+      end
+    end
   end
 
   # Returns a new MortalityRate Model Object to be manually configured in the view form.
@@ -88,6 +97,9 @@ class MortalityRatesController < ApplicationController
           # give users a best experience reading the data.
           # Each nested list is a range with two limits, in percentage.
           # The first is the limit down, the second, limit up.
+          # [PAY ATTENTION] be careful when you decide to change this list,
+          # some modifications must be done in the index HTML and JavaScript view,
+          # and this list should never be bigger than FREQUENCIES_LIST_SIZE!!
           rate_ranges = [[ 0.0 ,   8.0],
                         [ 8.0 ,  10.0],
                         [10.0 ,  12.0],
@@ -95,20 +107,29 @@ class MortalityRatesController < ApplicationController
                         [15.0 ,  20.0],
                         [20.0 , 100.0]]
 
+          # Respect the list size limit
+          # DO NOT remove this line!
+          rate_ranges = rate_ranges[0...FREQUENCIES_LIST_SIZE]
+
           region_rates_frequency = [] # It will store the 6 frequency values.
 
           # Iterate over rate ranges and, for each range, calculate the frequency of cities
           # that belongs to the region and has the mortality rate included in the range.
           rate_ranges.each do |each_range|
-            rates_per_range_counter = count_number_of_rates_in_limits(region, each_range[0], each_range[1])
-            rates_per_range_frequency = (rates_per_range_counter.to_f/number_of_data_for_region.to_f)*100.0
+            begin
+              rates_per_range_counter = count_number_of_rates_in_limits(region, each_range[0], each_range[1])
+              rates_per_range_frequency = (rates_per_range_counter.to_f/number_of_data_for_region.to_f)*100.0
 
-            logger.debug "[DEBUG] each_range: #{each_range
-            }, rates_per_range_counter: #{rates_per_range_counter
-            }, number_of_data_for_region: #{number_of_data_for_region
-            }, rates_per_range_frequency: #{rates_per_range_frequency}"
+              logger.debug "[DEBUG] each_range: #{each_range
+              }, rates_per_range_counter: #{rates_per_range_counter
+              }, number_of_data_for_region: #{number_of_data_for_region
+              }, rates_per_range_frequency: #{rates_per_range_frequency}"
 
-            region_rates_frequency << rates_per_range_frequency # Append the calculated frequency.
+              region_rates_frequency << rates_per_range_frequency # Append the calculated frequency.
+            rescue Errors::InvalidPercentageValueError
+              logger.error "[ERROR] Any limit out of range: #{each_range}"
+              logger.info "[INFO] Skip this range, going to the next range in the rate ranges list."
+            end
           end
 
           logger.debug "[DEBUG] Exited rate_ranges loop with region_rates_frequency: #{region_rates_frequency}"
@@ -119,13 +140,16 @@ class MortalityRatesController < ApplicationController
           logger.debug "[DEBUG] number_of_data_for_region: 0"
           logger.warn "[WARN] There is no data for the region named \"#{region}\""
 
-          return [0, 0, 0, 0, 0, 0] # Displays nothing in the chart
+          return [0] * FREQUENCIES_LIST_SIZE# Displays nothing in the chart
         end
       else
         # The region name is invalid
         logger.debug "[DEBUG] Region name validation method returned false."
         logger.info "[INFO] Region name is invalid, break."
-        # [TODO] raise an exception for region name error
+        logger.error "[ERROR] This region name is not registered: #{region}."
+
+        # Must raise an invalid region name exception
+        raise Errors::RegionNameError 
       end
     end
 
@@ -169,7 +193,9 @@ class MortalityRatesController < ApplicationController
         # Limits are invalid
         logger.warn "[WARN] Limits are invalid!"
         logger.debug "[DEBUG] Invalid limit_down: #{limit_down} or limit_up: #{limit_up}"
-        # [TODO] raise an exception for Float error
+
+        # Must raise an error for the invalid limit.
+        raise Errors::InvalidPercentageValueError
       end
     end
 
