@@ -76,3 +76,26 @@
   padding: 10px;
   width: 100%;
 }
+
+//Social Buttons
+.show-post  { 
+  .social-buttons {
+    clear: both;
+    text-align: right;
+    display: inline-block;
+  }
+  .social-buttons {
+    .each_button{
+      float:right;
+      margin: 1%;
+    }
+    .twitter_button {
+    }
+    .pinit_button {
+    }
+    .facebook_button {
+    }
+    .google_plus_button{
+    }
+  }
+}

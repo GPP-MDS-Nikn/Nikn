@@ -20,6 +20,7 @@ public/assets/*.css
 # Vim files
 *.swp
 *.save
+*.swo
 
 # Ignore images
 *.jpg
