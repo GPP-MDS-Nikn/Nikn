@@ -1,15 +1,20 @@
 <h2><%= @forum_theme.title %></h2>
 <%= @forum_theme.description %>
 
-<p><%= button_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme), :class => "button", :method => :get%></p>
-
+<% if ong_signed_in? %>
+	<p>
+		<%= button_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme), 
+				:class => "button", :method => :get %>
+	</p>
+<% end %>
 
 <% @forum_topics.each do |topic| %>
 	<div class="list-group">
 		<div class="list-group-item">
 			<h2><%= link_to topic.title, forum_topic_path(topic) %></h2>
-			<%if ong_signed_in? %>
-				<%if topic.ong_id === current_ong.id %>
+			<% if ong_signed_in? %>
+				<% if topic.ong_id === current_ong.id or 
+							current_ong.email === 'appnikn@gmail.com' %>
 					<p><%= link_to 'apagar', forum_theme_forum_topic_path(@forum_theme, topic),
 			            :confirm => 'Are you sure?', :method => :delete %> </p>
 			    <p><%= link_to 'editar', edit_forum_theme_forum_topic_path(@forum_theme, topic) %></p>

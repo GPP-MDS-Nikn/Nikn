@@ -6,21 +6,26 @@
 
 <div class="row">
 	<div class="col-md-12 center-block event_info">
-		<div class="btn-group pull-right" role="group" aria-label="...">
-			<%= link_to(edit_event_path(@event), type: "button", class: "btn btn-default") do %>
-				<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
+		<% if ong_signed_in? %>
+			<% if @event.ong_id === current_ong.id or 
+							current_ong.email === 'appnikn@gmail.com' %>
+				<div class="btn-group pull-right" role="group" aria-label="...">
+					<%= link_to(edit_event_path(@event), type: "button", class: "btn btn-default") do %>
+						<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
+					<% end %>
+					<%= link_to(@event, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					<% end %>
+				</div>
 			<% end %>
-			<%= link_to(@event, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>
-				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-			<% end %>
-		</div>
+		<% end %>
 
 		<div class = "col-md-5 no_padding">
-			<%if @event.image_file.present? %>
+			<% if @event.image_file.present? %>
 				<%= image_tag(@event.image_file.url(), class: "event_image center-block") %>
-			<%else%>
-				<%= image_tag("nikn_default_banner.png", class: "event_image center-block")  %>
-			<%end%>
+			<% else %>
+				<%= image_tag("nikn_default_banner.png", class: "event_image center-block") 	%>
+			<% end %>
 		</div>
 
 		<div class="basic_information col-md-7 ">

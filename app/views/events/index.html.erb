@@ -23,9 +23,9 @@
 				<div class = "col-md-5">
 					<%if event.image_file.present? %>
 						<%= image_tag(event.image_file.url(), class: "next_event_image center-block") %>
-					<%else%>
+					<% else %>
 						<%= image_tag("nikn_default_banner.png", class: "next_event_image center-block")  %>
-					<%end%>	
+					<% end %>	
 				</div>
 
 				<div class="basic_next_event_information col-md-7">
@@ -40,17 +40,19 @@
 				</div>
 
 			<% end %>
-		<%end%>
+		<% end %>
 	</div>
 <% else %>
 	<!-- Do nothing -->
 <% end %>
 
-<div class = "event_creation_bar">
-	<br>
-	<a href="/events/new">
-		<button type="button" class="btn btn-default center-block" aria-label="Left Align">
-			<p>Novo Evento</p>
-		</button>
-	</a>
-</div>
+<% if ong_signed_in? %>
+	<div class = "event_creation_bar">
+		<br>
+		<a href="/events/new">
+			<button type="button" class="btn btn-default center-block" aria-label="Left Align">
+				<p>Novo Evento</p>
+			</button>
+		</a>
+	</div>
+<% end %>
