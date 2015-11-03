@@ -6,9 +6,9 @@
   		//page is now ready, initialize the calendar
     	$('#calendar').fullCalendar({
         	// put your options and callbacks here
-        	// calls views/events/index.jaseon.jbuilder 
+        	// calls views/events/index.jaseon.jbuilder
         	events: '/events.json'
-	 	})               
+	 	})
   	});
 </script>
 
@@ -25,7 +25,7 @@
 						<%= image_tag(event.image_file.url(), class: "next_event_image center-block") %>
 					<% else %>
 						<%= image_tag("nikn_default_banner.png", class: "next_event_image center-block")  %>
-					<% end %>	
+					<% end %>
 				</div>
 
 				<div class="basic_next_event_information col-md-7">

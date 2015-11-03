@@ -7,7 +7,6 @@
 			<p class="title pull-left"><%= @portal_post.title %></p>
 			<p class="subtitle pull-left"><%= @portal_post.created_at %>, por <%= @portal_post.author %> -</p>
 		</div>
-
 		<% if ong_signed_in? and current_ong.email === 'appnikn@gmail.com' %>
 			<div class="btn-group pull-right" role="group" aria-label="...">
 				<%= link_to(edit_portal_post_path(@portal_post), type: "button", class: "btn btn-default") do %>
@@ -16,9 +15,8 @@
 				<%= link_to(@portal_post, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>
 					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 				<% end %>
-			</div>
-		<% end %>
-
+			<% end %>
+		</div>
 	</div>
 
 	<%if @portal_post.image_file.present? %>
