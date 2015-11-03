@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 	# Tells rails to execute set_event method inside each method in symbol list.
 	before_action :set_event, only: [:show, :edit, :update, :destroy]
+	before_filter :authenticate_ong!, except: [:index, :show]
 
 	def index
 		@events = Event.all
@@ -28,6 +29,7 @@ class EventsController < ApplicationController
 	def create
 		# Construct with permitted params
 		@event = Event.new(event_params)
+		@event.ong_id = current_ong.id
 
 		if @event.save
 

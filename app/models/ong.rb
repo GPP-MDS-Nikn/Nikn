@@ -8,4 +8,5 @@ class Ong < ActiveRecord::Base
   #validates :name, uniqueness: true
 
   has_many :forum_topics
+  has_many :events
 end
