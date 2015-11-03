@@ -6,6 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Ong.create({
+	:email => 'appnikn@gmail.com',
+	:encrypted_password => 'administrator',
+})
+
 PortalPost.create({
 	:author => 'Balanço 2014 do Ligue 180 - tipo de violência relatada (SPM-PR)',
 	:title => 'Sobre a violência moral e psicológica contra mulheres',
