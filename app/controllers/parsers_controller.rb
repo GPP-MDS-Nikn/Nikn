@@ -17,6 +17,9 @@ class ParsersController < ApplicationController
   end
 
   def parser_params
-    params.require(:care_unit,:mortality_rate).permit(:municipio, :estado, :cod_mun7, :cod_mun6, :uf, :localizacao,:regiao,:nome,:taxa)
+    params.require(:care_unit,
+    							 :mortality_rate).permit(
+    							 :municipio, :estado, :cod_mun7, :cod_mun6, :uf, :localizacao, # Care unit Params
+    							 :regiao,:nome,:taxa) 																				 # Mortality rate params
   end
 end

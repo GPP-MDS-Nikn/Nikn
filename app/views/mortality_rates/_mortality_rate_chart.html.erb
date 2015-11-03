@@ -1,0 +1,67 @@
+<!-- Configuration of the mortality rate chart -->
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<script>
+	$(function () {
+    // Parse the data from an inline table using the Highcharts Data plugin
+    $('#container').highcharts({
+        data: {
+            table: 'freq',
+            startRow: 1, // Init of the char row counter.
+            endRow: 6,	 // Control of the number of slices of the chart.
+            endColumn: 6 // Control of the number of subtitles.
+        },
+        chart: {
+            polar: true,
+            type: 'column'
+        },
+        title: {
+            text: 'Taxa de mortlidade entre mulheres vítimas de violência.'
+        },
+        subtitle: {
+            text: 'Fonte: dadosabertos.gov.br'
+        },
+        pane: {
+            size: '85%'
+        },
+        legend: {
+            align: 'right',
+            verticalAlign: 'top',
+            y: 100,
+            layout: 'vertical'
+        },
+        xAxis: {
+            tickmarkPlacement: 'on'
+        },
+        yAxis: {
+            min: 0,
+            endOnTick: false,
+            showLastLabel: true,
+            title: {
+                text: 'Taxa de Mortalidade (%)'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value + '%';
+                }
+            },
+            reversedStacks: false
+        },
+        tooltip: {
+            valueSuffix: '%'
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal',
+                shadow: false,
+                groupPadding: 0,
+                pointPlacement: 'on'
+            }
+        }
+    });
+});
+</script>

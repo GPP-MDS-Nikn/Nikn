@@ -1,3 +1,4 @@
+.gitignore
 *.rbc
 capybara-*.html
 .rspec
@@ -14,10 +15,9 @@ rerun.txt
 pickle-email-*.html
 
 # Do not push unusable files
-public/assets/*.js
-public/assets/*.css
+public/assets/*
 
-# Vim files
+# Vim and Sublime temp files
 *.swp
 *.save
 *.swo
