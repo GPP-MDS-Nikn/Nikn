@@ -1,0 +1,7 @@
+<h1>Editing Forum Post</h1>
+
+<%=form_for ([@forum_topic, @forum_post]) do |f| -%>
+  <%= f.label :content, "conteúdo" %>
+  <%= f.text_field :content%>
+  <%= f.submit %>
+<% end -%>

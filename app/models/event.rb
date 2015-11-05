@@ -23,4 +23,7 @@ class Event < ActiveRecord::Base
 	# subject to changes.
 	validates(:description, length: {in: 20..1000})
 
+	# Associate an event with an ONG
+	belongs_to :ong
+
 end

@@ -1,0 +1,19 @@
+<% if ong_signed_in? %>
+	<% if current_ong.email === 'appnikn@gmail.com' %>
+		<%= button_to "criar tema", new_forum_theme_path, :class=> "button", :method => :get %>
+	<% end %>
+<% end %>
+
+<%@forum_theme.each do |theme|%>
+	<div class="list-group">
+		<div class="list-group-item">
+			<h4><%= link_to theme.title, forum_theme_path(theme) %></h4>
+			<% if ong_signed_in? %>
+				<% if current_ong.email === 'appnikn@gmail.com' %>
+					<p><%= link_to "editar", edit_forum_theme_path(theme)%></p>
+					<p><%= link_to 'excluir', theme, method: :delete, data: { confirm: 'Tem certeza?'}%></p>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+<%end%>

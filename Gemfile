@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+gem "social-buttons", '~> 0.3'
+#social-buttons gem lets us easily add social buttons to pages on our application (dur)
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'

@@ -17,7 +17,7 @@ pickle-email-*.html
 config/initializers/secret_token.rb
 config/secrets.yml
 
-## Environment normalisation:
+## Environment normalization:
 /.bundle
 /vendor/bundle
 
@@ -40,3 +40,5 @@ bower.json
 # Ignore db/schema.rb
 db/schema.rb
 
+# Ignore backup files from sublime text
+*.save
