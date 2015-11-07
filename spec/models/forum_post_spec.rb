@@ -4,11 +4,6 @@ require 'rails_helper'
 describe ForumPost, type: :model do
     context "Creating a valid object and comparing parameters" do
 
-        it "Should create a instance of ForumPost" do
-            forum_post = create_forum_post
-            expect(forum_post).to be_instance_of(ForumPost)
-        end
-
         it "Should create a valid instance of object forum_post" do
   		    forum_post = create_forum_post
             expect(forum_post.valid?).to be true

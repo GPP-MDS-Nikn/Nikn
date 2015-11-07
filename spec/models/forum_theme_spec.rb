@@ -5,11 +5,6 @@ describe ForumTheme, type: :model do
 
         it "Should create a valid instance of object forum_theme" do
   		    forum_theme = create_forum_theme
-  		    expect(forum_theme).to be_instance_of(ForumTheme)
-  	    end
-
-        it "Should create a valid instance of object forum_theme" do
-  		    forum_theme = create_forum_theme
   		    expect(forum_theme.valid?).to be true
   	    end
     end
