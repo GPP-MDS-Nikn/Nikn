@@ -5,7 +5,7 @@ describe Ong do
 
         it "Should create a valid instance of object ONG" do
   		    ong = create_ong
-  		    expect(ong.valid?).to be_instance_of(Ong)
+  		    expect(ong.valid?).to be true
   	    end
     end
 
@@ -24,7 +24,7 @@ describe Ong do
     def create_ong(options={})
       Ong.create({
         email: "ong_test@email.com",
-        encrypted_password: "12345678"
+        password: "12345678"
       }.merge(options))
     end
 
