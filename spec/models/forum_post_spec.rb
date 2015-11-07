@@ -1,6 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'rails_helper'
 
-describe ForumPosts do
+describe ForumPost, type: :model do
     context "Creating a valid object and comparing parameters" do
 
         it "Should create a valid instance of object forum_post" do
@@ -11,21 +12,7 @@ describe ForumPosts do
 
     context "Trying to create objetcs and validate with invalid data" do
 
-        #Title tests
-        it "shouldn't create a valid object with empty title" do
-    	    forum_post = create_forum_post(:title nil)
-    	    expect(forum_post.valid?).to be false
-        end
 
-        it "shouldn't create a valid object with short title" do
-          forum_post = create_forum_post(title: "a" * (ForumPost::TITLE_MIN_LENGTH - 1))
-          expect(forum_post.valid?).to be false
-        end
-
-        it "shouldn't create a valid object with too long titles" do
-          forum_post = create_forum_post(title: "a" * (ForumPost::TITLE_MAX_LENGTH + 1))
-          expect(forum_post.valid?).to be false
-        end
 
         # Content tests
         it "shouldn't create a valid object without content" do
