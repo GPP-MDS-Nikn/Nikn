@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe ForumThemes do
+describe ForumTheme, type: :model do
     context "Creating a valid object and comparing parameters" do
 
         it "Should create a valid instance of object forum_theme" do
@@ -13,7 +13,7 @@ describe ForumThemes do
 
         #Title tests
         it "shouldn't create a valid object with empty title" do
-    	    forum_theme = create_forum_theme(:title nil)
+    	    forum_theme = create_forum_theme(:title => nil)
     	    expect(forum_theme.valid?).to be false
         end
 
