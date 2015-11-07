@@ -4,10 +4,17 @@ require 'rails_helper'
 describe ForumPost, type: :model do
     context "Creating a valid object and comparing parameters" do
 
+        it "Should create a instance of ForumPost" do
+            forum_post = create_forum_post
+            expect(forum_post).to be_instance_of(ForumPost)
+        end
+
         it "Should create a valid instance of object forum_post" do
   		    forum_post = create_forum_post
-  		    expect(forum_post.valid?).to be_instance_of(forum_post)
+            expect(forum_post.valid?).to be true
   	    end
+
+
     end
 
     context "Trying to create objetcs and validate with invalid data" do
@@ -35,7 +42,7 @@ describe ForumPost, type: :model do
     private
 
     def create_forum_post(options={})
-      ForumPosts.create({
+      ForumPost.create({
         title: "Forum post title sample",
         content: "Forum post content sample"
       }.merge(options))
