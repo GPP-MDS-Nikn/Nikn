@@ -5,7 +5,7 @@ describe ForumTopic do
 
         it "Should create a valid instance of object forum_topic" do
   		    forum_topic = create_forum_topic
-  		    expect(forum_topic.valid?).to be_instance_of(forum_topic)
+  		    expect(forum_topic.valid?).to be true
   	    end
     end
 
@@ -23,8 +23,9 @@ describe ForumTopic do
         end
 
         it "shouldn't create an object that already exist" do
-          forum_post = create_forum_post(title: "Forum topic title sample")
-          expect(forum_topic.valid?).to be false
+          forum_topic = create_forum_topic(title: "Forum topic title sample")
+          forum_topic2 = create_forum_topic(title: "Forum topic title sample")
+          expect(forum_topic2.valid?).to be false
         end
 
         #Body tests
@@ -43,7 +44,7 @@ describe ForumTopic do
     private
 
     def create_forum_topic(options={})
-      ForumTopics.create({
+      ForumTopic.create({
         title: "Forum topic title sample",
         body: "Forum topic body sample"
       }.merge(options))
