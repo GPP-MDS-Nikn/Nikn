@@ -5,7 +5,12 @@ describe ForumTheme, type: :model do
 
         it "Should create a valid instance of object forum_theme" do
   		    forum_theme = create_forum_theme
-  		    expect(forum_theme.valid?).to be_instance_of(forum_theme)
+  		    expect(forum_theme).to be_instance_of(ForumTheme)
+  	    end
+
+        it "Should create a valid instance of object forum_theme" do
+  		    forum_theme = create_forum_theme
+  		    expect(forum_theme.valid?).to be true
   	    end
     end
 
@@ -18,13 +23,14 @@ describe ForumTheme, type: :model do
         end
 
         it "shouldn't create a valid object with short title" do
-          forum_theme = create_forum_theme(title: "a" * (ForumPost::TITLE_MIN_LENGTH - 1))
+          forum_theme = create_forum_theme(title: "a" * (ForumTheme::TITLE_MIN_LENGTH - 1))
           expect(forum_theme.valid?).to be false
         end
 
         it "shouldn't create an object that already exist" do
-          forum_post = create_forum_post(title: "Forum theme title sample")
-          expect(forum_topic.valid?).to be false
+          forum_theme = create_forum_theme(title: "Forum theme title sample")
+          forum_theme2 = create_forum_theme(title: "Forum theme title sample")
+          expect(forum_theme2.valid?).to be false
         end
 
         #Description tests
@@ -34,7 +40,7 @@ describe ForumTheme, type: :model do
         end
 
         it "shouldn't create a valid object with short description" do
-          forum_theme = create_forum_theme(description: "a" * (ForumPost::DESCRIPTION_MIN_LENGTH - 1))
+          forum_theme = create_forum_theme(description: "a" * (ForumTheme::DESCRIPTION_MIN_LENGTH - 1))
           expect(forum_theme.valid?).to be false
         end
 
@@ -43,7 +49,7 @@ describe ForumTheme, type: :model do
     private
 
     def create_forum_theme(options={})
-      ForumThemes.create({
+      ForumTheme.create({
         title: "Forum theme title sample",
         description: "Forum theme description sample"
       }.merge(options))
