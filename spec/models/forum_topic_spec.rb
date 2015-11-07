@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe ForumTopics do
+describe ForumTopic do
     context "Creating a valid object and comparing parameters" do
 
         it "Should create a valid instance of object forum_topic" do
@@ -13,7 +13,7 @@ describe ForumTopics do
 
         #Title tests
         it "shouldn't create a valid object with empty title" do
-    	    forum_topic = create_forum_topic(:title nil)
+    	    forum_topic = create_forum_topic(:title => nil)
     	    expect(forum_topic.valid?).to be false
         end
 
@@ -29,7 +29,7 @@ describe ForumTopics do
 
         #Body tests
         it "shouldn't create a valid object with empty title" do
-    	    forum_topic = create_forum_topic(:body nil)
+    	    forum_topic = create_forum_topic(:body => nil)
     	    expect(forum_topic.valid?).to be false
         end
 
