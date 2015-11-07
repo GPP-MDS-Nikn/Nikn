@@ -1,4 +1,8 @@
 Rails.application.configure do
+# Initialize rails logger
+
+  Rails.logger = Logger.new(STDOUT)
+  config.log_level = :debug
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

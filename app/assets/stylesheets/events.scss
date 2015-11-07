@@ -80,3 +80,24 @@
 	text-transform: none;
 	text-align: left;
 }
+
+/* Social Network Buttons */
+
+
+.social-buttons {
+  clear: both;
+  text-align: right;
+  display: inline-block;
+}
+.social-buttons {
+  .each_button{
+    float:right;
+    margin: 1%;
+  }
+  .twitter_button {
+  }
+  .pinit_button {
+  }
+  .facebook_button {
+  }
+}

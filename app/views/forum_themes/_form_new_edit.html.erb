@@ -1,0 +1,14 @@
+<!--This file contains the templeate of fields for creating and editing a new theme-->
+
+<h1><%= action_name %></h1>
+
+        <%= form_for(@forum_theme) do |field| %>
+            <p>Tema: </p>
+            <%= field.text_field :title%>
+
+            <p>Descrição: </p>
+            <%= field.text_field :description%>
+            
+            <%= field.submit "criar tema"%>
+        <% end %>
+    
