@@ -6,18 +6,18 @@
 <table class="table table-striped w">
   <thead>
     <tr>
-      <th>Municipio</th>
-      <th>estado</th>
-      <th>uf</th>
+      <th>Nome</th>
+      <th>Cidade</th>
+      <th>UF</th>
     </tr>
   </thead>
 
   <tbody>
     <% @care_units.each do |unit| %>
     <tr>
-      <td><%= unit.municipio %></td>
-      <td><%= unit.estado %></td>
-      <td><%= unit.uf %></td>
+      <td><%= unit.name %></td>
+      <td><%= unit.city %></td>
+      <td><%= unit.district %></td>
     </tr>
     <% end %>
   </tbody>
