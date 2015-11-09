@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>District:</strong>
+  <%= @care_unit.district %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @care_unit.category %>
+</p>
+
+<p>
+  <strong>Institution:</strong>
+  <%= @care_unit.institution %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @care_unit.description %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @care_unit.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @care_unit.address %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @care_unit.zip_code %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @care_unit.city %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @care_unit.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @care_unit.email %>
+</p>
+
+<p>
+  <strong>Site:</strong>
+  <%= @care_unit.site %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @care_unit.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @care_unit.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_care_unit_path(@care_unit) %> |
+<%= link_to 'Back', care_units_path %>
