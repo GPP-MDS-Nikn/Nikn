@@ -5,6 +5,7 @@ class CreateForumPosts < ActiveRecord::Migration
       t.text :content
       t.references :forum_topic, index: true
       t.references :forum_theme, index: true
+      t.integer :reports
       t.timestamps null: false
     end
   end
