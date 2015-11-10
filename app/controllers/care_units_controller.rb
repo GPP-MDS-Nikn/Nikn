@@ -5,6 +5,11 @@ class CareUnitsController < ApplicationController
   # GET /care_units.json
   def index
     @care_units = CareUnit.all
+    @hash = Gmaps4rails.build_markers(@care_units) do |care_unit, marker|
+      marker.lat care_unit.latitude
+      marker.lng care_unit.longitude
+      marker.infowindow care_unit.name
+    end
   end
 
   # GET /care_units/1

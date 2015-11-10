@@ -2,7 +2,7 @@ class CareUnit < ActiveRecord::Base
   # Impossible to create a care unit without a district
   validates(:district, presence: true)
   # The district field should have only 2 upercase characters
-  district_regex = /\A[A-Z]{2}\z/ 
+  district_regex = /\A[A-Z]{2}\z/
   wrong_format_message = "Only allow 2 upercase characters."
   validates(:district, format: { with: district_regex, message: wrong_format_message })
   # The size of the string must be 2 (DF, MG, BA)
@@ -68,10 +68,15 @@ class CareUnit < ActiveRecord::Base
   # Some institutions don't have a web page.
 
   # Impossible to create a care unit without a latitude and longitude coordinates
-  validates(:latitude, :longitude, presence: true) 
+  validates(:latitude, :longitude, presence: true)
 
   # Method to verify if the email field wasn't filled
   def blank_email?
     return email == ""
   end
+
+  geocoded_by :address
+  geocoded_by :district
+  geocoded_by :city
+  after_validation :geocode
 end
