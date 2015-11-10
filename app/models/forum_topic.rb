@@ -9,6 +9,7 @@ class ForumTopic < ActiveRecord::Base
 
 	validates :title, presence: true, :length => {:minimum => TITLE_MIN_LENGTH}, uniqueness: true
 	validates :body, presence: true, :length => {:minimum => BODY_MIN_LENGTH}
+
 	private
 		def default_values #this will initialize 'reports' attribute with default value 0
 			self.reports ||= 0
