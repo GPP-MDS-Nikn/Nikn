@@ -4,21 +4,27 @@
 
 <div class="img-responsive aspect data_background"></div>
 <table class="table table-striped w">
-  <thead>
+  <thead class="text-position">
     <tr>
       <th>Nome</th>
+      <th>Categoria</th>
+      <th>Instituição</th>
       <th>Cidade</th>
-      <th>UF</th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="text-position">
     <% @care_units.each do |unit| %>
-    <tr>
-      <td><%= unit.name %></td>
-      <td><%= unit.city %></td>
-      <td><%= unit.district %></td>
-    </tr>
+        <tr>
+          <td>
+            <%= link_to(unit) do %>
+              <%= unit.name %>
+            <% end %>
+          </td>
+          <td><%= unit.category %></td>
+          <td><%= unit.institution %></td>
+          <td><%= unit.district %></td>
+        </tr>
     <% end %>
   </tbody>
 </table>
