@@ -41,7 +41,7 @@ class PortalPostsController < ApplicationController
       render :edit
     end
   end
-
+  
   # DELETE /portal_posts/<post:id>
   def destroy
     @portal_post.destroy

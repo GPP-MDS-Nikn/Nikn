@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Regiao:</strong>
+  <%= @mortality_rate.regiao %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @mortality_rate.nome %>
+</p>
+
+<p>
+  <strong>Taxa:</strong>
+  <%= @mortality_rate.taxa %>
+</p>
+
+<%= link_to 'Edit', edit_mortality_rate_path(@mortality_rate) %> |
+<%= link_to 'Back', mortality_rates_path %>
