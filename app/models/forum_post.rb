@@ -19,4 +19,5 @@ class ForumPost < ActiveRecord::Base
 	private
 		def default_values
 			self.reports ||= 0
+		end
 end

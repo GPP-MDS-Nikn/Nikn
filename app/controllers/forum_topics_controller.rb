@@ -43,9 +43,14 @@ class ForumTopicsController < ApplicationController
 		@forum_topic.destroy
 		redirect_to @forum_theme
 	end
+
 	def report
 		@forum_post = ForumPost.find(params[:id])
 		@forum_post.reports += 1
+		@forum_post.save
+
+	end
+
 	private
 
   	def forum_topic_params

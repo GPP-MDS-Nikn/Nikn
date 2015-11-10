@@ -4,8 +4,10 @@
 </div>
 <%@forum_topic.forum_posts.each do |post|%>
 	<p><%= post.content %>
+	   <%= post.reports %>
 		<%= link_to 'apagar', forum_topic_forum_post_path(@forum_topic, post),
             :confirm => 'Are you sure?', :method => :delete %>
         <%= link_to 'editar', edit_forum_topic_forum_post_path(@forum_topic, post) %> </p>
+		<%= link_to "denunciar",  report_post_path(@forum_topic, post), remote: true %>
 	<% end %>
 <%= render 'forum_posts/form' %>
