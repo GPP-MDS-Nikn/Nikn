@@ -27,10 +27,4 @@ private
         }.merge(options))
     end
 
-    def post_params(options={})
-        return ({
-            content: "content"
-        }.merge(options))
-    end
-
 end
