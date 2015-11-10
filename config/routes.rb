@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :admins
 
   resources :ongs
-  get "forum_topics/:id/report" => 'forum_topics#report', as: :report_post
+  get "forum_topics/:id/report" => 'forum_topics#report_post', as: :report_post
   get "admins/reports_index" => 'admins#reports_index'
   resources :forum_themes do
     resources :forum_topics

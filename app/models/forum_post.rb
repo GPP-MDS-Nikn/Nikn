@@ -17,7 +17,7 @@ class ForumPost < ActiveRecord::Base
 	validates(:content, presence: true)
 	validates(:content, length: {in: 2..1000})
 	private
-		def default_values
+		def default_values #this will initialize 'reports' attribute with default value 0
 			self.reports ||= 0
 		end
 end
