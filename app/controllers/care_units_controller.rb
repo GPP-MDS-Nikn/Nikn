@@ -4,7 +4,11 @@ class CareUnitsController < ApplicationController
   # GET /care_units
   # GET /care_units.json
   def index
-    @care_units = CareUnit.all
+    if params[:search]
+      @care_units = CareUnit.search(params[:search])
+    else
+      @care_units = CareUnit.all
+    end
   end
 
   # GET /care_units/1
