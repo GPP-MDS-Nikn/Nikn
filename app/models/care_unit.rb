@@ -70,8 +70,20 @@ class CareUnit < ActiveRecord::Base
   # Impossible to create a care unit without a latitude and longitude coordinates
   validates(:latitude, :longitude, presence: true) 
 
-  # Method to verify if the email field wasn't filled
-  def blank_email?
-    return email == ""
-  end
+  private
+    # Method to verify if the email field wasn't filled
+    def blank_email?
+      return email == ""
+    end
+
+    # Method to turn the model searchable
+    # This will work in development with SQLite. If you switch to
+    # PostgreSQL in productionm you may need to change
+    def self.search(search)
+      where("name LIKE ?", "%#{search}%")
+      where("city LIKE ?", "%#{search}%")
+      where("institution LIKE ?", "%#{search}%")
+      where("site LIKE ?", "%#{search}%")
+      where("address LIKE ?", "%#{search}")
+    end
 end
