@@ -1,32 +1,33 @@
 class CareUnitsController < ApplicationController
   before_action :set_care_unit, only: [:show, :edit, :update, :destroy]
 
-  # GET /care_units
-  # GET /care_units.json
   def index
+    # This conditional structure returns to the view the result of
+    # the user search in case of a request.
     if params[:search]
       @care_units = CareUnit.search(params[:search])
     else
       @care_units = CareUnit.all
     end
+
+    # This hash returns all the map points to plot in the Google map plugin.
+    @hash = Gmaps4rails.build_markers(@care_units) do |care_unit, marker|
+      marker.lat care_unit.latitude
+      marker.lng care_unit.longitude
+      marker.infowindow care_unit.name
+    end
   end
 
-  # GET /care_units/1
-  # GET /care_units/1.json
   def show
   end
 
-  # GET /care_units/new
   def new
     @care_unit = CareUnit.new
   end
 
-  # GET /care_units/1/edit
   def edit
   end
 
-  # POST /care_units
-  # POST /care_units.json
   def create
     @care_unit = CareUnit.new(care_unit_params)
 
@@ -41,8 +42,6 @@ class CareUnitsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /care_units/1
-  # PATCH/PUT /care_units/1.json
   def update
     respond_to do |format|
       if @care_unit.update(care_unit_params)
@@ -55,8 +54,6 @@ class CareUnitsController < ApplicationController
     end
   end
 
-  # DELETE /care_units/1
-  # DELETE /care_units/1.json
   def destroy
     @care_unit.destroy
     respond_to do |format|
@@ -66,12 +63,10 @@ class CareUnitsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_care_unit
       @care_unit = CareUnit.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def care_unit_params
       params.require(:care_unit).permit(:district, :category, :institution, :description, :name, :address, :zip_code, :city, :phone, :email, :site, :latitude, :longitude)
     end
