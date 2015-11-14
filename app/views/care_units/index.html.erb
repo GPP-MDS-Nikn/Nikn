@@ -3,30 +3,41 @@
 <h1 class="w">Dados de Unidades de Atendimento a Mulher</h1>
 
 <div class="img-responsive aspect data_background"></div>
-<table class="table table-striped w">
-  <thead class="text-position">
-    <tr>
-      <th>Nome</th>
-      <th>Categoria</th>
-      <th>Instituição</th>
-      <th>Cidade</th>
-    </tr>
-  </thead>
 
-  <tbody class="text-position">
-    <% @care_units.each do |unit| %>
-        <tr>
-          <td>
-            <%= link_to(unit) do %>
-              <%= unit.name %>
-            <% end %>
-          </td>
-          <td><%= unit.category %></td>
-          <td><%= unit.institution %></td>
-          <td><%= unit.district %></td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="search-form">
+  <%= form_tag(care_units_path, method: "get") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Buscar UDA", class: "form-control search-form-field"%>
+    <%= submit_tag "Buscar", class: "search-form-button btn btn-default" %>
+  <% end %>
+</div>
 
+<% if @care_units.present? %>
+  <table class="table table-striped w">
+    <thead class="text-position">
+      <tr>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Instituição</th>
+        <th>Cidade</th>
+      </tr>
+    </thead>
+
+    <tbody class="text-position">
+      <% @care_units.each do |unit| %>
+          <tr>
+            <td>
+              <%= link_to(unit) do %>
+                <%= unit.name %>
+              <% end %>
+            </td>
+            <td><%= unit.category %></td>
+            <td><%= unit.institution %></td>
+            <td><%= unit.district %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Desculpe, nenhuma UDA encontrada.</p>
+<% end %>
 <br>
