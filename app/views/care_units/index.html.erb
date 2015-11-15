@@ -60,10 +60,106 @@
       </div>
 
       <div class="modal-body">
-        <%= render partial: "care_unit_information" %>
+
+        <!-- Display the UDA information -->
+        <div class="uda-information">
+          <h2>Informações:</h2>
+          <dl>
+            <!-- Print the unit care address and district -->
+            <dt>
+              <strong>
+                Endereço:
+              </strong>
+            </dt>
+            <dd>
+            <%= unit.address + " - " + unit.city + " - " + unit.district %>
+            </dd>
+
+            <!-- Print the unit care's phone number -->
+            <dt>
+              <strong>
+                Telefone:
+              </strong>
+            </dt>
+            <dd>
+              <%= unit.phone %>
+            </dd>
+
+            <!-- Print the unit care's category -->
+            <dt>
+              <strong>
+                Categoria:
+              </strong>
+            </dt>
+            <dd>
+              <%= unit.category %>
+            </dd>
+          </dl>
+          <br>
+          <!-- Diplay this only if the user clicks in the link -->
+          <div class="container">
+            <div class="row">
+              <div class="span4 collapse-group">
+                ADFADSFADSFASDFA
+                <p><a class="btn" href="#">Mais informações »</a></p>
+                <div class="collapse">
+                  <h4>Instituição:</h4>
+                  <p><%= unit.institution %>
+                  <hr>
+                  <h4>Descrição dos serviços:</h4>
+                  <div class="unit-description">
+                    <%= unit.description %>
+                  <div>
+
+                  <!-- Display some informations like e-mail and site -->
+                  <dl>
+                   <!-- Email -->
+                   <dt>
+                      <strong>
+                        Email:
+                      </strong>
+                    </dt>
+                    <dd>
+                      <% if unit.email.present? %>
+                        <%= unit.email %>
+                      <% else %>
+                        <p> - </p>
+                      <% end %>
+                    </dd>
+
+                    <!-- Site -->
+                    <dt>
+                      <strong>
+                        Site:
+                      </strong>
+                    </dt>
+                    <dd>
+                      <% if unit.site.present? %>
+                        <%= unit.site %>
+                      <% else %>
+                        <p> - </p>
+                      <% end %>
+                    </dd>
+                  </dl>
+
+                </div><!-- End of collapse -->
+              </div><!-- End of collapse-group -->
+            </div><!-- End of row -->
+          </div><!-- End of container -->
+        </div><!-- End of UDA information -->
+<!-- Javascript to collapse some text -->
+<%= javascript_tag do %>
+  $('.row .btn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $collapse = $this.closest('.collapse-group').find('.collapse');
+    $collapse.collapse('toggle');
+  });
+<% end %>
       </div>
 
       <div class="modal-footer">
+        <%= link_to 'Edit', edit_care_unit_path(unit) %> |
         <button class="btn" data-dismiss="modal">Fechar</button>
       </div>
     </div>
