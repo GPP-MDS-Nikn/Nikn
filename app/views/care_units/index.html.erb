@@ -48,9 +48,34 @@
           <td><%= unit.category %></td>
           <td><%= unit.institution %></td>
           <td><%= unit.district %></td>
-          <td><a class="btn" href="#">View details »</a></td>
-          </div>
+          <td><a class="btn" href="#" id="openBtn<%= unit.id =%>">View details »</a></td>
         </tr>
+
+<div id="myModal<%= unit.id %>" class="modal fade" tabindex='-1' role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3><%= unit.name %></h3>
+      </div>
+
+      <div class="modal-body">
+        <%= render partial: "care_unit_information" %>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  $('#openBtn<%= unit.id %>').click(function(){
+    $('#myModal<%= unit.id %>').modal({show:true})
+  });
+<% end %>
+
       <% end %>
     </tbody>
   </table>
@@ -59,5 +84,3 @@
 <% end %>
 <br>
 
-<script>
-</script>
