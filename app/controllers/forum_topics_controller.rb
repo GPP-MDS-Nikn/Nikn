@@ -1,6 +1,6 @@
 class ForumTopicsController < ApplicationController
-	before_action :find_topic, :only => :new_report_topic, :create_report_topic
-	before_action :find_post, :only => :new_report_post, :create_report_post
+	before_action :find_topic, :only => [:new_report_topic, :create_report_topic]
+	before_action :find_post, :only => [:new_report_post, :create_report_post]
 
 	def show
 		@forum_topic = ForumTopic.find(params[:id])
