@@ -1,0 +1,4 @@
+<h4> Para concluir a denúncia, complete o captcha abaixo </h4>
+<%= @forum_post.content %>
+ <%= recaptcha_tags %>
+ <%= button_to "denunciar!", create_report_post_path(@forum_post.id) %>

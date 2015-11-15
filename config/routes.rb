@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   resources :ongs
   get "forum_topics/:id/report_topic" => 'forum_topics#report_topic', as: :report_topic
-  get "forum_topics/:id/report_post" => 'forum_topics#report_post', as: :report_post
+  get "forum_topics/:id/new_report_post" => 'forum_topics#new_report_post', as: :new_report_post
+  post "forum_topics/:id/create_report_post" => 'forum_topics#create_report_post', as: :create_report_post
   get "admins/reports_index" => 'admins#reports_index'
   resources :forum_themes do
     resources :forum_topics
