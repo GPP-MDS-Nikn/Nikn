@@ -1,4 +1,6 @@
 class ForumTopicsController < ApplicationController
+	before_action :find_topic, :only => :new_report_topic, :create_report_topic
+	before_action :find_post, :only => :new_report_post, :create_report_post
 
 	def show
 		@forum_topic = ForumTopic.find(params[:id])
@@ -61,6 +63,21 @@ class ForumTopicsController < ApplicationController
 		end
 	end
 
+	def new_report_topic
+	end
+
+	def create_report_topic
+		if verify_recaptcha
+			@forum_topic.reports += 1
+			@forum_topic.save
+			redirect_to new_report_topic_path
+			flash[:success] = "Uhuul!"
+		else
+			redirect_to new_report_topic_path
+	      	flash[:warning] = "captcha bugado!"
+		end
+	end
+
 	def report_topic
 		@forum_topic = ForumTopic.find(params[:id])
 		@forum_topic.reports += 1
@@ -75,5 +92,9 @@ class ForumTopicsController < ApplicationController
 
 	def find_post
 		@forum_post = ForumPost.find(params[:id])
+	end
+
+	def find_topic
+		@forum_topic = ForumTopic.find(params[:id])
 	end
 end
