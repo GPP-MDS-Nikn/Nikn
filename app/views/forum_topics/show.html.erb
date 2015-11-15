@@ -5,11 +5,10 @@
 <%= link_to "denunciar tópico",  report_topic_path(@forum_topic) %>
 <%@forum_topic.forum_posts.each do |post|%>
 	<p><%= post.content %>
-	   <%= post.reports %>
 		<%= link_to 'apagar', forum_topic_forum_post_path(@forum_topic, post),
             :confirm => 'Are you sure?', :method => :delete %>
-        <%= link_to 'editar', edit_forum_topic_forum_post_path(@forum_topic, post) %> </p>
-		<a href="javascript:" onclick="window.open('<%=new_report_post_path(post, @forum_topic%>');" target="_blank">New Report</a>
-		<%#= link_to "denunciar post",  report_post_path(post, @forum_topic) %>
+        <%= link_to 'editar', edit_forum_topic_forum_post_path(@forum_topic, post) %>
+		<a href="javascript:" onclick="window.open('<%=new_report_post_path(post, @forum_topic)%>');">denunciar post</a>
+	</p>
 	<% end %>
 <%= render 'forum_posts/form' %>

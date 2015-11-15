@@ -1,4 +1,8 @@
 <h4> Para concluir a denúncia, complete o captcha abaixo </h4>
 <%= @forum_post.content %>
- <%= recaptcha_tags %>
- <%= button_to "denunciar!", create_report_post_path(@forum_post.id) %>
+<%= @forum_post.reports %>
+
+<%= form_for @forum_post, :url => url_for(:controller => 'forum_topics', :action => 'create_report_post') do |f| %>
+    <%= recaptcha_tags %>
+    <%= f.submit %>
+<% end %>

@@ -44,10 +44,21 @@ class ForumTopicsController < ApplicationController
 		redirect_to @forum_theme
 	end
 
-	def report_post
-		@forum_post = ForumPost.find(params[:id])
-		@forum_post.reports += 1
-		@forum_post.save
+	def new_report_post
+		find_post
+	end
+
+	def create_report_post
+		find_post
+		if verify_recaptcha
+			@forum_post.reports += 1
+			@forum_post.save
+			redirect_to new_report_post_path
+			flash[:success] = "Uhuul!"
+		else
+			redirect_to new_report_post_path
+	      	flash[:warning] = "captcha bugado!"
+		end
 	end
 
 	def report_topic
@@ -62,4 +73,7 @@ class ForumTopicsController < ApplicationController
 	    	params.require(:forum_topic).permit(:title, :body, :author)
 	end
 
+	def find_post
+		@forum_post = ForumPost.find(params[:id])
+	end
 end
