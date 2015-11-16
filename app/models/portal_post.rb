@@ -1,8 +1,8 @@
 class PortalPost < ActiveRecord::Base
-  # Use forum_theme as a rolify resource
+  # Use portal_post as a rolify resource
   resourcify
 
-  # Each forum_topic has an owner and some forum_posts
+  # Each portal_post has an owner
   belongs_to :ong
 	
 	validates :author, presence: true

@@ -22,6 +22,9 @@ class PortalPostsController < ApplicationController
   # POST /portal_posts
   def create
     @portal_post = PortalPost.new(portal_post_params)
+    
+    # Associate the portal_post created along with its owner
+    @portal_post.ong_id = current_ong.id 
 
     if @portal_post.save
       flash[:success] = "A postagem \"#{ @portal_post.title }\" foi criada com sucesso."

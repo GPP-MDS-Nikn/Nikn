@@ -29,6 +29,9 @@ class EventsController < ApplicationController
 		# Construct with permitted params
 		@event = Event.new(event_params)
 
+		# Associate the created event along with its owner
+    @event.ong_id = current_ong.id
+
 		if @event.save
 
 			# Display a success message after render the next page

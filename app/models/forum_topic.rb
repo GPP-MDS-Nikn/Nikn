@@ -1,5 +1,5 @@
 class ForumTopic < ActiveRecord::Base
-	# Use forum_theme as a rolify resource
+	# Use forum_topic as a rolify resource
   resourcify
 
   # Each forum_topic has an owner and some forum_posts

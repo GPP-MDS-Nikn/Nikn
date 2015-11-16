@@ -1,8 +1,8 @@
 class Event < ActiveRecord::Base
-	# Use forum_theme as a rolify resource
+	# Use event as a rolify resource
   resourcify
 
-  # Each forum_topic has an owner and some forum_posts
+  # Each event has an owner
   belongs_to :ong
 
 	# Event Model Constants
