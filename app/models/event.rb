@@ -1,4 +1,10 @@
 class Event < ActiveRecord::Base
+	# Use forum_theme as a rolify resource
+  resourcify
+
+  # Each forum_topic has an owner and some forum_posts
+  belongs_to :ong
+
 	# Event Model Constants
 	TITLE_MIN_LENGTH = 3  # characters
 	TITLE_MAX_LENGTH = 60 # characters
