@@ -1,4 +1,7 @@
 class ForumPostsController < ApplicationController
+	# Use this controller as a resource of CanCan and Rolify
+  load_and_authorize_resource
+
 	def create
 	    @forum_topic = ForumTopic.find(params[:forum_topic_id])
 		@forum_post = @forum_topic.forum_posts.build(forum_post_params)

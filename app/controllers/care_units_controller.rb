@@ -1,6 +1,9 @@
 class CareUnitsController < ApplicationController
   before_action :set_care_unit, only: [:show, :edit, :update, :destroy]
 
+  # Use this controller as a resource of CanCan and Rolify
+  load_and_authorize_resource
+
   def index
     @care_units = CareUnit.all
   end
@@ -19,3 +22,4 @@ class CareUnitsController < ApplicationController
       params.require(:care_unit).permit(:municipio, :estado, :cod_mun7, :cod_mun6, :uf, :localizacao)
   end
 end
+  

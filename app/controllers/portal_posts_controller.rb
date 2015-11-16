@@ -1,6 +1,9 @@
 class PortalPostsController < ApplicationController
   before_action :set_portal_post, only: [:show, :edit, :update, :destroy]
 
+  # Use this controller as a resource of CanCan and Rolify
+  load_and_authorize_resource
+
   # GET /portal_posts
   def index
     @portal_posts = PortalPost.all
