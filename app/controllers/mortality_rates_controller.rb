@@ -1,4 +1,7 @@
 class MortalityRatesController < ApplicationController
+  # Bypass authorization check for charts controller.
+  skip_authorization_check
+
   before_action :set_mortality_rate, only: [:show, :ediit, :update, :destroy]
 
   # The frequencies list must have this size

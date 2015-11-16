@@ -1,4 +1,7 @@
 class ParsersController < ApplicationController
+  # Bypass authorization check for parsers controller.
+  skip_authorization_check
+
   def importRate
     begin
       Parser.importRate(params[:file])
