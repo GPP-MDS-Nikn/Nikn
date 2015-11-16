@@ -1,7 +1,18 @@
 class Ability
   include CanCan::Ability
 
+ForumTheme ForumTopic ForumPost Event PortalPost
   def initialize(user)
+    user ||= User.new # guest user (not logged in)
+    if user.has_role? :admin
+        can :manage, [ForumTheme, ForumTopic, ForumPost, Event, PortalPost]
+    elsif user.has_role? :ong
+      can :manage, [ForumTopic, Event, PortalPost], :ong_id => user.id
+      can :create, [ForumTopic, Event, PortalPost]
+    end
+    can :create, ForumPost
+    can :read, [ForumTheme, ForumTopic, ForumPost, Event, PortalPost]
+  end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
