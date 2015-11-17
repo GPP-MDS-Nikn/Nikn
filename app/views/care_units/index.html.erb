@@ -19,7 +19,7 @@
 </script>
 
 <div class="img-responsive aspect data_background"></div>
-
+<br>
 <div class="search-form">
   <%= form_tag(care_units_path, method: "get") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Buscar UDA", class: "form-control search-form-field"%>
@@ -40,11 +40,7 @@
     <tbody class="text-position">
       <% @care_units.each do |unit| %>
         <tr>
-          <td>
-            <%= link_to(unit) do %>
-              <%= unit.name %>
-            <% end %>
-          </td>
+          <td><%= unit.name %></td>
           <td><%= unit.category %></td>
           <td><%= unit.institution %></td>
           <td><%= unit.district %></td>
@@ -100,8 +96,7 @@
           <div class="container">
             <div class="row">
               <div class="span4 collapse-group">
-                ADFADSFADSFASDFA
-                <p><a class="btn" href="#">Mais informações »</a></p>
+                <p><a class="modalbtn" href="#">Mais informações »</a></p>
                 <div class="collapse">
                   <h4>Instituição:</h4>
                   <p><%= unit.institution %>
@@ -149,7 +144,7 @@
         </div><!-- End of UDA information -->
 <!-- Javascript to collapse some text -->
 <%= javascript_tag do %>
-  $('.row .btn').on('click', function(e) {
+  $('.row .modalbtn').on('click', function(e) {
     e.preventDefault();
     var $this = $(this);
     var $collapse = $this.closest('.collapse-group').find('.collapse');
@@ -176,7 +171,7 @@
     </tbody>
   </table>
 <% else %>
-  <p>Desculpe, nenhuma UDA encontrada.</p>
+  <p class="center-block">Desculpe, nenhuma UDA encontrada.</p>
 <% end %>
 <br>
 
