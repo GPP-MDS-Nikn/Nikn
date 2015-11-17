@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: :true) do
       resources :portal_posts
       resources :care_units
+      resources :events
     end
   end
 
