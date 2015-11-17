@@ -68,7 +68,8 @@ class CareUnit < ActiveRecord::Base
   # Some institutions don't have a web page.
 
   # Impossible to create a care unit without a latitude and longitude coordinates
-  validates(:latitude, :longitude, presence: true)
+  validates(:latitude, presence: true)
+  validates(:longitude, presence: true)
 
   # This is necessary to the Google Map plugin works.
   geocoded_by :address

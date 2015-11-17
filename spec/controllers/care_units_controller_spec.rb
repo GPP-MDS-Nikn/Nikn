@@ -24,11 +24,38 @@ RSpec.describe CareUnitsController, type: :controller do
   # CareUnit. As you add validations to CareUnit, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      district:       "TT",
+      category:       "a"*CareUnit::CATEGORY_MIN_LENGTH,
+      institution:    "a"*CareUnit::INSTITUTION_MIN_LENGTH,
+      description:    "a"*CareUnit::DESCRIPTION_MIN_LENGTH,
+      name:           "a"*CareUnit::NAME_MIN_LENGTH,
+      address:        "a"*CareUnit::ADDRESS_MIN_LENGTH,
+      zip_code:       "12345-123",
+      city:           "a"*CareUnit::CITY_MIN_LENGTH,
+      phone:          "(12) 3456-7890",
+      email:          "test@test.tt",
+      site:           "www.test.rsp.ec",
+      latitude:       "12.123456789",
+      longitude:      "12.123456789"
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      district:       "TTAS",
+      category:       "a"*(CareUnit::CATEGORY_MIN_LENGTH - 1),
+      institution:    "a"*(CareUnit::INSTITUTION_MIN_LENGTH - 1),
+      description:    "a"*(CareUnit::DESCRIPTION_MIN_LENGTH - 1),
+      name:           "a"*(CareUnit::NAME_MIN_LENGTH - 1),
+      address:        "a"*(CareUnit::ADDRESS_MIN_LENGTH - 1),
+      zip_code:       "124523",
+      city:           "a"*(CareUnit::CITY_MIN_LENGTH - 1),
+      phone:          "(12 56-7890",
+      email:          "test@test",
+      latitude:       nil,
+      longitude:      nil
+    }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -41,14 +68,6 @@ RSpec.describe CareUnitsController, type: :controller do
       care_unit = CareUnit.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:care_units)).to eq([care_unit])
-    end
-  end
-
-  describe "GET #show" do
-    it "assigns the requested care_unit as @care_unit" do
-      care_unit = CareUnit.create! valid_attributes
-      get :show, {:id => care_unit.to_param}, valid_session
-      expect(assigns(:care_unit)).to eq(care_unit)
     end
   end
 
@@ -103,15 +122,22 @@ RSpec.describe CareUnitsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          district:       "TT",
+          category:       "a"*CareUnit::CATEGORY_MIN_LENGTH,
+          institution:    "a"*CareUnit::INSTITUTION_MIN_LENGTH,
+          description:    "a"*CareUnit::DESCRIPTION_MIN_LENGTH,
+          name:           "a"*CareUnit::NAME_MIN_LENGTH,
+          address:        "a"*CareUnit::ADDRESS_MIN_LENGTH,
+          zip_code:       "12345-123",
+          city:           "a"*CareUnit::CITY_MIN_LENGTH,
+          phone:          "(12) 3456-7890",
+          email:          "test@test.tt",
+          site:           "www.test.rsp.ec",
+          latitude:       "12.123456789",
+          longitude:      "12.123456789"
+        }
       }
-
-      it "updates the requested care_unit" do
-        care_unit = CareUnit.create! valid_attributes
-        put :update, {:id => care_unit.to_param, :care_unit => new_attributes}, valid_session
-        care_unit.reload
-        skip("Add assertions for updated state")
-      end
 
       it "assigns the requested care_unit as @care_unit" do
         care_unit = CareUnit.create! valid_attributes
@@ -122,7 +148,7 @@ RSpec.describe CareUnitsController, type: :controller do
       it "redirects to the care_unit" do
         care_unit = CareUnit.create! valid_attributes
         put :update, {:id => care_unit.to_param, :care_unit => valid_attributes}, valid_session
-        expect(response).to redirect_to(care_unit)
+        expect(response).to redirect_to(care_units_path)
       end
     end
 
