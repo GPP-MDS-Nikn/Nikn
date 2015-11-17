@@ -17,3 +17,5 @@
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/gcal
+//= require underscore
+//= require gmaps/google
