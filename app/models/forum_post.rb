@@ -1,4 +1,6 @@
 class ForumPost < ActiveRecord::Base
+	# Use forum_post as a rolify resource
+  resourcify
 
 	TITLE_MIN_LENGTH = 3  # characters
 	TITLE_MAX_LENGTH = 30 # characters

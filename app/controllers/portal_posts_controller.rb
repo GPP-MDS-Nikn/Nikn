@@ -1,6 +1,9 @@
 class PortalPostsController < ApplicationController
   before_action :set_portal_post, only: [:show, :edit, :update, :destroy]
 
+  # Use this controller as a resource of CanCan and Rolify
+  load_and_authorize_resource
+
   # GET /portal_posts
   def index
     @portal_posts = PortalPost.all
@@ -22,6 +25,9 @@ class PortalPostsController < ApplicationController
   # POST /portal_posts
   def create
     @portal_post = PortalPost.new(portal_post_params)
+    
+    # Associate the portal_post created along with its owner
+    @portal_post.ong_id = current_ong.id 
 
     if @portal_post.save
       flash[:success] = "A postagem \"#{ @portal_post.title }\" foi criada com sucesso."

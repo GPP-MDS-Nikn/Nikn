@@ -17,8 +17,10 @@
 	<% end %>
 </div>
 
-<a href="/portal_posts/new">
-	<button type="button" class="btn btn-default center-block" aria-label="Left Align">
-		<p>Nova Postagem</p>
-	</button>
-</a>
+<% if ong_signed_in? %>
+	<a href="/portal_posts/new">
+		<button type="button" class="btn btn-default center-block" aria-label="Left Align">
+			<p>Nova Postagem</p>
+		</button>
+	</a>
+<% end %>

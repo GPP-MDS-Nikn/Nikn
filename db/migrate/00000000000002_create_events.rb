@@ -1,6 +1,8 @@
 class CreateEvents < ActiveRecord::Migration
 	def change
 		create_table :events do |t|
+			t.belongs_to :ong, index: true
+
 			t.string :title
 			t.string :local
 			t.text :description

@@ -46,11 +46,13 @@
 	<!-- Do nothing -->
 <% end %>
 
-<div class = "event_creation_bar">
-	<br>
-	<a href="/events/new">
-		<button type="button" class="btn btn-default center-block" aria-label="Left Align">
-			<p>Novo Evento</p>
-		</button>
-	</a>
-</div>
+<% if ong_signed_in? %>
+	<div class = "event_creation_bar">
+		<br>
+		<a href="/events/new">
+			<button type="button" class="btn btn-default center-block" aria-label="Left Align">
+				<p>Novo Evento</p>
+			</button>
+		</a>
+	</div>
+<% end %>

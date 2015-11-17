@@ -30,19 +30,21 @@
 				<li>
 					<%= link_to "Eventos", events_path %>
 				</li>
-                <li>
-                  <%= link_to "Dados Abertos", "/opendata" %>
-                </li>
-				<li>
-                  <%if ong_signed_in?%>
-                      <a href="/ongs">Meu perfil</a>
-                    </li>
-                    <li>
-                      <%= link_to "Encerrar Sessão", destroy_ong_session_path, method: :delete %>
-                  <%else%>
-                    <%= link_to "Entrar", new_ong_session_path %>
-                  <%end%>
-                </li>
+        <li>
+          <%= link_to "Dados Abertos", "/opendata" %>
+        </li>
+				<% if ong_signed_in? %>
+          <li>
+            <a href="/ongs">Meu perfil</a>
+          </li>
+          <li>
+            <%= link_to "Encerrar Sessão", destroy_ong_session_path, method: :delete %>
+          </li>
+        <% else %>
+        	<li>
+          	<%= link_to "Entrar", new_ong_session_path %>
+          </li>
+        <% end %>
 			</ul>
 			<!-- /.navbar-collapse -->
 		</div>

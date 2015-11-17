@@ -6,14 +6,17 @@
 
 <div class="row">
 	<div class="col-md-12 center-block event_info">
-		<div class="btn-group pull-right" role="group" aria-label="...">
-			<%= link_to(edit_event_path(@event), type: "button", class: "btn btn-default") do %>
-				<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
-			<% end %>
-			<%= link_to(@event, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>
-				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-			<% end %>
-		</div>
+		<% if ong_signed_in? and (current_ong.has_role? :admin or 
+														 (current_ong.has_role? :ong and @event.ong_id === current_ong.id)) %>
+			<div class="btn-group pull-right" role="group" aria-label="...">
+				<%= link_to(edit_event_path(@event), type: "button", class: "btn btn-default") do %>
+					<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
+				<% end %>
+				<%= link_to(@event, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+				<% end %>
+			</div>
+		<% end %>
 
 		<div class = "col-md-5 no_padding">
 			<%if @event.image_file.present? %>

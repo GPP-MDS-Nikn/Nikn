@@ -1,4 +1,10 @@
 source 'https://rubygems.org'
+
+# Devise + CanCanCan + Rolify for authentication and authorization
+gem 'devise'
+gem 'cancancan'
+gem 'rolify'
+
 gem "social-buttons", '~> 0.3'
 #social-buttons gem lets us easily add social buttons to pages on our application (dur)
 gem 'devise'

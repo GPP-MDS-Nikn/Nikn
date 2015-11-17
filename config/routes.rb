@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   get "portal/new" => "portal_posts#new"
   post "portal/new" => "portal_posts#create"
 
-
-  #resources :forum_posts
-  #get "forum_posts" => "forum_posts#index"
-
+  # Add forum resources links
+  resources :forum_themes
+  resources :forum_topics
+  resources :forum_posts
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
