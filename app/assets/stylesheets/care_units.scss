@@ -22,3 +22,21 @@
   margin-left: 1%;
   width:10%;
 }
+
+.uda-information {
+  //border: 1px solid black;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+
+  .unit-description {
+    text-align: left;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
+.not-found {
+  clear: both;
+  text-align: center;
+}

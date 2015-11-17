@@ -93,50 +93,47 @@
           </dl>
           <br>
           <!-- Diplay this only if the user clicks in the link -->
-          <div class="container">
+          <div class="col-md-12 container">
             <div class="row">
               <div class="span4 collapse-group">
                 <p><a class="modalbtn" href="#">Mais informações »</a></p>
                 <div class="collapse">
-                  <h4>Instituição:</h4>
+                  <h2>Instituição:</h2>
                   <p><%= unit.institution %>
                   <hr>
-                  <h4>Descrição dos serviços:</h4>
+                  <h2>Descrição dos serviços:</h2>
                   <div class="unit-description">
                     <%= unit.description %>
-                  <div>
-
+                  </div>
+                  <hr/>
                   <!-- Display some informations like e-mail and site -->
-                  <dl>
-                   <!-- Email -->
-                   <dt>
-                      <strong>
-                        Email:
-                      </strong>
-                    </dt>
-                    <dd>
-                      <% if unit.email.present? %>
-                        <%= unit.email %>
-                      <% else %>
-                        <p> - </p>
-                      <% end %>
-                    </dd>
+                  <div class="aditional-information">
+                    <dl>
+                      <!-- Email -->
+                      <dt>
+                          Email:
+                      </dt>
+                      <dd>
+                        <% if unit.email.present? %>
+                          <%= unit.email %>
+                        <% else %>
+                          <p> - </p>
+                        <% end %>
+                      </dd>
 
-                    <!-- Site -->
-                    <dt>
-                      <strong>
-                        Site:
-                      </strong>
-                    </dt>
-                    <dd>
-                      <% if unit.site.present? %>
-                        <%= unit.site %>
-                      <% else %>
-                        <p> - </p>
-                      <% end %>
-                    </dd>
-                  </dl>
-
+                      <!-- Site -->
+                      <dt>
+                          Site:
+                      </dt>
+                      <dd>
+                        <% if unit.site.present? %>
+                          <%= unit.site %>
+                        <% else %>
+                          <p> - </p>
+                        <% end %>
+                      </dd>
+                    </dl>
+                  </div><!--End of aditional information -->
                 </div><!-- End of collapse -->
               </div><!-- End of collapse-group -->
             </div><!-- End of row -->
@@ -171,7 +168,9 @@
     </tbody>
   </table>
 <% else %>
-  <p class="center-block">Desculpe, nenhuma UDA encontrada.</p>
+  <div class="not-found">
+    <p>Desculpe, nenhuma UDA encontrada.</p>
+  </div>
 <% end %>
 <br>
 
