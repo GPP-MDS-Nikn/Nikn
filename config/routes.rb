@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  namespace :api do
+    namespace :v1 do
+      resources :portal_posts
+    end
+  end
+
   devise_for :ongs, :controllers => { registrations: 'registrations' }
   get 'signup' => 'ongs#new'
   resources :ongs
@@ -6,6 +13,7 @@ Rails.application.routes.draw do
   get "portal/list" => "portal_posts#list"
   get "portal/new" => "portal_posts#new"
   post "portal/new" => "portal_posts#create"
+  get "portal_posts/index_json" => "portal_posts#index_json"
 
 
   #resources :forum_posts
