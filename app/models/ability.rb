@@ -4,13 +4,13 @@ class Ability
     def initialize(user)
         user ||= Ong.new # guest user (not logged in)
         if user.has_role? :admin
-            can :manage, [ForumTheme, ForumTopic, ForumPost, Event, PortalPost]
+            can :manage, [ForumTheme, ForumTopic, ForumPost, Event, PortalPost, MortalityRate]
         elsif user.has_role? :ong
             can :manage, [ForumTopic, Event, PortalPost], :ong_id => user.id
             can :create, [ForumTopic, Event, PortalPost]
         end
         can :create, ForumPost
-        can :read, [ForumTheme, ForumTopic, ForumPost, Event, PortalPost]
+        can :read, [ForumTheme, ForumTopic, ForumPost, Event, PortalPost, MortalityRate]
     end
 
     # Define abilities for the passed in user here. For example:

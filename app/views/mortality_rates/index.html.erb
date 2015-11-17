@@ -24,7 +24,7 @@
 		<!-- This is the subtitles of the chart -->
 		<tr nowrap bgcolor="#CCCCFF">
 			<!-- Here, the first 'th' will never be displayed -->
-            <th class="freq">Taxas</th>
+      <th class="freq">Taxas</th>
 			<th class="freq">&lt; 8 %</th>
 			<th class="freq">8-10 %</th>
 			<th class="freq">10-12 %</th>
@@ -48,4 +48,6 @@
 </div>
 <br>
 
-<%= link_to 'New Mortality rate', new_mortality_rate_path %>
+<% if ong_signed_in? and current_ong.has_role? :admin %>
+	<%= link_to 'New Mortality rate', new_mortality_rate_path %>
+<% end %>

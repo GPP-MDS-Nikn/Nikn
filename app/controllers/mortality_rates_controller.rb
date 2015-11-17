@@ -1,6 +1,6 @@
 class MortalityRatesController < ApplicationController
-  # Bypass authorization check for charts controller.
-  skip_authorization_check
+  # Use this controller as a resource of CanCan and Rolify
+  load_and_authorize_resource
 
   before_action :set_mortality_rate, only: [:show, :ediit, :update, :destroy]
 

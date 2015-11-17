@@ -7,14 +7,17 @@
 			<p class="title pull-left"><%= @portal_post.title %></p>
 			<p class="subtitle pull-left"><%= @portal_post.created_at %>, por <%= @portal_post.author %> -</p>
 		</div>
-		<div class="btn-group pull-right" role="group" aria-label="...">
-			<%= link_to(edit_portal_post_path(@portal_post), type: "button", class: "btn btn-default") do %>
-				<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
-			<% end %>
-			<%= link_to(@portal_post, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>
-				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-			<% end %>
-		</div>
+		<% if ong_signed_in? and (current_ong.has_role? :admin or 
+														 (current_ong.has_role? :ong and @portal_post.ong_id === current_ong.id)) %>
+			<div class="btn-group pull-right" role="group" aria-label="...">
+				<%= link_to(edit_portal_post_path(@portal_post), type: "button", class: "btn btn-default") do %>
+					<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
+				<% end %>
+				<%= link_to(@portal_post, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+				<% end %>
+			</div>
+		<% end %>
 	</div>
 
 

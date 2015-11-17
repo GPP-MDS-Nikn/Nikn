@@ -10,6 +10,9 @@
   <%= @forum_post.content %>
 </p>
 
-<%= link_to 'Editar', edit_forum_post_path(@forum_post) %> |
-<%= link_to 'Apagar', forum_post_path(@forum_post), method: :delete, data: { confirm: 'Deseja apagar o post?' } %> |
+<% if ong_signed_in? and current_ong.has_role? :admin %>
+	<%= link_to 'Editar', edit_forum_post_path(@forum_post) %> |
+	<%= link_to 'Apagar', forum_post_path(@forum_post), method: :delete, data: { confirm: 'Deseja apagar o post?' } %>
+<% end %>
+
 <%= link_to 'Voltar', forum_posts_path %>
