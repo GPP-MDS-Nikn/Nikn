@@ -34,7 +34,7 @@ class CareUnitsController < ApplicationController
     respond_to do |format|
       if @care_unit.save
         format.html { redirect_to @care_unit, notice: 'Care unit was successfully created.' }
-        format.json { render :show, status: :created, location: @care_unit }
+        format.json { render :index, status: :created, location: care_units_path }
       else
         format.html { render :new }
         format.json { render json: @care_unit.errors, status: :unprocessable_entity }
@@ -45,8 +45,8 @@ class CareUnitsController < ApplicationController
   def update
     respond_to do |format|
       if @care_unit.update(care_unit_params)
-        format.html { redirect_to @care_unit, notice: 'Care unit was successfully updated.' }
-        format.json { render :show, status: :ok, location: @care_unit }
+        format.html { redirect_to care_units_path, notice: 'Care unit was successfully updated.' }
+        format.json { render :index, status: :ok, location: care_units_path }
       else
         format.html { render :edit }
         format.json { render json: @care_unit.errors, status: :unprocessable_entity }
