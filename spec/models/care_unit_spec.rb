@@ -255,12 +255,14 @@ RSpec.describe CareUnit, type: :model do
 
       # Test with wrong latitude
       it "should not be valid without a latitude" do
-        care_unit = create_care_unit({ latitude: nil })
+        care_unit = create_care_unit
+        care_unit.latitude = nil
         expect(care_unit).not_to be_valid
       end
 
       it "should not increase the database when the latitude is missing" do
-        care_unit = create_care_unit({ latitude: nil })
+        care_unit = create_care_unit
+        care_unit.latitude = nil
         expect{
           care_unit.save
         }.to change(CareUnit, :count).by(0)
@@ -268,12 +270,14 @@ RSpec.describe CareUnit, type: :model do
 
       # Test with wrong longitude
       it "should not be valid without a longitude" do
-        care_unit = create_care_unit({longitude: nil})
+        care_unit = create_care_unit
+        care_unit.longitude = nil
         expect(care_unit).not_to be_valid
       end
 
       it "should not increase the database when the longitude is missing" do
-        care_unit = create_care_unit({longitude: nil})
+        care_unit = create_care_unit
+        care_unit.longitude = nil
         expect{
           care_unit.save
         }.to change(CareUnit, :count).by(0)
