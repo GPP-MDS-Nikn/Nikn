@@ -1,0 +1,10 @@
+<h3>Posts reportados </h3>
+<% @reported_posts.each do |post| %>
+    <%= post.content %>
+    <%= link_to 'link para o tópico', forum_topic_path(post.forum_topic_id) %>
+<%end%>
+
+<h3>Tópicos reportados </h3>
+<% @reported_topics.each do |topic| %>
+    <%= link_to topic.title, forum_topic_path(topic) %>
+<%end%>

@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+gem "recaptcha", :require => "recaptcha/rails"
+
 gem "social-buttons", '~> 0.3'
 #social-buttons gem lets us easily add social buttons to pages on our application (dur)
 gem 'devise'
