@@ -1,4 +1,15 @@
+require 'api_constraints'
+
 Rails.application.routes.draw do
+
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: :true) do
+      resources :portal_posts
+      resources :care_units
+      resources :events
+    end
+  end
+
   devise_for :ongs, :controllers => { registrations: 'registrations' }
   devise_for :admins
 
@@ -21,6 +32,7 @@ Rails.application.routes.draw do
   get "portal/list" => "portal_posts#list"
   get "portal/new" => "portal_posts#new"
   post "portal/new" => "portal_posts#create"
+  get "portal_posts/index_json" => "portal_posts#index_json"
 
 
   #resources :forum_posts
