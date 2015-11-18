@@ -1,4 +1,5 @@
 class ForumPost < ActiveRecord::Base
+	after_initialize :default_values
 
 	TITLE_MIN_LENGTH = 3  # characters
 	TITLE_MAX_LENGTH = 30 # characters
@@ -15,5 +16,8 @@ class ForumPost < ActiveRecord::Base
 
 	validates(:content, presence: true)
 	validates(:content, length: {in: 2..1000})
-
+	private
+		def default_values #this will initialize 'reports' attribute with default value 0
+			self.reports ||= 0
+		end
 end

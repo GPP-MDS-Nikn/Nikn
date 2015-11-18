@@ -1,7 +1,22 @@
 Rails.application.routes.draw do
   devise_for :ongs, :controllers => { registrations: 'registrations' }
-  get 'signup' => 'ongs#new'
+  devise_for :admins
+
   resources :ongs
+  get "forum_topics/:id/new_report_topic" => 'forum_topics#new_report_topic', as: :new_report_topic
+  patch "forum_topics/:id/create_report_topic" => 'forum_topics#create_report_topic', as: :create_report_topic
+  get "forum_topics/:id/new_report_post" => 'forum_topics#new_report_post', as: :new_report_post
+  patch "forum_topics/:id/create_report_post" => 'forum_topics#create_report_post', as: :create_report_post
+  get "admins/reports_index" => 'admins#reports_index'
+  resources :forum_themes do
+    resources :forum_topics
+  end
+
+  resources :forum_topics do
+      resources :forum_posts
+  end
+  resources :forum_posts
+  #get "/forum_topics/:forum_topic_id/forum_posts/:id"
 
   get "portal/list" => "portal_posts#list"
   get "portal/new" => "portal_posts#new"
