@@ -11,8 +11,8 @@ module NavigationHelpers
   when /^root page$/
   '/'
 
-  when /^lixo_estados page$/
-  '/lixo_estados'
+  when /^login page$/
+  '/ongs/sign_in'
 
   # Add more mappings here.
   # Here is an example that pulls values out of the Regexp:
