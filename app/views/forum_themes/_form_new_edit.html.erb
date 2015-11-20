@@ -3,12 +3,11 @@
 <h1><%= action_name %></h1>
 
         <%= form_for(@forum_theme) do |field| %>
-            <p>Tema: </p>
+            <%= field.label :title, "Tema:" %>
             <%= field.text_field :title%>
 
-            <p>Descrição: </p>
+            <%= field.label :description, "Descrição:" %>
             <%= field.text_field :description%>
-            
+
             <%= field.submit "criar tema"%>
         <% end %>
-    

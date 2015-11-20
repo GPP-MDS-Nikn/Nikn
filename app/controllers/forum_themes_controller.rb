@@ -2,8 +2,8 @@ class ForumThemesController < ApplicationController
 	def index
 		@forum_theme = ForumTheme.all
 	end
-	
-	def show 
+
+	def show
 	  	set_forum_theme
 	  	@forum_topics = @forum_theme.forum_topics
 	end
@@ -18,7 +18,7 @@ class ForumThemesController < ApplicationController
 		if @forum_theme.save
 			redirect_to '/forum_themes'
 		else
-			render 'new'
+			redirect_to '/forum_themes/new'
 		end
 	end
 
@@ -37,7 +37,7 @@ class ForumThemesController < ApplicationController
 	    end
   	end
 
-	def destroy 
+	def destroy
 		set_forum_theme
 		@forum_theme.destroy
 		redirect_to forum_themes_path
