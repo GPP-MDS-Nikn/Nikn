@@ -19,6 +19,18 @@ module NavigationHelpers
 
   when /^ong page$/
       '/ongs'
+
+  when /^forum_themes page$/
+      '/forum_themes'
+
+  when /^new_theme page$/
+      '/forum_themes/new'
+
+  when /^edit_theme page$/
+      '/forum_themes/1/edit'
+
+  when /^show_theme page$/
+      '/forum_themes/1'
   # Add more mappings here.
   # Here is an example that pulls values out of the Regexp:
   #
