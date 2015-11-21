@@ -5,9 +5,8 @@ gem 'devise'
 gem 'cancancan'
 gem 'rolify'
 
-gem "social-buttons", '~> 0.3'
 #social-buttons gem lets us easily add social buttons to pages on our application (dur)
-gem 'devise'
+gem "social-buttons", '~> 0.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Convert Less to Sass
