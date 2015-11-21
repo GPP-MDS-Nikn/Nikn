@@ -24,7 +24,8 @@ gem "paperclip", "~> 4.3"
 # Use fullcalendar-rails
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-
+# Gem to frontend
+gem "font-awesome-sass"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
