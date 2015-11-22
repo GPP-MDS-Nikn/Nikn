@@ -9,7 +9,9 @@ Bundler.require(*Rails.groups)
 
 module Nikn
   class Application < Rails::Application
-  config.assets.precompile += ['application-print.css']
+    config.assets.precompile += ['application-print.css']
+    # Add the font awesome path
+    config.assets.paths << Rails.root.join("app", "assets")
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
