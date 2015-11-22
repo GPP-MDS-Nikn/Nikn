@@ -40,6 +40,8 @@ module NavigationHelpers
   when /^edit_topic page$/
       '/forum_topics/1/edit'
 
+  when /^show_topic page$/
+      '/forum_topics/1'
 #Event
   when /^events page$/
       '/events'

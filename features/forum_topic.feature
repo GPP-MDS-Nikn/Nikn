@@ -26,15 +26,18 @@ Feature: Access Forum Topics
             Then I should be on show_theme page
             When I follow "editar"
             Then I should be on edit_topic page
-            
+            When I fill in the following:
+                |forum_topic_title     | new Title  |
+                |forum_topic_body      | new text   |
+            When I press "Update Forum topic"
+            Then I should be on show_topic page
 
         Scenario: Creating topic with invalid params
-        Scenario: Editing exsting topic
-        Scenario: Deleting existing topic
-        Scenario: Accessing existing topic
-        Scenario: Reporting topic
-
-        #Posts
-        Scenario: Creating post with valid params
-        Scenario: Creating post with invalid params
-        Scenario: Reporting post
+            Given I am on show_theme page
+            When I press "Novo Tópico"
+            Then I should be on new_topic page
+            When I fill in the following:
+                |forum_topic_title     | T  |
+                |forum_topic_body      |    |
+            And I press "criar tópico"
+            Then I should be on new_topic page
