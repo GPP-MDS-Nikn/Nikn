@@ -10,7 +10,7 @@
 			<h2><%= link_to topic.title, forum_topic_path(topic) %></h2>
 			<p><%= link_to 'apagar', forum_theme_forum_topic_path(@forum_theme, topic),
 		            :confirm => 'Are you sure?', :method => :delete %> </p>
-		    <p><%= link_to 'editar', edit_forum_theme_forum_topic_path(@forum_theme, topic) %></p>
+		    <p><%= link_to 'editar', edit_forum_topic_path(topic) %></p>
 		</div>
 	</div>
 <%end%>
