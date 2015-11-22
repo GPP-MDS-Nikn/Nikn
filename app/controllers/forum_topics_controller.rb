@@ -20,7 +20,7 @@ class ForumTopicsController < ApplicationController
 		if @forum_topic.save
 			redirect_to forum_theme_path(@forum_theme)
 		else
-			render 'new'
+			redirect_to new_forum_theme_forum_topic_path(@forum_theme)
 		end
 	end
 
