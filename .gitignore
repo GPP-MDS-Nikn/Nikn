@@ -21,6 +21,7 @@ public/assets/*
 *.swp
 *.save
 *.swo
+*.swn
 
 # Ignore images
 *.jpg
