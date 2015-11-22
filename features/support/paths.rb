@@ -10,7 +10,7 @@ module NavigationHelpers
 
   when /^root page$/
       '/'
-
+#Ong login
   when /^sign_in page$/
       '/ongs/sign_in'
 
@@ -20,6 +20,7 @@ module NavigationHelpers
   when /^ong page$/
       '/ongs'
 
+#Forum_Themes
   when /^forum_themes page$/
       '/forum_themes'
 
@@ -31,6 +32,23 @@ module NavigationHelpers
 
   when /^show_theme page$/
       '/forum_themes/1'
+
+#Forum_Topics
+  when /^new_topic page$/
+      '/forum_themes/1/forum_topics/new'
+
+  when /^edit_topic page$/
+      '/forum_topics/1/edit'
+
+#Event
+  when /^events page$/
+      '/events'
+
+  when /^new_event page$/
+      '/events'
+
+
+
   # Add more mappings here.
   # Here is an example that pulls values out of the Regexp:
   #
