@@ -5,6 +5,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 
+    <%= render partial: "layouts/shim" %> <!-- Fix patch for IE. -->
+    <%= render partial: "mortality_rates/mortality_rate_charts_external_scripts" %>
+
     <link rel="shortcut icon" href="#">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
