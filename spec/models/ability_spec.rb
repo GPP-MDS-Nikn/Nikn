@@ -23,6 +23,54 @@ describe Ability do
 		end
 	end
 	
+	context "when is an ong" do
+		it "should be able to manage forum topics, events and portal posts they are owner" do
+			ong = create_ong # Only valid data
+			ability = Ability.new(ong)
+			expect(ability).to be_able_to(:manage, create_forum_topic(:ong_id => ong.id))
+			expect(ability).to be_able_to(:manage, create_event(:ong_id => ong.id))
+			expect(ability).to be_able_to(:manage, create_portal_post(:ong_id => ong.id))
+		end
+
+		it "should be able to create forum topics, forum posts, events and portal posts" do
+			ong = create_ong # Only valid data
+			ability = Ability.new(ong)
+			expect(ability).to be_able_to(:create, ForumTopic)
+			expect(ability).to be_able_to(:create, ForumPost)
+			expect(ability).to be_able_to(:create, Event)
+			expect(ability).to be_able_to(:create, PortalPost)
+		end
+
+		it "should be able to read all" do
+			ong = create_ong # Only valid data
+			ability = Ability.new(ong)
+			expect(ability).to be_able_to(:read, create_forum_theme)
+			expect(ability).to be_able_to(:read, create_forum_topic)
+			expect(ability).to be_able_to(:read, create_forum_post)
+			expect(ability).to be_able_to(:read, create_mortality_rate)
+			expect(ability).to be_able_to(:read, create_portal_post)
+			expect(ability).to be_able_to(:read, create_event)
+		end
+
+		it "should not be able to create forum themes and mortality rates" do
+			ong = create_ong # Only valid data
+			ability = Ability.new(ong)
+			expect(ability).not_to be_able_to(:create, ForumTheme)
+			expect(ability).not_to be_able_to(:create, MortalityRate)
+		end
+
+		it "should not be able to edit, destroy or update any model they are not owner" do
+			ong = create_ong # Only valid data
+			ability = Ability.new(ong)
+			expect(ability).not_to be_able_to([:edit, :destroy, :update], create_forum_theme)
+			expect(ability).not_to be_able_to([:edit, :destroy, :update], create_forum_topic)
+			expect(ability).not_to be_able_to([:edit, :destroy, :update], create_forum_post)
+			expect(ability).not_to be_able_to([:edit, :destroy, :update], create_mortality_rate)
+			expect(ability).not_to be_able_to([:edit, :destroy, :update], create_event)
+			expect(ability).not_to be_able_to([:edit, :destroy, :update], create_portal_post)
+		end
+	end
+
 	# Methods below are used to create instances of models
 	private		
 
