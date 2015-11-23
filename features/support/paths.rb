@@ -42,12 +42,21 @@ module NavigationHelpers
 
   when /^show_topic page$/
       '/forum_topics/1'
+
+#Forum_Post
+  when /^edit_post page$/
+      '/forum_topics/1/forum_posts/1/edit'
+
+  when /^report_post page$/
+      '/forum_topics/1/new_report_post'
+
 #Event
   when /^events page$/
       '/events'
 
   when /^new_event page$/
       '/events'
+
 
 
 
