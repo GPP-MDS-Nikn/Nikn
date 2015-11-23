@@ -15,98 +15,40 @@
             <div class="col-md-9">
                 <div id="scroller" class="carousel slide">
                     <div class="carousel-inner">
-<!-- .................................................................................. -->
-                       <div class="item active">
+
+
+                      <% @grouped_last_posts.each do |each_group_of_posts| %>
+                        <div class="<%= "item"  + (" active" if @grouped_last_posts.first == each_group_of_posts)%>">
                             <div class="row">
-                                <div class="col-xs-4">
-                                    <div class="portfolio-item">
-                                        <div class="item-inner">
-                                            <img class="img-responsive" src="#" alt="">
-                                            <h5>
-                                                Nova - Corporate site template
-                                            </h5>
-                                            <div class="overlay">
-                                                <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="#" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                <% each_group_of_posts.each do |each_post| %>
+                                    <div class="col-xs-4">
+                                        <div class="portfolio-item">
+                                            <div class="item-inner">
+                                                <img class="img-responsive" src="#" alt="">
+                                                <h5>
+                                                   <%= each_post.title %>
+                                                </h5>
+                                                <p>
+                                                  <%= each_post.body[0...200] + "... Leia Mais" %>
+                                                </p>
+                                                <div class="overlay">
+                                                    <%= link_to each_post, class: "preview btn btn-danger", title: "Veja mais" do %>
+                                                      <!-- Eye icon" -->
+                                                      <i class="icon-eye-open"></i>
+                                                    <% end %>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-<!-- ................................................................................... -->
-                                <div class="col-xs-4">
-                                    <div class="portfolio-item">
-                                        <div class="item-inner">
-                                            <img class="img-responsive" src="#" alt="">
-                                            <h5>
-                                                Fornax - Apps site template
-                                            </h5>
-                                            <div class="overlay">
-                                                <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="#" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>                            
-                                <div class="col-xs-4">
-                                    <div class="portfolio-item">
-                                        <div class="item-inner">
-                                            <img class="img-responsive" src="#" alt="">
-                                            <h5>
-                                                Flat Theme - Business Theme
-                                            </h5>
-                                            <div class="overlay">
-                                                <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="#" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!--/.row-->
-                        </div><!--/.item-->
-<!-- .................................................................................. -->
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <div class="portfolio-item">
-                                        <div class="item-inner">
-                                            <img class="img-responsive" src="#" alt="">
-                                            <h5>
-                                                Flat Theme - Business Theme
-                                            </h5>
-                                            <div class="overlay">
-                                                <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="#" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="portfolio-item">
-                                        <div class="item-inner">
-                                            <img class="img-responsive" src="#" alt="">
-                                            <h5>
-                                                Nova - Corporate site template
-                                            </h5>
-                                            <div class="overlay">
-                                                <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="#" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="portfolio-item">
-                                        <div class="item-inner">
-                                            <img class="img-responsive" src="#" alt="">
-                                            <h5>
-                                                Fornax - Apps site template
-                                            </h5>
-                                            <div class="overlay">
-                                                <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="#" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--/.item-->
-                    </div>
-                </div>
-            </div>
+                                <% end %>
+                            </div><!-- End of row -->
+                        </div><!-- End of each item -->
+                      <% end %>
+
+
+                    </div><!-- End of carrousel-inner -->
+                </div><!-- End of scroller -->
+            </div><!-- End of col-md-9 -->
         </div><!--/.row-->
     </div>
 </section><!--/#recent-works-->
