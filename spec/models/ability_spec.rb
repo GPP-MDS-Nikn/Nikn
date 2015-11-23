@@ -8,10 +8,24 @@ require 'rails_helper'
 describe Ability do
 	# First, load the seed.rb file in order to initialize default roles
 	Rails.application.load_seed
-
+	
+	context "when is an admin" do
+		it "should be able to manage all" do
+			ong = create_ong # Only valid data
+			ong.add_role(:admin)
+			ability = Ability.new(ong)
+			expect(ability).to be_able_to(:manage, ForumTheme)
+			expect(ability).to be_able_to(:manage, ForumTopic)
+			expect(ability).to be_able_to(:manage, ForumPost)
+			expect(ability).to be_able_to(:manage, MortalityRate)
+			expect(ability).to be_able_to(:manage, PortalPost)
+			expect(ability).to be_able_to(:manage, Event)
+		end
+	end
+	
 	# Methods below are used to create instances of models
 	private		
-	
+
 		# Create Ong with default parameters, only valid fields
 		def create_ong(options={})
 			Ong.create({
