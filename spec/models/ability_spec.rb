@@ -71,6 +71,46 @@ describe Ability do
 		end
 	end
 
+	context "when is guest user (not logged in)" do
+		it "should be able to create forum posts" do
+			ong = Ong.new # guest user (not logged in)
+			ability = Ability.new(ong)
+			expect(ability).to be_able_to(:create, ForumPost)
+		end
+
+		it "should be able to read all" do
+			ong = Ong.new # guest user (not logged in)
+			ability = Ability.new(ong)
+			expect(ability).to be_able_to(:read, create_forum_theme)
+			expect(ability).to be_able_to(:read, create_forum_topic)
+			expect(ability).to be_able_to(:read, create_forum_post)
+			expect(ability).to be_able_to(:read, create_mortality_rate)
+			expect(ability).to be_able_to(:read, create_portal_post)
+			expect(ability).to be_able_to(:read, create_event)
+		end
+
+		it "should not be able to create models, except forum posts" do
+			ong = Ong.new # guest user (not logged in)
+			ability = Ability.new(ong)
+			expect(ability).not_to be_able_to(:create, ForumTheme)
+			expect(ability).not_to be_able_to(:create, ForumTopic)
+			expect(ability).not_to be_able_to(:create, MortalityRate)
+			expect(ability).not_to be_able_to(:create, Event)
+			expect(ability).not_to be_able_to(:create, PortalPost)
+		end
+
+		it "should not be able to edit, destroy or update any model" do
+			ong = Ong.new # guest user (not logged in)
+			ability = Ability.new(ong)
+			expect(ability).not_to be_able_to([:edit, :destroy, :update], create_forum_theme)
+			expect(ability).not_to be_able_to([:edit, :destroy, :update], create_forum_topic)
+			expect(ability).not_to be_able_to([:edit, :destroy, :update], create_forum_post)
+			expect(ability).not_to be_able_to([:edit, :destroy, :update], create_mortality_rate)
+			expect(ability).not_to be_able_to([:edit, :destroy, :update], create_event)
+			expect(ability).not_to be_able_to([:edit, :destroy, :update], create_portal_post)
+		end
+	end
+
 	# Methods below are used to create instances of models
 	private		
 
