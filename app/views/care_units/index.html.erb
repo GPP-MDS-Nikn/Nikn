@@ -3,19 +3,17 @@
 <h1 class="w">Dados de Unidades de Atendimento a Mulher</h1>
 
 <div style='width: 800px;'>
-  <div id="multi_markers" style='width: 800px; height: 400px;'></div>
+  <div id="multi_markers" style='width: 800px; height: 600px;'></div>
 </div>
 
-<script type="text/javascript">
-  $(document).ready(function() {
+<%= javascript_tag do %>
     var handler = Gmaps.build('Google');
     handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
       var markers = handler.addMarkers(<%=raw @hash.to_json %>);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
     });
-  });
-</script>
+<% end %>
 
 <div class="img-responsive aspect data_background"></div>
 <br>
@@ -140,13 +138,11 @@
         </div><!-- End of UDA information -->
 <!-- Javascript to collapse some text -->
 <%= javascript_tag do %>
-  $(document).ready(function() {
-    $('.row .modalbtn').on('click', function(e) {
-      e.preventDefault();
-      var $this = $(this);
-      var $collapse = $this.closest('.collapse-group').find('.collapse');
-      $collapse.collapse('toggle');
-    });
+  $('.row .modalbtn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $collapse = $this.closest('.collapse-group').find('.collapse');
+    $collapse.collapse('toggle');
   });
 <% end %>
       </div>
@@ -160,10 +156,8 @@
 </div>
 
 <%= javascript_tag do %>
-  $(document).ready(function() {
-    $('#openBtn<%= unit.id %>').click(function(){
-      $('#myModal<%= unit.id %>').modal({show:true})
-    });
+  $('#openBtn<%= unit.id %>').click(function(){
+    $('#myModal<%= unit.id %>').modal({show:true})
   });
 <% end %>
 
