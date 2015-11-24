@@ -65,6 +65,6 @@ class ForumThemesController < ApplicationController
     end
 
     def forum_theme_params
-        params.require(:forum_theme).permit(:title, :description)
+        params.require(:forum_theme).permit(:title, :description, :image_file)
     end
 end
