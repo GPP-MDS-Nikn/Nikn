@@ -54,27 +54,7 @@ Como o hospital deve ser a principal porta de entrada para os serviços do Estad
 
 O desafio agora é fazer com que o marco legal seja assimilado e efetivado no dia a dia dos serviços de saúde país afora, uma vez que, apesar de bastante positiva, existe um intervalo entre a promulgação da lei e sua efetiva capacitação, conforme destaca a médica Cláudia Facuri. “É difícil sensibilizar uma equipe de saúde para atender uma situação que é tabu”, indica.
 
-Machismo e insegurança
-
-“Quando uma mulher – criança, adolescente ou adulta – sofre uma violência, ela deve receber um atendimento para evitar gravidez, DSTs e tudo o que for necessário para sua saúde física, mas também um cuidado da sua saúde mental, para sua resiliência, para que ela possa se reconstruir”, detalha sobre o padrão que deve ter esse atendimento a médica ginecologista e sanitarista Verônica Alencar, Coordenadora do Programa Iluminar Campinas  pela Secretaria Municipal de Saúde.
-
-A plena efetivação deste padrão, porém, ainda enfrenta barreiras dentro e fora do sistema de saúde. A primeira pode ser a resistência entre os próprios médicos em realizar os procedimentos necessários, sobretudo a prevenção da gravidez e o aborto previsto em lei.
-
-“Se toda lei tem um porteiro, que abre ou fecha sua efetivação, o porteiro dessa lei é o sistema patriarcal e o machismo perpetrado, principalmente, por uma parcela dos médicos. E, sem o médico, não se consegue qualificar o atendimento”, frisa a especialista.
-
-Com isso, para sair do papel, as normas precisam de um trabalho intersetorial de divulgação, conforme enumera a dra. Verônica: da Secretaria de Políticas para as Mulheres, para toda a sociedade conhecer os direitos; do Ministério Saúde, para seus quadros; e do Ministério da Justiça, para operadores do Direito, como os promotores públicos, que podem exigir o cumprimento da lei.
-
-Como coibir efetivamente a violência sexual?
-
-Além dos desafios para o acolhimento adequado das vítimas no campo da saúde, os médicos lembram ainda que estas medidas não previnem o crime de estupro, mas apenas buscam remediar seus graves efeitos. “Para diminuir o número de estupros, a medida de saúde não resolve. O estuprador que não é punido vai estuprar de novo, além de poder encorajar outros a praticar essa violência perante a impunidade”, alerta o médico Avelar de Holanda Barbosa, supervisor de Emergência Obstétrica do Hospital Materno-Infantil de Brasília (HMIB).
-
-Com isso, os profissionais destacam a importância de fortalecer os outros serviços, sobretudo os de segurança, e promover campanhas para combater as causas da violência sexual contra as mulheres: a impunidade e o machismo.
-
-O estupro está tipificado no artigo 213 do Código Penal, no capítulo Dos Crimes contra a Liberdade Sexual, e sua pena varia de 8 a 30 anos, dependendo das circunstâncias. Em 2003, a Lei nº 10.778 estabeleceu a notificação compulsória dos casos de violência – física, sexual e psicológica – atendidos em serviços de saúde públicos ou privados.
-
-Apesar de importante para gerar dados regionais que possam embasar políticas públicas, nem sempre a notificação do crime gera a responsabilização: “existe um verdadeiro descaso na investigação dos crimes sexuais relacionados às mulheres, sobretudos às crianças e adolescentes – em que, na maioria das vezes, o perpetrador está na própria família. Em muitos casos, a saúde cuida, a assistência social cuida, mas não se consegue responsabilizar os autores. O julgamento e a responsabilização devida desses autores são muito raros”, relata a médica, a partir de sua experiência em Campinas.
-
-Ainda assim, a dra. Verônica considera a notificação compulsória importante para trazer um outro olhar para a questão da violência interpessoal. “A notificação obrigatória nos dá possibilidades de criar políticas públicas mais concretas, uma vez que a ficha preenchida por uma UBS [Unidade Básica de Saúde], por exemplo, é um instrumento de cobrança de ações para fazer o município se mobilizar”, conclui.'
+Machismo e insegurança'
 })
 
 PortalPost.create({
@@ -116,56 +96,59 @@ Diferentemente de outros países da América Latina nos quais o homicídio assoc
 
 “O feminicídio íntimo é um contínuo de violência. Antes de ser assassinada a mulher já passou por todo o ciclo de violência, na maior parte das vezes, e já vinha sofrendo muito tempo antes. A maioria dos crimes ocorre quando a mulher quer deixar o relacionamento e o homem não aceita a sua não subserviência”, explica a magistrada do Rio de Janeiro.
 
-População avalia que risco de feminicídio é real
+População avalia que risco de feminicídio é real'
+})
 
-Recente pesquisa de opinião revela que a percepção da população brasileira é de que a vida da mulher de fato está em grande risco quando ela sofre violência doméstica. Segundo o levantamento Percepção da Sociedade sobre Violência e Assassinatos de Mulheres (Data Popular/Instituto Patrícia Galvão), lançada em agosto, 85% dos entrevistados acham que as mulheres que denunciam seus parceiros ou ex quando agredidas correm mais risco de serem assassinadas.
 
-O silêncio, porém, também não é apontado como um caminho seguro: para 92%, quando as agressões contra a esposa/companheira ocorrem com frequência, podem terminar em assassinato. Ou seja, o risco de morte por violência doméstica é iminente e sabido.
 
-Para a socióloga Fátima Pacheco Jordão, especialista em pesquisas de opinião, estudos mostram a seriedade do problema. “De um lado as estatísticas do Brasil em relação ao resto da América Latina são terríveis, os números em si do Mapa da Violência já mostram a gravidade. O segundo ponto é que a pesquisa sobre assassinatos revela a percepção de naturalidade da população, mostrando que, para a maioria, o fim violento por homicídio é passível de acontecer correntemente”, explica.
 
-Segundo a especialista, o contexto de violência doméstica agrava ainda mais o quadro. “Se pensarmos a questão do valor da residência, do abrigo privado, da condição familiar como o espaço mais perigoso para as mulheres, o problema ultrapassa qualquer limite de aceitação. Ou seja, vai além de um grau de civilização, está no plano da barbárie, no qual o espaço privado esconde execuções e torturas”, destaca.
 
-Equipamentos para cumprir a lei
+# --------------------------------------------------------------------FORUM THEMES---------------------------------------------------------------------
+# Initialize some default themes
+ForumTheme.create({
+  title: "Assédio",
+  image_file: File.open("#{Rails.root}/app/assets/images/mina1.jpg"),
+  description: "Encontre dicussões sobre assédio nos mais diferentes ambientes. Qual deve ser a conduta nesses casos e muito mais."
+})
 
-Entre as propostas para evitar essas ‘mortes anunciadas’, algumas são mais recorrentes na avaliação dos especialistas: o engajamento das instituições públicas para efetivar plenamente a Lei Maria da Penha é um caminho, tanto no sentido de proteção à vida das mulheres, no curto prazo, quanto para coibir o problema, por meio das ações de prevenção à violência de gênero no longo prazo.
+ForumTheme.create({
+  title: "Violência Doméstica",
+  image_file: File.open("#{Rails.root}/app/assets/images/mina2.jpg"),
+  description: "Encontre discussões sobre violência dentro da própria casa, experiências, relatos e muito mais."
+})
 
-“São necessárias também políticas de prevenção e reeducação, porque a Lei sozinha não extingue o crime. Nesse sentido, a responsabilidade do Estado, e também da sociedade, é trabalhar na implementação dos serviços que a Lei Maria da Penha propõe, como políticas de educação, uma rede intersetorial de atendimento em Saúde, Assistência Social, Segurança Pública e Justiça. Precisamos que sejam implementadas em todo o País as Defensorias das Mulheres, as Varas de Enfrentamento à Violência Intrafamiliar e contra as Mulheres, casas abrigo e serviços de atenção psicossocial”, afirma a médica Ana Flávia d’Oliveira, pesquisadora da Faculdade de Medicina da Universidade de São Paulo.
+ForumTheme.create({
+  title: "Preconceito",
+  image_file: File.open("#{Rails.root}/app/assets/images/mina7.jpg"),
+  description: "Encontre discussões sobre preconceito, suas vertentes, suas origens, histórias e muito mais."
+})
 
-Para a juíza do TJRJ, Adriana Mello, é preciso discutir mais a questão da violência contra as mulheres no campo da educação e também com profissionais que atuam na atenção às vítimas, especialmente nos equipamentos de Saúde e Segurança Pública e no Sistema de Justiça.
+ForumTheme.create({
+  title: "Legislação",
+  image_file: File.open("#{Rails.root}/app/assets/images/mina8.jpg"),
+  description: "Casos jurídicos, direitos, as leis que te protegem, justiça, experiências, histórias e muito mais."
+})
 
-Além dos desafios para a efetivação da Lei Maria da Penha, outras ações são discutidas para complementar o enfrentamento ao feminicídio. Entre elas, está a proposta de criação de um tipo penal específico para este crime, que auxilie a produzir dados para embasar políticas públicas. Também a adoção de protocolos para investigação do feminicídio, que por um lado auxiliariam na produção desses dados, e por outro garantiriam maior eficácia na coleta de provas e perícia para dar materialidade a este tipo de crime.
+ForumTheme.create({
+  title: "Experiências",
+  image_file: File.open("#{Rails.root}/app/assets/images/mina3.jpg"),
+  description: "Encontre discussões sobre diversas experiências, relatos e situações encontradas por mulheres no dia a dia."
+})
 
-“Como boa parte desses homicídios é íntimo, a cena do crime pode ser desfeita, as provas e testemunhas podem ser mais difíceis também. Isso pode prejudicar a investigação e, consequentemente, o processo penal. Então, a instauração de protocolos de investigação para a Polícia, Ministério Público e Magistratura é recomendada”, explica a juíza.
+ForumTheme.create({
+  title: "Família",
+  image_file: File.open("#{Rails.root}/app/assets/images/mina4.jpg"),
+  description: "Filhos, diálogo, relacionamento, dependência financeira, afetiva e muito mais."
+})
 
-Recomendações de organismos internacionais
+ForumTheme.create({
+  title: "Ajuda",
+  image_file: File.open("#{Rails.root}/app/assets/images/mina5.jpg"),
+  description: "Precisa de ajuda? Encontre pessoas e instituições dispostas a ajudar anonimamente."
+})
 
-A preocupação com os homicídios de mulheres no Brasil está em sintonia com a crescente dedicação de organizações internacionais ao tema. O Alto Comissariado das Nações Unidas para os Direitos Humanos e a ONU Mulheres, por exemplo, estão finalizando a elaboração do protocolo latino-americano de investigação de mortes de mulheres por razões de gênero. Paralelamente e de modo complementar a esta iniciativa, foi elaborado um Guia de Recomendações para a Investigação Eficaz do Feminicídio, em cooperação com especialistas latino-americanos que analisaram os erros mais frequentes cometidos nas investigações e processos nos casos de feminicídio e traçaram recomendações para superar tais problemas. O Conselho de Direitos Humanos das Nações Unidas também iniciou um processo interno para criação de uma declaração ou protocolo universal sobre o feminicídio. A ideia é apresentar uma petição para discutir o tema na Assembleia Geral da ONU no próximo ano.
-
-Para a ministra da Secretaria de Políticas para as Mulheres da Presidência, Eleonora Menicucci, as iniciativas respondem ao desafio de se enfrentar o crime do feminicídio a partir de um dos consensos que cerca esse tema: o de que as investigações do crime têm caráter especializado e que, muitas vezes, por falta de uma real perspectiva de gênero, não se coletam as evidências necessárias, fomentando assim a impunidade crônica que estimula a sua recorrência.
-
-Tanto o Guia como o protocolo deverão ser usados em processos de capacitação nos países latino-americanos, para que as recomendações indicadas sejam de fato colocadas em prática, segundo informou um dos autores do Guia, o advogado espanhol, doutor em Direito e mestre em Direitos Humanos, Emilio Gines Santidrián, em passagem pelo Brasil.
-
-Segundo o jurista, a publicação é um avanço na América Latina e se soma às legislações e sentenças que visam a penalização de feminicidas em diversos países da região. El Salvador, Guatemala, Colômbia, Nicarágua e Bolívia já criaram leis especiais de prevenção, atenção e sanção da violência contra as mulheres que abordam o feminicídio. Já Costa Rica, Chile, Peru, Argentina, Honduras e México reformaram as leis penais nacionais existentes nesse sentido. (Confira aqui o quadro sobre as legislações da América Latina)
-
-“Já tivemos decisões importantes nas cortes da Guatemala, El Salvador e Peru, que ajudam a dar visibilidade para esse tipo de crime. Essas sentenças favoráveis indicam que está havendo uma mudança de consciência do Judiciário, que não está mais encarando esses casos com preconceito”, aponta Santidrián, também membro do Subcomitê para Prevenção da Tortura e outros Tratamentos ou Penas Cruéis, Desumanas e Degradantes das Nações Unidas.
-
-Reconhecimento global
-
-A sensibilização em torno do tema também marcou a 57ª Sessão da Comissão sobre a Situação da Mulher (CSW) da ONU, realizada em Nova York, em março deste ano, com a presença de representantes dos 45 países membros. No encontro, houve o reconhecimento internacional do crime de assassinato de mulheres relacionado à sua condição de gênero. A 57ª CSW recomendou ainda o fortalecimento de legislações para punir o grave fenômeno.
-
-A mesma recomendação é feita pelo Comitê sobre a Eliminação da Discriminação contra a Mulher da ONU (CEDAW). “O Comitê entende que é importante essa explicitação e se manifesta aos países com a recomendação de que realizem tipificações como essa, que são positivas por dar visibilidade ao feminicídio”, afirma a advogada e presidente do CEDAW, a brasileira Silvia Pimentel, que também integra o Comitê Latino-Americano e do Caribe para a Defesa dos Direitos da Mulher (Cladem).
-
-Sensibilização é o primeiro passo
-
-Para a especialista da ONU, a maior sensibilização dos órgãos internacionais – manifesta inclusive por recomendações do CEDAW chamando atenção para o feminicídio nas análises feitas a partir de relatórios periódicos enviados pelos países sobre a situação da violência contra as mulheres – é um exemplo dos avanços obtidos no cenário internacional. “Até pouco tempo, o feminicídio não era verbalizado, destacado ou criminalizado. Simplesmente, era uma questão que não aparecia nesses trabalhos”, destaca.
-
-A mesma visão é compartilhada pela representante da ONU Mulheres no Brasil, Nadine Gasman. “Cada vez mais os países estão ratificando o feminicídio como delito específico. Isso foi feito de diferentes maneiras, mas o que é importante para nós é que o Sistema de Justiça está abordando o tema de uma forma específica, o que há alguns anos não se fazia. Podemos pensar que, com melhores sistemas de informação e com mais tempo – porque são legislações muito recentes, a tendência será diminuir a violência contra as mulheres”, acredita a representante da ONU Mulheres.
-Caso emblemático: os feminicídios em Ciudad Juárez (México)Claudia Ivette Gonzalez, Esmeralda Herrera Monreal e Laura Berenice Ramos Monárrez tiveram seus corpos violados, mutilados e abandonados em um campo de algodão de Ciudad Juárez, no estado mexicano de Chihuahua, em 6 de novembro de 2001. Ao invés de apoio na investigação dos casos, os familiares das vítimas sofreram intimidação e maus-tratos por parte das autoridades locais.Pela falta de medidas de proteção às vítimas; falta de prevenção dos crimes diante do conhecimento de um padrão de violência de gênero que já havia contribuído para o assassinato de centenas de mulheres e meninas na região; falta de resposta das autoridades diante dos desaparecimentos e de diligência na investigação dos casos, assim como a negação de Justiça e reparação adequada, o Estado mexicano foi condenado pela Corte Interamericana de Direitos Humanos, em novembro de 2009, por violar os direitos de acesso à Justiça e de proteção consagrados pela Convenção Americana.
-
-A cidade também foi foco de uma investigação in loco do Comitê sobre a Eliminação da Discriminação contra a Mulher da ONU (CEDAW), em 2003. O resultado veio em 2005 com a divulgação de um Informe sobre o México contendo conclusões e recomendações ao Estado na mesma linha condenatória que posteriormente seria adotada pela Corte.“A morte das mulheres de Ciudad Juárez reflete a morte de todas as outras. Por isso, a decisão da Corte Interamericana tem efeito para toda a América Latina”, ressalta Emilio Gines Santidrián.
-
-A condenação suscitou o debate sobre feminicídio e diversas conferências para discutir atos sistemáticos de violência claramente premeditados contra mulheres. Apesar dos avanços, o especialista espanhol alerta que o desafio de acabar com as mortes de mulheres ainda permanece, uma vez que muitas continuam sendo assassinadas, tanto pela omissão dos governos como pela ação dos chefes de cartéis.
-
-Desse modo, o enfrentamento do problema exige uma ação integrada, uma vez que o feminicídio é um crime de gênero extremamente complexo. “O problema do feminicídio tem muitas faces. Não é apenas uma questão de ordem penal, mas também social e cultural. É necessário criar formas de enfrentar a cultura machista e a visão dos papéis destinados à mulher na sociedade”, alerta Santidrián.'
+ForumTheme.create({
+  title: "Outros",
+  image_file: File.open("#{Rails.root}/app/assets/images/mina6.jpg"),
+  description: "Vários outros temas em debate, perguntas, relatos e mais."
 })
