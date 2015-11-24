@@ -2,13 +2,13 @@ class ForumThemesController < ApplicationController
   include ApplicationHelper
 
   def index
-    @forum_theme = ForumTheme.all
 
     # Get last forum topics
     ungrouped_last_forum_topics = get_last_forum_topics(9)
     # Group the last forum topics in specified sub-lists.
     # To see the method structure, go to the application helper.
     @grouped_last_forum_topics = create_list_groups(ungrouped_last_forum_topics, 3)
+    @forum_themes = ForumTheme.all
   end
 
   def show 
