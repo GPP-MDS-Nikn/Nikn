@@ -1,10 +1,39 @@
-<%= button_to "criar tema", new_forum_theme_path, :class=> "button", :method => :get %>
+<section id="title" class="emerald">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>Fórum</h1>
+            <p>Escolha um tema e lembre-se que esse fórum é totalmente anônimo.</p>
+        </div>
+    </div>
+</div>
+</section>
+<section id="portfolio" class="container">
+	<ul class="portfolio-filter">
+      <li><a class="btn btn-default" href="#" data-filter="*">Todos</a></li>
+      <% @forum_themes.each do |each_forum_theme| %>
+        <li><a class="btn btn-default" href="#" data-filter=".<%= each_forum_theme.title.split(" ")[0] %>"><%= each_forum_theme.title.split(" ")[0] %></a></li>
+      <% end %>
 
-<%@forum_theme.each do |theme|%>
-	<div class="list-group">
-		<div class="list-group-item"><h4><%= link_to theme.title, forum_theme_path(theme) %></h4>
-			<p><%= link_to "editar", edit_forum_theme_path(theme)%></p>
-			<p><%= link_to 'excluir', theme, method: :delete, data: { confirm: 'Tem certeza?'}%></p>
+	</ul><!--/#portfolio-filter-->
+    <br>
+	<ul class="portfolio-items col-3">
+    <% @forum_themes.each do |each_forum_theme| %>
+	    <li class="portfolio-item <%= each_forum_theme.title.split(" ")[0] %>">
+		<div class="item-inner">
+			<%if each_forum_theme.image_file.present? %>
+				<%= image_tag(each_forum_theme.image_file.url()) %>
+			<%else%>
+				<%= image_tag("nikn_default_banner.png")  %>
+			<%end%>
+		    <h5><%= each_forum_theme.title %></h5>
+		    <div class="overlay">
+              <%= link_to forum_theme_path(each_forum_theme), class: "preview btn btn-danger" do %>
+		        <i class="icon-eye-open"></i>
+              <% end %>
+          </div>
 		</div>
-	</div>
-<%end%>
+      <% end %>
+	</ul>
+</section><!--/#portfolio-->
+
