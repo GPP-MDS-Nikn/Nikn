@@ -55,7 +55,10 @@ module NavigationHelpers
       '/events'
 
   when /^new_event page$/
-      '/events'
+      '/events/new'
+
+  when /^show_event page$/
+      '/events/1'
 
 
 
