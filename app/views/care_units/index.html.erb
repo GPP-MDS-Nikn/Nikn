@@ -1,26 +1,176 @@
+<script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="></script>
+<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
+<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
 <p id="notice"><%= notice %></p>
 
 <h1 class="w">Dados de Unidades de Atendimento a Mulher</h1>
 
+<div style='width: 800px;'>
+  <div id="multi_markers" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+  var handler = Gmaps.build('Google');
+  handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
+    var markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>
+
 <div class="img-responsive aspect data_background"></div>
-<table class="table table-striped w">
-  <thead>
-    <tr>
-      <th>Municipio</th>
-      <th>estado</th>
-      <th>uf</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @care_units.each do |unit| %>
-    <tr>
-      <td><%= unit.municipio %></td>
-      <td><%= unit.estado %></td>
-      <td><%= unit.uf %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
+<div class="search-form">
+  <%= form_tag(care_units_path, method: "get") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Buscar UDA", class: "form-control search-form-field"%>
+    <%= submit_tag "Buscar", class: "search-form-button btn btn-default" %>
+  <% end %>
+</div>
+
+<% if @care_units.present? %>
+  <table class="table table-striped w">
+    <thead class="text-position">
+      <tr>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Instituição</th>
+        <th>Cidade</th>
+      </tr>
+    </thead>
+    <tbody class="text-position">
+      <% @care_units.each do |unit| %>
+        <tr>
+          <td><%= unit.name %></td>
+          <td><%= unit.category %></td>
+          <td><%= unit.institution %></td>
+          <td><%= unit.district %></td>
+          <td><a class="btn" href="#" id="openBtn<%= unit.id =%>">View details »</a></td>
+        </tr>
+
+<div id="myModal<%= unit.id %>" class="modal fade" tabindex='-1' role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3><%= unit.name %></h3>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- Display the UDA information -->
+        <div class="uda-information">
+          <h2>Informações:</h2>
+          <dl>
+            <!-- Print the unit care address and district -->
+            <dt>
+              <strong>
+                Endereço:
+              </strong>
+            </dt>
+            <dd>
+            <%= unit.address + " - " + unit.city + " - " + unit.district %>
+            </dd>
+
+            <!-- Print the unit care's phone number -->
+            <dt>
+              <strong>
+                Telefone:
+              </strong>
+            </dt>
+            <dd>
+              <%= unit.phone %>
+            </dd>
+
+            <!-- Print the unit care's category -->
+            <dt>
+              <strong>
+                Categoria:
+              </strong>
+            </dt>
+            <dd>
+              <%= unit.category %>
+            </dd>
+          </dl>
+          <br>
+          <!-- Diplay this only if the user clicks in the link -->
+          <div class="col-md-12 container">
+            <div class="row">
+              <div class="span4 collapse-group">
+                <p><a class="modalbtn" href="#">Mais informações »</a></p>
+                <div class="collapse">
+                  <h2>Instituição:</h2>
+                  <p><%= unit.institution %>
+                  <hr>
+                  <h2>Descrição dos serviços:</h2>
+                  <div class="unit-description">
+                    <%= unit.description %>
+                  </div>
+                  <hr/>
+                  <!-- Display some informations like e-mail and site -->
+                  <div class="aditional-information">
+                    <dl>
+                      <!-- Email -->
+                      <dt>
+                          Email:
+                      </dt>
+                      <dd>
+                        <% if unit.email.present? %>
+                          <%= unit.email %>
+                        <% else %>
+                          <p> - </p>
+                        <% end %>
+                      </dd>
+
+                      <!-- Site -->
+                      <dt>
+                          Site:
+                      </dt>
+                      <dd>
+                        <% if unit.site.present? %>
+                          <%= unit.site %>
+                        <% else %>
+                          <p> - </p>
+                        <% end %>
+                      </dd>
+                    </dl>
+                  </div><!--End of aditional information -->
+                </div><!-- End of collapse -->
+              </div><!-- End of collapse-group -->
+            </div><!-- End of row -->
+          </div><!-- End of container -->
+        </div><!-- End of UDA information -->
+<!-- Javascript to collapse some text -->
+<%= javascript_tag do %>
+  $('.row .modalbtn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $collapse = $this.closest('.collapse-group').find('.collapse');
+    $collapse.collapse('toggle');
+  });
+<% end %>
+      </div>
+
+      <div class="modal-footer">
+        <%= link_to 'Edit', edit_care_unit_path(unit) %> |
+        <button class="btn" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  $('#openBtn<%= unit.id %>').click(function(){
+    $('#myModal<%= unit.id %>').modal({show:true})
+  });
+<% end %>
+
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="not-found">
+    <p>Desculpe, nenhuma UDA encontrada.</p>
+  </div>
+<% end %>
+<br>
+
