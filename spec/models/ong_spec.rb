@@ -1,34 +1,40 @@
-# Many parts of this model are already being tested by devise gem and do not need to be tested here.
-# devise is already testing: email validation and presence, password validation, presence and confirmation, sign in, sign out and edit current user.
-
 require 'rails_helper'
 
-describe Ong, type: :model do
-	# Loading the seed.rb file in order to initialize default roles
-	Rails.application.load_seed
-
-	# Valid tests
-	context "when providing valid data" do
-
-		it "should be an instance of Ong" do
-			ong = create_ong # Only valid data
-			expect(ong).to be_instance_of(Ong)
+describe Ong do
+	context "when using valid data" do
+		it "should create a valid instance of object ONG" do
+			ong = create_ong("1")
+			expect(ong.valid?).to be true
 		end
-
-		it 'should have default role' do
-			ong = create_ong
-			expect(ong.roles.count).to be_equal(1)
-		end
-
 	end
 
 	private
-		# Create Ong with default parameters, valid fields only
-		def create_ong(options={})
+		# Ong constants (in characters)
+		NAME_MIN_LENGTH 				= 8
+		DESCRIPTION_MIN_LENGTH 	= 100
+		SITE_MIN_LENGTH 				= 5
+		PHONES_MIN_LENGTH 			= 10
+		PHONES_MAX_LENGTH 			= 11
+		CEP_LENGTH 							= 8
+		ADDRESS_MIN_LENGTH 			= 10
+		UF_LENGTH 							= 2
+		CITY_MIN_LENGTH 				= 3
+
+		# Default settings to test, only valid fields.
+		def create_ong(id="1", options={})
 			Ong.create({
-			email: "example@email.com",
+			email: "ong" + id + "@example.com",
 			password: "password",
-			password_confirmation: "password"
+			password_confirmation: "password",
+			name: "Ong" + id + " name example",
+			description: ("Description " + id + " example")*10,
+			site: "www.example" + id + ".com",
+			phone: "613333222" + id,
+			auxiliary_phone: "613333222" + id,
+			cep: id + "2345678",
+			address: "example address " + id,
+			uf: "DF",
+			city: "Brasilia"
 			}.merge(options))
 		end
 
