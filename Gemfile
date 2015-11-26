@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 gem "recaptcha", :require => "recaptcha/rails"
-
 gem "social-buttons", '~> 0.3'
 #social-buttons gem lets us easily add social buttons to pages on our application (dur)
 gem 'devise'
@@ -50,7 +49,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
-
+  gem 'selenium-webdriver'
   gem 'byebug'
   gem 'simplecov'
   # Access an IRB console on exception pages or by using <%= console %> in views
