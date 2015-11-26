@@ -8,6 +8,40 @@ describe Ong do
 		end
 	end
 
+	# Attributes 'email' and 'password' are already being tested by devise and do not need to be tested here.
+	# Then, code below checks integrity of rest of the attributes in order to create ONG instances correctly.
+
+	# Must create ongs without site or auxiliary phone, and, in that case, system should not test uniqueness of attribute.
+	context "when hiding not needed data" do
+		it "should create an object without site" do
+			ong = create_ong
+			ong.site = nil
+			expect(ong.valid?).to be true
+		end
+
+		it "should create many objects without site" do
+			ong1 = create_ong
+			ong1.site = nil
+			ong2 = create_ong("2")
+			ong2.site = nil
+			expect(ong1.valid? && ong2.valid?).to be true
+		end
+
+		it "should create an object without an auxiliary phone" do
+			ong = create_ong
+			ong.auxiliary_phone = nil
+			expect(ong.valid?).to be true
+		end
+
+		it "should create many objects without an auxiliary phone" do
+			ong1 = create_ong
+			ong1.auxiliary_phone = nil
+			ong2 = create_ong("2")
+			ong2.auxiliary_phone = nil
+			expect(ong1.valid? && ong2.valid?).to be true
+		end
+	end
+
 	private
 		# Ong constants (in characters)
 		NAME_MIN_LENGTH 				= 8
