@@ -43,7 +43,7 @@ describe Ong do
 	end
 
 	# Must not create ongs with empty (if the presence is needed) or too small string attributes
-	context "when using empty or too small data" do
+	context "when using empty or too small/large data" do
 		it "shouldn't create an object with an empty name" do
 			ong = create_ong
 			ong.name = nil
@@ -161,6 +161,33 @@ describe Ong do
 		it "shouldn't create an object with a city too small" do
 			ong = create_ong
 			ong.city = "a"*(CITY_MIN_LENGTH - 1)
+			expect(ong.valid?).to be false
+		end
+	end
+
+	# Must not create ongs with other kinds of invalid attributes, such as letters in phones or ceps or invalid UFs.
+	context "when using invalid data" do
+		it "shouldn't create an object with letters in phone" do
+			ong = create_ong
+			ong.phone = "a"*PHONES_MIN_LENGTH
+			expect(ong.valid?).to be false
+		end
+
+		it "shouldn't create an object with letters in auxiliary phone" do
+			ong = create_ong
+			ong.auxiliary_phone = "a"*PHONES_MIN_LENGTH
+			expect(ong.valid?).to be false
+		end
+
+		it "shouldn't create an object with letters in cep" do
+			ong = create_ong
+			ong.cep = "a"*CEP_LENGTH
+			expect(ong.valid?).to be false
+		end
+
+		it "shouldn't create an object with invalid UFs" do
+			ong = create_ong
+			ong.uf = "ZZ"
 			expect(ong.valid?).to be false
 		end
 	end
