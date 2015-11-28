@@ -1,24 +1,28 @@
- <%if ong_signed_in? %>
-<%= link_to 'Editar', edit_ong_registration_path, :get => :edit %>
-<ul>
-<li>
-	<%= current_ong.name %>
-	<%= current_ong.email %>
-	<%= current_ong.description %>
-	<%= link_to "Ver detalhes", {:action => 'show', :id => current_ong.id}, :class => 'action show' %>
-</li>
-</ul>
-
-<%else%>
-<ul>
-<%@ong.each do |ong|%>
-
-<li>
-	<%= ong.name %>
-	<%= ong.email %>
-	<%= ong.description %>
-	<%= link_to "Ver detalhes", {:action => 'show', :id => ong.id}, :class => 'action show' %>
-</li>
-<%end%>
-</ul>
-<%end%>
+<% if ong_signed_in? %>
+	<%= link_to 'Editar', edit_ong_registration_path, :get => :edit %>
+	<ul>
+		<li>
+			<ul>
+				<li><%= current_ong.name %></li>
+				<li><%= current_ong.description %></li>
+				<li><%= current_ong.email %></li>
+				<li><%= current_ong.address %></li>
+			</ul>
+			<%= link_to "Ver detalhes", {:action => 'show', :id => current_ong.id}, :class => 'action show' %>
+		</li>
+	</ul>
+<% else %>
+	<ul>
+		<%@ong.each do |ong|%>
+			<li>
+				<ul>
+					<li><%= ong.name %></li>
+					<li><%= ong.description %></li>
+					<li><%= ong.email %></li>
+					<li><%= ong.address %></li>
+				</ul>
+				<%= link_to "Ver detalhes", {:action => 'show', :id => ong.id}, :class => 'action show' %>
+			</li>
+		<% end %>
+	</ul>
+<% end %>

@@ -1,10 +1,27 @@
-<%if ong_signed_in? %>
-<%= link_to 'Editar', edit_ong_registration_path, :get => :edit %>
-<%end%>
-<ul>
-<li><%=@ong.name%></li>
-<li><%=@ong.description%></li>
-<li><%=@ong.email%></li>
-<li><%=@ong.adress%></li>
+<% if ong_signed_in? %>
+	<%= link_to 'Editar', edit_ong_registration_path, :get => :edit %>
+<% end %>
+
+<h1><%= @ong.name %></h1>
+
+<% if @ong.image_file.present? %>
+	<%= image_tag(@ong.image_file.url()) %>
+<% else %>
+	<%= image_tag("nikn_default_banner.png") %>
+<% end %>
+
+<p><%= @ong.description %></p>
+
+<div>
+	<br>
+	<h4>Contato:</h4>
+	<p><%= @ong.email %></p>
+	<% unless @ong.site.nil? %>
+		<p><%= @ong.site %></p>
+	<% end %>
+	<p><%= @ong.phone %><% unless @ong.auxiliary_phone.nil? %> / <%= @ong.auxiliary_phone %><% end %></p> 
+	<p><%= @ong.uf %>, <%= @ong.city %></p>
+	<p><%= @ong.address %><% unless @ong.auxiliary_phone.nil? %> - <%= @ong.complement %><% end %></p>
+</div>
 
 <%= link_to 'Back to Index', "/ongs" %>
