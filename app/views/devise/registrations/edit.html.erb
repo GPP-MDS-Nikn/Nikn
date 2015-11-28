@@ -1,39 +1,93 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<section id="title" class="emerald">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1>Atualizar ONG</h1>
+				<p>Mantenha os dados da ONG atualizados para que todos sempre possam entrar em contato com vocês!</p>
+			</div>
+		</div>
+	</div>
+</section>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<section id="portfolio" class="container">
+	<div class="col-md-6 col-md-offset-3">
+		<%= devise_error_messages! %>
+		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+			<div>
+				<h3>Informações Básicas</h3>
+				<div class="field">
+					<p><b>Email</b></p>
+					<%= f.email_field :email, autofocus: true, class: 'form-control' %>
+				</div>
+				<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+					<div>Ainda aguardando confirmação do email: <%= resource.unconfirmed_email %></div>
+				<% end %>
+				<div class="field">
+					<p><b>Nova senha</b> <i>(deixe em branco para não alterar a senha)</i></p>
+					<%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+				</div>
+				<div class="field">
+					<p><b>Confirmação de senha</b></p>
+					<%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+				</div>
+				<div class="field">
+					<p><b>Senha atual</b> <i>(nós precisamos da sua senha atual para confirmar as modificações)</i></p>
+					<%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+				</div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+				<div class="field">
+					<p><b>Atualizar imagem</b></p>
+					<%= f.file_field :image_file %>
+				</div>
+			</div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+			<div>
+				<h3>Detalhes para contato</h3>
+				<div class="field">
+					<p><b>Site</b></p>
+					<%= f.text_field :site, class: 'form-control' %>
+				</div>
+				<div class="field">
+					<p><b>Telefone principal</b></p>
+					<%= f.text_field :phone, class: 'form-control' %>
+				</div>
+				<div class="field">
+					<p><b>Telefone alternativo</b></p>
+					<%= f.text_field :auxiliary_phone, class: 'form-control' %>
+				</div>
+			</div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+			<div>
+				<h3>Localização</h3>
+				<div class="field">
+					<p><b>CEP</b></p>
+					<%= f.text_field :cep, class: 'form-control' %>
+				</div>
+				<div class="field">
+					<p><b>Endereço</b></p>
+					<%= f.text_field :address, class: 'form-control' %>
+				</div>
+				<div class="field">
+					<p><b>Complemento</b></p>
+					<%= f.text_field :complement, class: 'form-control' %>
+				</div>
+				<div class="field">
+					<p><b>UF</b></p>
+					<%= f.text_field :uf, class: 'form-control' %>
+				</div>
+				<div class="field">
+					<p><b>Cidade</b></p>
+					<%= f.text_field :city, class: 'form-control' %>
+				</div>
+			</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+			<div class="actions text-center">
+				<%= f.submit "Atualizar", class: 'btn btn-primary' %>
+			</div>
+		<% end %>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+		<br />
+		<h3>Desativar o perfil da ONG</h3>
+		<p>Será uma pena não poder mais contar com um parceiro tão importante. <%= button_to "Desativar", registration_path(resource_name), data: { confirm: "Deseja realmente desativar esta ONG?" }, method: :delete, class: 'btn btn-danger' %></p>
+	</div>
+</section>

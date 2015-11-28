@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6">
-				<h1>Espaço das ONGs</h1>
+				<h1>Espaço para as ONGs</h1>
 				<p> Cadastre sua ONG e participe da luta pelo fim da violência contra à mulher por aqui também! 
 				As ONGs podem publicar eventos, são identificadas nos fóruns e ainda aparecem no nosso mapa.</p>
 			</div>
@@ -19,30 +19,30 @@
 				<div>
 					<h3>Informações Básicas</h3>
 					<div class="field">
-						<p>* Email: </p>
+						<p>* <b>Email</b></p>
 						<%= f.email_field :email, autofocus: true, class: 'form-control' %>
 					</div>
 					<div class="field">
-						<p>* Senha:
+						<p>* <b>Senha</b> 
 						<% if @minimum_password_length %>
 							<em>(mínimo <%= @minimum_password_length %> caracteres)</em>
 						<% end %></p>
 						<%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
 					</div>
 					<div class="field">
-						<p>* Confirmação de senha: </p>
+						<p>* <b>Confirmação de senha</b></p>
 						<%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
 					</div>
 					<div class="field">
-						<p>* Nome: </p>
+						<p>* <b>Nome</b></p>
 						<%= f.text_field :name, class: 'form-control' %>
 					</div>
 					<div class="field">
-						<p>* Descrição: </p>
+						<p>* <b>Descrição</b></p>
 						<%= f.text_area :description, class: 'form-control' %>
 					</div>
 					<div class="field">
-						<p>Adicione uma imagem à sua ONG:</p>
+						<p><b>Adicione uma imagem à sua ONG</b></p>
 						<%= f.file_field :image_file %>
 					</div>
 				</div>
@@ -50,15 +50,15 @@
 				<div>
 					<h3>Detalhes para contato</h3>
 					<div class="field">
-						<p>Site: </p>
+						<p><b>Site</b></p>
 						<%= f.text_field :site, class: 'form-control' %>
 					</div>
 					<div class="field">
-						<p>* Telefone: </p>
+						<p>* <b>Telefone principal</b></p>
 						<%= f.text_field :phone, class: 'form-control' %>
 					</div>
 					<div class="field">
-						<p>Celular: </p>
+						<p><b>Telefone alternativo</b></p>
 						<%= f.text_field :auxiliary_phone, class: 'form-control' %>
 					</div>
 				</div>
@@ -66,23 +66,23 @@
 				<div>
 					<h3>Localização</h3>
 					<div class="field">
-						<p>* CEP: </p>
+						<p>* <b>CEP</b></p>
 						<%= f.text_field :cep, class: 'form-control' %>
 					</div>
 					<div class="field">
-						<p>* Endereço: </p>
+						<p>* <b>Endereço</b></p>
 						<%= f.text_field :address, class: 'form-control' %>
 					</div>
 					<div class="field">
-						<p>Complemento: </p>
+						<p><b>Complemento</b></p>
 						<%= f.text_field :complement, class: 'form-control' %>
 					</div>
 					<div class="field">
-						<p>* UF: </p>
+						<p>* <b>UF</b></p>
 						<%= f.text_field :uf, class: 'form-control' %>
 					</div>
 					<div class="field">
-						<p>* Cidade: </p>
+						<p>* <b>Cidade</b></p>
 						<%= f.text_field :city, class: 'form-control' %>
 					</div>
 				</div>
