@@ -14,25 +14,24 @@
 	<h2>Cadastre sua ONG</h2>
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
+			<%= devise_error_messages! %>
 			<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-				<%= devise_error_messages! %>
-
 				<div>
 					<h3>Informações Básicas</h3>
 					<div class="field">
 						<p>* Email: </p>
-						<%= f.email_field :email, autofocus: true %>
+						<%= f.email_field :email, autofocus: true, class: 'form-control' %>
 					</div>
 					<div class="field">
 						<p>* Senha:
 						<% if @minimum_password_length %>
 							<em>(mínimo <%= @minimum_password_length %> caracteres)</em>
 						<% end %></p>
-						<%= f.password_field :password, autocomplete: "off" %>
+						<%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
 					</div>
 					<div class="field">
 						<p>* Confirmação de senha: </p>
-						<%= f.password_field :password_confirmation, autocomplete: "off" %>
+						<%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
 					</div>
 					<div class="field">
 						<p>* Nome: </p>
@@ -43,8 +42,8 @@
 						<%= f.text_area :description, class: 'form-control' %>
 					</div>
 					<div class="field">
-						<p>Adicione uma imagem à sua ONG:
-						<%= f.file_field :image_file, class: 'form-control' %></p>
+						<p>Adicione uma imagem à sua ONG:</p>
+						<%= f.file_field :image_file %>
 					</div>
 				</div>
 
