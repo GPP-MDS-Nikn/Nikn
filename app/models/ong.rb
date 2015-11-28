@@ -31,15 +31,15 @@ class Ong < ActiveRecord::Base
 	validates(:description, length: {:minimum => DESCRIPTION_MIN_LENGTH})
 
 	# Contact details
-	validates(:site, uniqueness: true, unless: "site.nil?" )
-	validates(:site, length: {:minimum => SITE_MIN_LENGTH}, allow_nil: true)
+	validates(:site, uniqueness: true, unless: "site.blank?" )
+	validates(:site, length: {:minimum => SITE_MIN_LENGTH}, allow_blank: true)
 	validates(:phone, presence: true)
 	validates(:phone, uniqueness: true)
 	validates(:phone, numericality: { only_integer: true })
 	validates(:phone, length: {in: PHONES_MIN_LENGTH..PHONES_MAX_LENGTH})
-	validates(:auxiliary_phone, uniqueness: true, unless: "auxiliary_phone.nil?" )
-	validates(:auxiliary_phone, numericality: { only_integer: true }, allow_nil: true)
-	validates(:auxiliary_phone, length: {in: PHONES_MIN_LENGTH..PHONES_MAX_LENGTH}, allow_nil: true)
+	validates(:auxiliary_phone, uniqueness: true, unless: "auxiliary_phone.blank?" )
+	validates(:auxiliary_phone, numericality: { only_integer: true }, allow_blank: true)
+	validates(:auxiliary_phone, length: {in: PHONES_MIN_LENGTH..PHONES_MAX_LENGTH}, allow_blank: true)
 
 	# Localization details
 	validates(:cep, presence: true)

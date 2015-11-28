@@ -16,12 +16,12 @@
 	<br>
 	<h4>Contato:</h4>
 	<p><%= @ong.email %></p>
-	<% unless @ong.site.nil? %>
+	<% unless @ong.site.blank? %>
 		<p><%= @ong.site %></p>
 	<% end %>
-	<p><%= @ong.phone %><% unless @ong.auxiliary_phone.nil? %> / <%= @ong.auxiliary_phone %><% end %></p> 
+	<p><%= @ong.phone %><% unless @ong.auxiliary_phone.blank? %> / <%= @ong.auxiliary_phone %><% end %></p> 
 	<p><%= @ong.uf %>, <%= @ong.city %></p>
-	<p><%= @ong.address %><% unless @ong.auxiliary_phone.nil? %> - <%= @ong.complement %><% end %></p>
+	<p><%= @ong.address %><% unless @ong.complement.blank? %> - <%= @ong.complement %><% end %></p>
 </div>
 
 <%= link_to 'Back to Index', "/ongs" %>
