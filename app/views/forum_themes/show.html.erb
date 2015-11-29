@@ -1,16 +1,82 @@
-<h2><%= @forum_theme.title %></h2>
-<%= @forum_theme.description %>
+<section id="title" class="emerald">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1><%= @forum_theme.title %></h1>
+                <p><%= @forum_theme.description %></p>
+            </div>
+            <div class="col-sm-6">
+                <ul class="breadcrumb pull-right">
+                  <li><%= link_to "Início", root_path %></li>
+                  <li class="active"><%= link_to "Temas", forum_themes_path %></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section><!--/#title-->
 
-<p><%= button_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme), :class => "button", :method => :get%></p>
+<section id="blog" class="container">
 
+  <div class="search-form">
+    <%= form_tag forum_theme_path(@forum_theme), method: :get do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Buscar Tópico", class: "form-control search-form-field"%>
+      <%= submit_tag "Buscar", class: "search-form-button btn btn-default" %>
+    <% end %>
+  </div>
+  <br>
 
-<% @forum_topics.each do |topic| %>
-	<div class="list-group">
-		<div class="list-group-item">
-			<h2><%= link_to topic.title, forum_topic_path(topic) %></h2>
-			<p><%= link_to 'apagar', forum_theme_forum_topic_path(@forum_theme, topic),
-		            :confirm => 'Are you sure?', :method => :delete %> </p>
-		    <p><%= link_to 'editar', edit_forum_theme_forum_topic_path(@forum_theme, topic) %></p>
-		</div>
-	</div>
-<%end%>
+  <div class="blog">
+      <% @forum_topics.each do |topic| %>
+          <div class="blog-item">
+              <div class="blog-content">
+                  <h3><%= link_to topic.title, forum_topic_path(topic) %></h3>
+                  <div class="entry-meta">
+                      <span>
+                        <i class="icon-user"></i>
+                        <% unless topic.author.nil? %>
+                          <%= topic.author %>
+                        <% else %>
+                          <%= "Anônimo" %>
+                        <% end %>
+                      </span>
+                      <span>
+                        <i class="icon-folder-close"></i>
+                        <a href="#"><%= @forum_theme.title %></a></span>
+                      <span>
+                        <i class="icon-calendar"></i>
+                        <%= topic.created_at.strftime("%d/%m/%Y") %>
+                      </span>
+                      <span>
+                        <i class="icon-comment"></i>
+                        <%= link_to topic do %>
+                          <%= topic.forum_posts.count.to_s + " Comments"%>
+                        <% end %>
+                      </span>
+                  </div>
+                  <% if topic.body.size > 140 %>
+                    <%= topic.body[0..140] + "..." %>
+                    <br><br>
+                    <%= link_to topic, class: "btn btn-default" do %>
+                      Leia mais
+                      <i class="icon-angle-right"></i>
+                    <% end %>
+                  <% else %>
+                    <%= topic.body %>
+                    <br><br>
+                  <% end %>
+                  <%= link_to 'apagar', forum_theme_forum_topic_path(@forum_theme, topic),
+                      :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger' %>
+                  <%= link_to 'editar', edit_forum_theme_forum_topic_path(@forum_theme, topic), class: 'btn btn-default' %>
+              </div>
+          </div><!--/.blog-item-->
+      <%end%>
+      <ul class="pagination pagination-lg">
+        <li><a href="#"><i class="icon-angle-left"></i></a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#"><i class="icon-angle-right"></i></a></li>
+      </ul><!--/.pagination-->
+      <%= button_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme), :class => "btn btn-default", :method => :get%>
+  </div><!--/.blog-->
+</section><!--/#blog-->
