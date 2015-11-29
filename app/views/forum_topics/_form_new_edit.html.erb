@@ -1,12 +1,11 @@
 <h1><%= action_name %></h1>
 
-        <%= form_for([@forum_theme, @forum_theme.forum_topics.build]) do |field| %>
-            <p>Título: </p>
-            <%= field.text_field :title%>
+<%= form_for([@forum_theme, @forum_theme.forum_topics.build]) do |field| %>
+  <p>Título: </p>
+  <%= field.text_field :title %>
 
-            <p>Texto: </p>
-            <%= field.text_field :body%>
-            
-            <%= field.submit "criar tópico"%>
-        <% end %>
-    
+  <p>Texto: </p>
+  <%= field.text_field :body %>
+  
+  <%= field.submit "criar tópico" %>
+<% end %>

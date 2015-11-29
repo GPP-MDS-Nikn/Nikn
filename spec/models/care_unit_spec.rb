@@ -296,7 +296,7 @@ RSpec.describe CareUnit, type: :model do
       description:    "a"*CareUnit::DESCRIPTION_MIN_LENGTH,
       name:           "a"*CareUnit::NAME_MIN_LENGTH,
       address:        "a"*CareUnit::ADDRESS_MIN_LENGTH,
-      zip_code:       "12345-123", 
+      zip_code:       "12345-123",
       city:           "a"*CareUnit::CITY_MIN_LENGTH,
       phone:          "(12) 3456-7890",
       email:          "test@test.tt",

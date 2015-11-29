@@ -15,5 +15,7 @@
   <%= @mortality_rate.taxa %>
 </p>
 
-<%= link_to 'Edit', edit_mortality_rate_path(@mortality_rate) %> |
-<%= link_to 'Back', mortality_rates_path %>
+<% if ong_signed_in? and current_ong.has_role? :admin %>
+ 	<%= link_to 'Edit', edit_mortality_rate_path(@mortality_rate) %> |
+	<%= link_to 'Back', mortality_rates_path %>
+<% end %>
