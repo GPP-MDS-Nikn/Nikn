@@ -78,12 +78,6 @@ class ForumTopicsController < ApplicationController
 		end
 	end
 
-	def report_topic
-		@forum_topic = ForumTopic.find(params[:id])
-		@forum_topic.reports += 1
-		@forum_topic.save
-	end
-
 	private
 
   	def forum_topic_params
