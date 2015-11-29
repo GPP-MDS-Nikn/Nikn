@@ -1,4 +1,10 @@
 class Event < ActiveRecord::Base
+	# Use event as a rolify resource
+  resourcify
+
+  # Each event has an owner
+  belongs_to :ong
+
 	# Event Model Constants
 	TITLE_MIN_LENGTH = 3  # characters
 	TITLE_MAX_LENGTH = 60 # characters

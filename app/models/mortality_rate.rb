@@ -1,5 +1,8 @@
 class MortalityRate < ActiveRecord::Base
-     validates :regiao, presence: true
-     validates :nome, presence: true
-     validates :taxa, presence: true
+	# Use forum_post as a rolify resource
+  resourcify
+
+	validates :regiao, presence: true
+	validates :nome, presence: true
+	validates :taxa, presence: true
 end

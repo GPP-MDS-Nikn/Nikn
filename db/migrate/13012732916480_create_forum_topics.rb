@@ -1,6 +1,8 @@
 class CreateForumTopics < ActiveRecord::Migration
   def change
     create_table :forum_topics do |t|
+    	t.belongs_to :ong, index: true
+    	
       t.string :author
       t.string :title
       t.text :body

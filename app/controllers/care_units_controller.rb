@@ -1,6 +1,8 @@
 class CareUnitsController < ApplicationController
   before_action :set_care_unit, only: [:show, :edit, :update, :destroy]
 
+  # Use this controller as a resource of CanCan and Rolify
+  skip_authorization_check
   def index
     # This conditional structure returns to the view the result of
     # the user search in case of a request.
