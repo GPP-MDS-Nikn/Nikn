@@ -36,6 +36,19 @@
 				<% else %>
 					<li><%= link_to "Entrar", new_ong_session_path %></li>
 				<% end %>
+				<script>
+					$(function() {
+						$('li').click(function() {
+							// If this isn't already active
+							if (!$(this).hasClass('active')) {
+								// Remove the class from anything that is active
+								$('li.active').removeClass('active');
+								// And make this active
+								$(this).addClass('active');
+							}
+						});
+					});
+				</script>
 			</ul>
 		</div><!-- end of links in the navigation bar -->
 	</div><!-- End of container -->
