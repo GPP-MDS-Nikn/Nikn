@@ -4,7 +4,6 @@ class ForumThemesController < ApplicationController
   load_and_authorize_resource
 
   def index
-
     # Get last forum topics
     ungrouped_last_forum_topics = get_last_forum_topics(9)
     # Group the last forum topics in specified sub-lists.
