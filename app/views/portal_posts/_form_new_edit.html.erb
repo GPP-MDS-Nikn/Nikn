@@ -1,3 +1,5 @@
+<%= tinymce_assets %>
+
 <section id="title" class="emerald">
 	<div class="container">
 		<div class="row">
@@ -23,7 +25,8 @@
 				</div>
 				<div class="field">
 					<p><b>Texto</b></p>
-					<%= f.text_area :body, class: 'form-control' %>
+					<%= f.text_area :body, content: "", rows: 15, class: 'form-control tinymce' %>
+					<%= tinymce %>
 				</div>
 				<div class="field">
 					<p><b>Imagem</b></p>
@@ -34,3 +37,4 @@
 		</div>
 	</div>
 </section>
+
