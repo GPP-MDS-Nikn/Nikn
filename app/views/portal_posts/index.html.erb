@@ -1,24 +1,33 @@
 <% provide(:title, "| Portal") %>
 
-<h1>Portal de Informações</h1>
-
-<div class="portal-posts">
-	<% @portal_posts.each do |post| %>
-		<%= link_to(post) do %>
-			<div class="portal-post ">
-				<%if post.image_file.present? %>
-					<%= image_tag(post.image_file.url(), class: "image center-block") %>
-				<%else%>
-					<%= image_tag("nikn_default_banner.png", class: "image center-block") %>
-				<%end%>
-				<p class="title"><%= post.title %></p>
+<section id="title" class="emerald">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1>Portal de Notícias e Informações</h1>
+				<p>Acompanhe as notícias de nosso portal, políticas públicas, legislação, direito e muito mais informações.</p>
 			</div>
-		<% end %>
-	<% end %>
-</div>
+		</div>
+	</div>
+</section>
 
-<a href="/portal_posts/new">
-	<button type="button" class="btn btn-default center-block" aria-label="Left Align">
-		<p>Nova Postagem</p>
-	</button>
-</a>
+<section id="portfolio" class="container">
+	<div class="portal-posts">
+		<% @portal_posts.each do |post| %>
+			<%= link_to(post) do %>
+				<div class="portal-post ">
+					<%if post.image_file.present? %>
+						<%= image_tag(post.image_file.url(), class: "image center-block") %>
+					<%else%>
+						<%= image_tag("nikn_default_banner.png", class: "image center-block") %>
+					<%end%>
+					<p class="title"><%= post.title %></p>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+
+	<div class="text-center" style="display:block">
+		<%= link_to "Adicionar Notícia", new_portal_post_path, class: "btn btn-primary" %>
+	</div>
+</section>
