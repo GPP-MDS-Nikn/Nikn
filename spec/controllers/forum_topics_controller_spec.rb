@@ -15,7 +15,7 @@ describe ForumTopicsController, :type => :controller do
 
         it 'should create topic with valid params' do
             @theme = create(:forum_theme)
-            @topic_attributes = FactoryGirl.attributes_for(:forum_topic, :forum_theme_id => @theme)
+            @topic_attributes = attributes_for(:forum_topic, :forum_theme_id => @theme)
             expect{(
 				post :create, :forum_theme_id => @theme, :forum_topic => @topic_attributes
 				)}.to change(ForumTopic, :count).by(1)
