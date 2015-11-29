@@ -3,48 +3,57 @@ require 'rails_helper'
 describe ForumThemesController, :type => :controller do
     context 'creating themes' do
         it 'should create themes with valid params' do
-            expect {@theme = create_theme}.to change(ForumTheme, :count).by(1)
+            @theme_attrs = attributes_for(:forum_theme)
+            expect{
+                post :create, :forum_theme => @theme_attrs
+            }.to change(ForumTheme, :count).by(1)
         end
 
         it 'should not create themes with invalid params' do
-            expect {@theme = create_theme(title: nil)}.to change(ForumTheme, :count).by(0)
+            @theme_attrs = attributes_for(:forum_theme, title: nil)
+            expect{
+                post :create, :forum_theme => @theme_attrs
+            }.to change(ForumTheme, :count).by(0)
         end
     end
+
+    context 'showing themes' do
+        it 'should show existing theme' do
+            create_theme
+            get :show, :id => @theme.id
+            expect(assigns(:forum_theme)).to eq(@theme)
+        end
+    end
+
     context 'updating themes' do
         it 'should update themes with valid params' do
-            @theme = create_theme
-            update_theme(@theme)
-            expect(@theme.title).to eq("new title")
+            create_theme
+            @theme_attrs = {title: 'new title'}
+            put :update, :id => @theme.id, :forum_theme => @theme_attrs
+            @theme.reload
+            expect(@theme.title).to eq('new title')
         end
 
-#        it 'should not update themes with invalid params' do
-#            @theme = create_theme
-#            update_theme(@theme, title: 'a')
-#            expect(@theme.title).to eq("title")
-#        end
+        it 'should not update themes with invalid params' do
+            create_theme
+            @theme_attrs = {title: nil}
+            put :update, :id => @theme.id, :forum_theme => @theme_attrs
+            @theme.reload
+            expect(@theme.title).to eq('theme title')
+        end
     end
 
     context 'deleting themes' do
         it 'should delete existing theme from database' do
-            @theme = create_theme
-            expect {@theme.destroy}.to change(ForumTheme, :count).by(-1)
+            create_theme
+            expect{
+                delete :destroy, :id => @theme.id
+            }.to change(ForumTheme, :count). by(-1)
         end
     end
 
 private
-    def create_theme(options={})
-        ForumTheme.create({
-            title: "title",
-            description: "description"
-        }.merge(options))
+    def create_theme
+        @theme = create(:forum_theme)
     end
-
-    def update_theme(theme, options={})
-        theme.update({
-            title: "new title",
-            description: "new description"}.merge(options)
-        )
-        theme.save
-    end
-
 end
