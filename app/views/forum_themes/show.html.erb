@@ -16,6 +16,15 @@
 </section><!--/#title-->
 
 <section id="blog" class="container">
+
+  <div class="search-form">
+    <%= form_tag forum_theme_path(@forum_theme), method: :get do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Buscar Tópico", class: "form-control search-form-field"%>
+      <%= submit_tag "Buscar", class: "search-form-button btn btn-default" %>
+    <% end %>
+  </div>
+  <br>
+
   <div class="blog">
       <% @forum_topics.each do |topic| %>
           <div class="blog-item">
@@ -66,10 +75,8 @@
         <li class="active"><a href="#">1</a></li>
         <li><a href="#">2</a></li>
         <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
         <li><a href="#"><i class="icon-angle-right"></i></a></li>
       </ul><!--/.pagination-->
+      <%= button_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme), :class => "btn btn-default", :method => :get%>
   </div><!--/.blog-->
 </section><!--/#blog-->
-<p><%= button_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme), :class => "button", :method => :get%></p>
