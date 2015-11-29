@@ -1,8 +1,12 @@
 require 'rails_helper'
 
 describe ForumTopicsController, :type => :controller do
+    before(:each) do
+        @ong = create(:ong, email: 'newmail@ongmail.com')
+        @ong.add_role(:admin)
+        sign_in @ong
+    end
     context 'creating topics' do
-
         it 'should build new topic from existing theme' do
             @theme = create(:forum_theme)
             get :new, :forum_theme_id => @theme.id
