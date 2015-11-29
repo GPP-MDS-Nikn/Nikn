@@ -27,7 +27,6 @@
 	<% if ong_signed_in? %>
 		<p><%= button_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme), :class => "button" %></p>
 	<% end %>
-
 	<% @forum_topics.each do |topic| %>
 		<div class="list-group">
 			<div class="list-group-item">
@@ -75,6 +74,7 @@
 			  <% end %>
 			</div>
 		</div>
+
       <ul class="pagination pagination-lg">
         <li><a href="#"><i class="icon-angle-left"></i></a></li>
         <li class="active"><a href="#">1</a></li>
