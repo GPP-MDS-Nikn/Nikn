@@ -1,4 +1,5 @@
 class ForumTopic < ActiveRecord::Base
+	belongs_to :forum_theme
 	after_initialize :default_values
 	TITLE_MIN_LENGTH = 2
 	BODY_MIN_LENGTH = 2

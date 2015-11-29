@@ -29,7 +29,7 @@
       <% @forum_topics.each do |topic| %>
           <div class="blog-item">
               <div class="blog-content">
-                  <h3><%= link_to topic.title, forum_topic_path(topic) %></h3>
+                  <h3><%= link_to topic.title, forum_theme_forum_topic_path(@forum_theme, topic) %></h3>
                   <div class="entry-meta">
                       <span>
                         <i class="icon-user"></i>
@@ -56,7 +56,7 @@
                   <% if topic.body.size > 140 %>
                     <%= topic.body[0..140] + "..." %>
                     <br><br>
-                    <%= link_to topic, class: "btn btn-default" do %>
+                    <%= link_to forum_theme_forum_topic_path(@forum_theme, topic), class: "btn btn-default" do %>
                       Leia mais
                       <i class="icon-angle-right"></i>
                     <% end %>

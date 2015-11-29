@@ -3,14 +3,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <h1>Blog Item</h1>
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+                    <h1><%= @forum_theme.title %></h1>
+                    <p>Lembre-se, o seu anonimato está garantido para comentários nessa publicação.</p>
                 </div>
                 <div class="col-sm-6">
                     <ul class="breadcrumb pull-right">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#">Pages</a></li>
-                        <li class="active">Blog Item</li>
+                        <li><%= link_to "Início", root_path %></li>
+                        <li><%= link_to "Temas", forum_theme_path %></li>
+                        <li><%= link_to @forum_theme.title, forum_theme_path(@forum_theme) %></li>
+                        <li class="active"><%= @forum_topic.title %></li>
                     </ul>
                 </div>
             </div>
@@ -21,7 +22,7 @@
                 <div class="blog">
                     <div class="blog-item">
                         <div class="blog-content">
-                            <h3>Duis sed odio sit amet nibh vulputate cursus</h3>
+                            <h3><%= @forum_topic.title %></h3>
                             <div class="entry-meta">
                                 <span><i class="icon-user"></i> <a href="#">John</a></span>
                                 <span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span>
