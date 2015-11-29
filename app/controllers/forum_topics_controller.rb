@@ -51,37 +51,14 @@ class ForumTopicsController < ApplicationController
 	end
 
 	def create_report_post
-		find_post
-		if verify_recaptcha
-			@forum_post.reports += 1
-			@forum_post.save
-			redirect_to new_report_post_path
-			flash[:success] = "Uhuul!"
-		else
-			redirect_to new_report_post_path
-	      	flash[:warning] = "captcha bugado!"
-		end
+		recaptcha(@forum_post)
 	end
 
 	def new_report_topic
 	end
 
 	def create_report_topic
-		if verify_recaptcha
-			@forum_topic.reports += 1
-			@forum_topic.save
-			redirect_to new_report_topic_path
-			flash[:success] = "Uhuul!"
-		else
-			redirect_to new_report_topic_path
-	      	flash[:warning] = "captcha bugado!"
-		end
-	end
-
-	def report_topic
-		@forum_topic = ForumTopic.find(params[:id])
-		@forum_topic.reports += 1
-		@forum_topic.save
+		recaptcha(@forum_topic)
 	end
 
 	private
@@ -96,5 +73,25 @@ class ForumTopicsController < ApplicationController
 
 	def find_topic
 		@forum_topic = ForumTopic.find(params[:id])
+	end
+
+	def recaptcha(object)
+		if verify_recaptcha
+			object.reports += 1
+			object.save
+			if object.is_a?(ForumTopic)
+				redirect_to new_report_topic_path
+			else
+				redirect_to new_report_post_path
+			end
+			flash[:success] = "Uhuul!"
+		else
+			if object.is_a?(ForumTopic)
+				redirect_to new_report_topic_path
+			else
+				redirect_to new_report_post_path
+			end
+	      	flash[:warning] = "captcha bugado!"
+		end
 	end
 end
