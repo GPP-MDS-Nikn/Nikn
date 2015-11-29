@@ -16,6 +16,7 @@
 </section><!--/#title-->
 
 <section id="blog" class="container">
+<<<<<<< fafa19d9cb3e8dd030d2f8914b8377093f25db42
 	<% if ong_signed_in? %>
 		<p><%= button_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme), :class => "button" %></p>
 	<% end %>
@@ -26,9 +27,43 @@
 				<h2><%= link_to topic.title, forum_topic_path(topic) %></h2>
 				<% if ong_signed_in? and (current_ong.has_role? :admin or
 																 (current_ong.has_role? :ong and topic.ong_id === current_ong.id)) %>
-					<p><%= link_to 'apagar', forum_theme_forum_topic_path(@forum_theme, topic),
-				            :confirm => 'Are you sure?', :method => :delete %> </p>
-			    <p><%= link_to 'editar', edit_forum_theme_forum_topic_path(@forum_theme, topic) %></p>
+																 <div class="entry-meta">
+											 							<span>
+											 								<i class="icon-user"></i>
+											 								<% unless topic.author.nil? %>
+											 									<%= topic.author %>
+											 								<% else %>
+											 									<%= "Anônimo" %>
+											 								<% end %>
+											 							</span>
+											 							<span>
+											 								<i class="icon-folder-close"></i>
+											 								<a href="#"><%= @forum_theme.title %></a></span>
+											 							<span>
+											 								<i class="icon-calendar"></i>
+											 								<%= topic.created_at.strftime("%d/%m/%Y") %>
+											 							</span>
+											 							<span>
+											 								<i class="icon-comment"></i>
+											 								<%= link_to topic do %>
+											 									<%= topic.forum_posts.count.to_s + " Comments"%>
+											 								<% end %>
+											 							</span>
+											 					</div>
+											 					<% if topic.body.size > 140 %>
+											 						<%= topic.body[0..140] + "..." %>
+											 						<br><br>
+											 						<%= link_to topic, class: "btn btn-default" do %>
+											 							Leia mais
+											 							<i class="icon-angle-right"></i>
+											 						<% end %>
+											 					<% else %>
+											 						<%= topic.body %>
+											 						<br><br>
+											 					<% end %>
+											 					<%= link_to 'apagar', forum_theme_forum_topic_path(@forum_theme, topic),
+											 							:confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger' %>
+											 					<%= link_to 'editar', edit_forum_theme_forum_topic_path(@forum_theme, topic), class: 'btn btn-default' %
 			  <% end %>
 			</div>
 		</div>
