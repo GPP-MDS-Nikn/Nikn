@@ -1,14 +1,9 @@
 FactoryGirl.define do
-#    factory :ong do
-#        email "ong@ongmail.com"
-#        password "12345678"
-#    end
-
-factory :ong do
-    email "ong@ongmail.com"
-    password "password"
-    password_confirmation "password"
-  end
+    factory :ong do
+        email "ong@ongmail.com"
+        password "password"
+        password_confirmation "password"
+    end
 
     factory :forum_theme do
         title "theme title"

@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe PortalPostsController, :type => :controller do
+    before(:each) do
+        @ong = create(:ong, email: 'newmail@ongmail.com')
+        @ong.add_role(:admin)
+        sign_in @ong
+    end
+
     context 'creating posts' do
         it 'should create a post with valid params' do
             @post_attributes = attributes_for(:portal_post)
