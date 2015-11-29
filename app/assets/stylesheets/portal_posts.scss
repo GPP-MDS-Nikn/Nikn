@@ -77,6 +77,24 @@
   width: 100%;
 }
 
+// Index
+.portal-index-row {
+  margin-bottom: 30px;
+  display: block;
+}
+.portal-img-data {
+  display: inline-block;
+  margin: 0px 20px 0px 0px;
+}
+.portal-index-img {
+  width: 100px; 
+  height:100px; 
+  overflow:hidden;
+}
+.portal-index-info {
+  display: inline-block;
+}
+
 //Social Buttons
 .show-post  { 
   .social-buttons {
