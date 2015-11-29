@@ -15,4 +15,10 @@ FactoryGirl.define do
         content "post content"
         forum_topic
     end
+
+    factory :portal_post do
+        author "portal_post author"
+        title "portal_post title"
+        body "portal_post body"
+    end
 end
