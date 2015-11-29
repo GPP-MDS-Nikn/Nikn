@@ -15,7 +15,12 @@ class ForumThemesController < ApplicationController
 
   def show
     set_forum_theme
-    @forum_topics = @forum_theme.forum_topics
+    # If the user is searching for something, returns the result of the research
+    if params[:search]
+      @forum_topics = @forum_theme.forum_topics.search(params[:search]).order("created_at DESC")
+    else
+      @forum_topics = @forum_theme.forum_topics.all.order('created_at DESC')
+    end
   end
 
   def new
