@@ -1,16 +1,74 @@
-<h2><%= @forum_theme.title %></h2>
-<%= @forum_theme.description %>
+<section id="title" class="emerald">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1><%= @forum_theme.title %></h1>
+                <p><%= @forum_theme.description %></p>
+            </div>
+            <div class="col-sm-6">
+                <ul class="breadcrumb pull-right">
+                  <li><%= link_to "Início", root_path %></li>
+                  <li class="active"><%= link_to "Temas", forum_themes_path %></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section><!--/#title-->
 
+<section id="blog" class="container">
+  <% @forum_topics.each do |topic| %>
+      <div class="list-group">
+          <div class="list-group-item">
+              <h2><%= link_to topic.title, forum_topic_path(topic) %></h2>
+              <p><%= link_to 'apagar', forum_theme_forum_topic_path(@forum_theme, topic),
+                      :confirm => 'Are you sure?', :method => :delete %> </p>
+              <p><%= link_to 'editar', edit_forum_theme_forum_topic_path(@forum_theme, topic) %></p>
+          </div>
+      </div>
+  <%end%>
+
+    <div class="row">      
+        <div class="col-sm-8 col-sm-pull-4">
+            <div class="blog">
+                <div class="blog-item">
+                    <img class="img-responsive img-blog" src="images/blog/blog1.jpg" width="100%" alt="" />
+                    <div class="blog-content">
+                        <a href="blog-item.html"><h3>Duis sed odio sit amet nibh vulputate cursus</h3></a>
+                        <div class="entry-meta">
+                            <span><i class="icon-user"></i> <a href="#">John</a></span>
+                            <span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span>
+                            <span><i class="icon-calendar"></i> Sept 16th, 2012</span>
+                            <span><i class="icon-comment"></i> <a href="blog-item.html#comments">3 Comments</a></span>
+                        </div>
+                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                        <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a>
+                    </div>
+                </div><!--/.blog-item-->
+                <div class="blog-item">
+                    <img class="img-responsive img-blog" src="images/blog/blog2.jpg" width="100%" alt="" />
+                    <div class="blog-content">
+                        <a href="blog-item.html"><h3>Conubia nostra per inceptos himenaeos</h3></a>
+                        <div class="entry-meta">
+                            <span><i class="icon-user"></i> <a href="#">John</a></span>
+                            <span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span>
+                            <span><i class="icon-calendar"></i> Sept 16th, 2012</span>
+                            <span><i class="icon-comment"></i> <a href="blog-item.html#comments">0 Comment</a></span>
+                        </div>
+                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                        <a class="btn btn-default" href="blog-item.html">Read More <i class="icon-angle-right"></i></a>
+                    </div>
+                </div><!--/.blog-item-->
+                <ul class="pagination pagination-lg">
+                    <li><a href="#"><i class="icon-angle-left"></i></a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#"><i class="icon-angle-right"></i></a></li>
+                </ul><!--/.pagination-->
+            </div>
+        </div><!--/.col-md-8-->
+    </div><!--/.row-->
+</section><!--/#blog-->
 <p><%= button_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme), :class => "button", :method => :get%></p>
-
-
-<% @forum_topics.each do |topic| %>
-	<div class="list-group">
-		<div class="list-group-item">
-			<h2><%= link_to topic.title, forum_topic_path(topic) %></h2>
-			<p><%= link_to 'apagar', forum_theme_forum_topic_path(@forum_theme, topic),
-		            :confirm => 'Are you sure?', :method => :delete %> </p>
-		    <p><%= link_to 'editar', edit_forum_theme_forum_topic_path(@forum_theme, topic) %></p>
-		</div>
-	</div>
-<%end%>
