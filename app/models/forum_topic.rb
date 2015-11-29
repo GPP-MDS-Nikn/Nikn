@@ -6,8 +6,8 @@ class ForumTopic < ActiveRecord::Base
 
   # Each forum_topic has an owner and some forum_posts
   belongs_to :ong
+  belongs_to :forum_theme
   has_many :forum_posts, dependent: :destroy
-
   # Validations
   TITLE_MIN_LENGTH = 2
   BODY_MIN_LENGTH = 2
