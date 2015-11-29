@@ -14,5 +14,13 @@
  *= require_self
  *= require fullcalendar
  */
- @import "bootstrap"
- @import "bootstrap-sprockets";
+@import "bootstrap"
+@import "bootstrap-sprockets";
+
+.field {
+	margin-bottom: 15px;
+}
+.field > p {
+	margin: 0px;
+	padding: 3px;
+}
