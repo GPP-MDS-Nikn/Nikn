@@ -37,8 +37,7 @@
   display: inline-block;
   padding: 0px 16px 0px 16px;
   margin: 0px;
-  font-family:"Josefin Slab";
-
+  width: 75%;
 }
 .show-post .post-title {
   display: block;
@@ -71,10 +70,7 @@
   clear: both;
 }
 .show-post .image {
-  clear: both;
-  display: block;
-  padding: 10px;
-  width: 100%;
+  width: 50%;
 }
 
 // Index

@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<h1><%= @portal_post.title %></h1>
-				<p><%= @portal_post.created_at %>, por <%= @portal_post.author %> -</p>
+				<p><%= @portal_post.created_at.strftime("%d/%M/%Y") %>, por <em><%= @portal_post.author %></em></p>
 			</div>
 		</div>
 	</div>
@@ -32,11 +32,11 @@
 	</div>
 <% end %>
 
+
 		<div class="social-buttons", style="display:inline">
 			<div class="twitter_button each_button"><%= tweet_button %></div>
 			<div class="facebook_button each_button"><%= like_button(1627715594161634) %></div>
 			<div class="pinit_button each_button"><%= pinit_button %></div>
 		</div>
-
 	</div>
 </section>
