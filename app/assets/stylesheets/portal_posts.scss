@@ -37,8 +37,7 @@
   display: inline-block;
   padding: 0px 16px 0px 16px;
   margin: 0px;
-  font-family:"Josefin Slab";
-
+  width: 75%;
 }
 .show-post .post-title {
   display: block;
@@ -67,14 +66,29 @@
   color: black;
   font-size: 16px;
   text-align: left;
-  padding: 10px 16px 0px 16px;
+  padding-top: 10px;
   clear: both;
 }
 .show-post .image {
-  clear: both;
+  width: 50%;
+}
+
+// Index
+.portal-index-row {
+  margin-bottom: 30px;
   display: block;
-  padding: 10px;
-  width: 100%;
+}
+.portal-img-data {
+  display: inline-block;
+  margin: 0px 20px 0px 0px;
+}
+.portal-index-img {
+  width: 100px; 
+  height:100px; 
+  overflow:hidden;
+}
+.portal-index-info {
+  display: inline-block;
 }
 
 //Social Buttons

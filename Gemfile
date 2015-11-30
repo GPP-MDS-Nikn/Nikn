@@ -20,6 +20,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 # Use paperclip for upload image files
 gem "paperclip", "~> 4.3"
+# Tinymce is a professional html editor for newsletters and ong descriptions
+gem 'tinymce-rails'
 # Please, run "sudo apt-get install imagemagick"
 # Use fullcalendar-rails
 gem 'fullcalendar-rails'

@@ -1,28 +1,32 @@
-<% if ong_signed_in? %>
-	<%= link_to 'Editar', edit_ong_registration_path, :get => :edit %>
-	<ul>
-		<li>
-			<ul>
-				<li><%= current_ong.name %></li>
-				<li><%= current_ong.description %></li>
-				<li><%= current_ong.email %></li>
-				<li><%= current_ong.address %></li>
-			</ul>
-			<%= link_to "Ver detalhes", {:action => 'show', :id => current_ong.id}, :class => 'action show' %>
-		</li>
-	</ul>
-<% else %>
-	<ul>
-		<%@ong.each do |ong|%>
-			<li>
-				<ul>
-					<li><%= ong.name %></li>
-					<li><%= ong.description %></li>
-					<li><%= ong.email %></li>
-					<li><%= ong.address %></li>
-				</ul>
-				<%= link_to "Ver detalhes", {:action => 'show', :id => ong.id}, :class => 'action show' %>
-			</li>
-		<% end %>
-	</ul>
-<% end %>
+<section id="title" class="emerald">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1>Lista de ONGs</h1>
+				<p></p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="portfolio" class="container">
+	<% @ong.each do |ong| %>
+		<%= link_to(ong) do %><table>
+			<tr class="portal-index-row">
+				<td class="portal-img-data">
+					<% if ong.image_file.present? %>
+						<%= image_tag(ong.image_file.url(), class: "portal-index-img") %>
+					<% else %>
+						<%= image_tag("nikn_default_banner.png", class: "portal-index-img") %>
+					<% end %>
+				</td>
+				<td class="portal-index-info">
+					<h3 style="margin:0px"><%= ong.name.upcase %></h3>
+					<b><%= ong.email %></b><br>
+					<%= ong.uf %>, <%= ong.city %> - <%= ong.phone %><br>
+					<%= ong.description[0...120].capitalize + "..." %>
+				</td>
+			</tr>
+		</table><% end %>
+	<% end %>
+</section>
