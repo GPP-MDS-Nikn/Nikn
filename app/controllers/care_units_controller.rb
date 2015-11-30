@@ -35,7 +35,7 @@ class CareUnitsController < ApplicationController
 
     respond_to do |format|
       if @care_unit.save
-        format.html { redirect_to @care_unit, notice: 'Care unit was successfully created.' }
+        format.html { redirect_to care_units_path, notice: 'Care unit was successfully created.' }
         format.json { render :index, status: :created, location: care_units_path }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class CareUnitsController < ApplicationController
   def destroy
     @care_unit.destroy
     respond_to do |format|
-      format.html { redirect_to care_units_url, notice: 'Care unit was successfully destroyed.' }
+      format.html { redirect_to care_units_path, notice: 'Care unit was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
