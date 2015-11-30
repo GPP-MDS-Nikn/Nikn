@@ -63,7 +63,7 @@
                         <%= topic.created_at.strftime("%d/%m/%Y") %>
                       </span>
                       <span>
-                        <i class="icon-comment"></i>
+                        <i class="icon-comment"></i>i
                         <%= link_to forum_theme_forum_topic_path(@forum_theme, topic) do %>
                           <%= pluralize(topic.forum_posts.count, "Comment") %>
                         <% end %>

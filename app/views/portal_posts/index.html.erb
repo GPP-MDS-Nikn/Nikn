@@ -12,7 +12,15 @@
 </section>
 
 <section id="portfolio" class="container">
+    <div class="search-form">
+      <%= form_tag(portal_posts_path, method: "get") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Buscar Notícia", class: "form-control search-form-field"%>
+        <%= submit_tag "Buscar", class: "search-form-button btn btn-default" %>
+      <% end %>
+    </div>
+    <br>
 	<div class="portal-posts">
+      <% if @portal_posts.present? %>
 		<% @portal_posts.each do |post| %>
 			<%= link_to(post) do %>
 				<div class="portal-post ">
@@ -25,6 +33,13 @@
 				</div>
 			<% end %>
 		<% end %>
+      <% else %>
+        <div class="post-not-found">
+          <br />
+          <p>Desculpe, nenhuma notícia foi encontrada.</p>
+          <br />
+        </div>
+      <% end %>
 	</div>
 
 <% if ong_signed_in? %>

@@ -7,6 +7,11 @@ class PortalPostsController < ApplicationController
   # GET /portal_posts
   def index
     @portal_posts = PortalPost.all
+    if params[:search]
+      @portal_posts = PortalPost.search(params[:search]).order("created_at DESC")
+    else
+      @portal_posts = PortalPost.all.order('created_at DESC')
+    end
   end
 
   # GET /portal_posts/<post:id>
@@ -25,7 +30,7 @@ class PortalPostsController < ApplicationController
   # POST /portal_posts
   def create
     @portal_post = PortalPost.new(portal_post_params)
-    
+
     # Associate the portal_post created along with its owner
     @portal_post.ong_id = current_ong.id 
 
@@ -47,7 +52,7 @@ class PortalPostsController < ApplicationController
       render :edit
     end
   end
-  
+
   # DELETE /portal_posts/<post:id>
   def destroy
     @portal_post.destroy
