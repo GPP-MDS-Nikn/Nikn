@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe ForumThemesController, :type => :controller do
+  before(:each) do
+      @ong = create(:ong)
+      @ong.add_role(:admin)
+      sign_in @ong
+  end
     context 'creating themes' do
         it 'should create themes with valid params' do
             @theme_attrs = attributes_for(:forum_theme)
@@ -26,6 +31,13 @@ describe ForumThemesController, :type => :controller do
     end
 
     context 'updating themes' do
+
+        it 'should assign right theme to editing' do
+            @theme = create(:forum_theme)
+            get :edit, id: @theme.id
+            expect(assigns(:forum_theme)).to eq(@theme)
+        end
+
         it 'should update themes with valid params' do
             create_theme
             @theme_attrs = {title: 'new title'}
