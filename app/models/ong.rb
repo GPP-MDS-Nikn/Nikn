@@ -13,14 +13,14 @@ class Ong < ActiveRecord::Base
 	# Code below is used to validate ong's attributes. First of all, validation constants are defined, then attributes are validated in three sections: 'basic information', 'contact details', and 'localization details'.
 
 	# Constants (in characters)
-	NAME_MIN_LENGTH 				= 8
-	DESCRIPTION_MIN_LENGTH 	= 100
+	NAME_MIN_LENGTH 				= 2
+	DESCRIPTION_MIN_LENGTH 			= 100
 	SITE_MIN_LENGTH 				= 5
-	PHONES_MIN_LENGTH 			= 10
-	PHONES_MAX_LENGTH 			= 11
-	CEP_LENGTH 							= 8
-	ADDRESS_MIN_LENGTH 			= 10
-	UF_LENGTH 							= 2
+	PHONES_MIN_LENGTH	 			= 10
+	PHONES_MAX_LENGTH 				= 11
+	CEP_LENGTH 						= 8
+	ADDRESS_MIN_LENGTH 				= 10
+	UF_LENGTH 						= 2
 	CITY_MIN_LENGTH 				= 3
 
 	# Basic information
