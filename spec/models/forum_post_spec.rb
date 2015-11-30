@@ -29,7 +29,6 @@ describe ForumPost, type: :model do
 	private
 		def create_forum_post(options={})
 			ForumPost.create({
-			title: "Forum post title sample",
 			content: "Forum post content sample"
 			}.merge(options))
 		end

@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe ForumThemesController, :type => :controller do
+  before(:each) do
+      @ong = create(:ong)
+      @ong.add_role(:admin)
+      sign_in @ong
+  end
     context 'creating themes' do
         it 'should create themes with valid params' do
             @theme_attrs = attributes_for(:forum_theme)
