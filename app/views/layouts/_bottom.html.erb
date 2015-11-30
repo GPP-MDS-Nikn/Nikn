@@ -11,16 +11,14 @@
                 <h4>Plataforma Nikn</h4>
                 <div>
                     <ul class="arrow">
-                        <li><a href="#">Como surgiu?</a></li>
                         <li><a href="#">Aplicativo iOS</a></li>
-                        <li><a href="#">Universidade de Brasília</a></li>
-                        <li><a href="#">Dados Abertos</a></li>
-                        <li><a href="#">Lei Maria da Penha</a></li>
-                        <li><a href="#">Fale Conosco</a></li>
+                        <li><a href="https://fga.unb.br/">Universidade de Brasília</a></li>
+                        <li><a href="http://dados.gov.br/dados-abertos/">Dados Abertos</a></li>
+                        <li><a href="http://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm">Lei Maria da Penha</a></li>
                         <li><a href="#">Política de Privacidade</a></li>
                         <li><a href="#">Apoie essa ideia</a></li>
-                        <li><a href="#">Desenvolvedores</a></li>
-                        <li><a href="#">Software Livre</a></li>
+                        <li><a href="https://github.com/GPP-MDS-Nikn/Nikn/graphs/contributors">Desenvolvedores</a></li>
+                        <li><a href="http://softwarelivre.org/">Software Livre</a></li>
                     </ul>
                 </div>
             </div><!--/.col-md-3-->
@@ -29,12 +27,9 @@
                 <h4>Você também é Nikn</h4>
                 <div>
                     <ul class="arrow">
-                        <li><a href="#">Divulgue seu projeto</a></li>
-                        <li><a href="#">Publique uma notícia</a></li>
-                        <li><a href="#">Participe do nosso fórum</a></li>
-                        <li><a href="#">Divulgue seu evento</a></li>
-                        <li><a href="#">Cadastre sua ONG</a></li>
-                        <li><a href="#">Unidades de Apoio</a></li>
+                        <li><%= link_to "Dados Abertos", "/opendata" %></li>
+                        <li><%= link_to "Cadastre sua ONG", new_registration_path(:ong) %></li>
+                        <li><%= link_to "Unidades de Apoio", care_units_path %></li>
                     </ul>
                 </div>
             </div><!--/.col-md-3-->
@@ -46,7 +41,7 @@
                     Necessitamos de voluntários para<br>
                     manutenção das publicações e<br>
                     e dos fóruns, entre em contato.<br><br>
-                    <abbr title="Phone">T:</abbr> (61) XXXX-XXXX
+                    <abbr title="Phone">T:</abbr> (61) 9999-9999
                 </address>
                 <h4>Notícias</h4>
                 <form role="form">
