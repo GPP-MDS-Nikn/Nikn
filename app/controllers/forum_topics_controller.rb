@@ -55,8 +55,8 @@ class ForumTopicsController < ApplicationController
 		if verify_recaptcha
 			@forum_post.reports += 1
 			@forum_post.save
-			redirect_to new_report_post_path
 			flash[:success] = "Uhuul!"
+			redirect_to forum_theme_forum_topic_path(@forum_theme, @forum_topic)
 		else
 			redirect_to new_report_post_path
 	      	flash[:warning] = "captcha bugado!"
@@ -70,8 +70,8 @@ class ForumTopicsController < ApplicationController
 		if verify_recaptcha
 			@forum_topic.reports += 1
 			@forum_topic.save
-			redirect_to new_report_topic_path
 			flash[:success] = "Uhuul!"
+			redirect_to forum_theme_forum_topic_path(@forum_theme, @forum_topic)
 		else
 			redirect_to new_report_topic_path
 	      	flash[:warning] = "captcha bugado!"
@@ -92,9 +92,12 @@ class ForumTopicsController < ApplicationController
 
 	def find_post
 		@forum_post = ForumPost.find(params[:id])
+		@forum_theme = ForumTheme.find(params[:id])
+		@forum_topic = ForumTopic.find(params[:id])
 	end
 
 	def find_topic
+		@forum_theme = ForumTheme.find(params[:id])
 		@forum_topic = ForumTopic.find(params[:id])
 	end
 end
