@@ -46,7 +46,7 @@
                                     <i class="icon-comment"></i>
                                     <%= pluralize(@forum_posts.count, "Comment") %>
                                 </span>
-                                <a class="pull-right" href="javascript:" onclick="window.open('<%=new_report_topic_path(@forum_topic)%>');">
+                                <a class="pull-right" href = "<%= new_report_topic_path(@forum_theme.id, @forum_topic) %>">
                                   <i class="icon-repeat"></i>
                                   Reportar Tópico
                                 </a>
@@ -76,7 +76,7 @@
                                                             <%= "Anônimo" %>
                                                           <% end %>
                                                         </strong>&nbsp; <small><%= each_post.created_at.strftime("%d/%m/%Y") %></small>
-                                                        <a class="pull-right" href="javascript:" onclick="window.open('<%=new_report_post_path(each_post, @forum_topic)%>');">
+                                                        <a class="pull-right" href= "<%= new_report_post_path(each_post, @forum_theme.id, @forum_topic)%>">
                                                           <i class="icon-repeat"></i>
                                                           Reportar Comentário
                                                         </a>
@@ -92,7 +92,7 @@
                                             </div>
                                         </div><!--/.media-->
                                     <% end %>
-                                </div><!--/#comments-list-->  
+                                </div><!--/#comments-list-->
                                 <%= render 'forum_posts/form' %>
                             </div><!--/#comments-->
                         </div>
