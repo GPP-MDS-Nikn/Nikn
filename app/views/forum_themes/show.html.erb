@@ -41,7 +41,10 @@
                       </span>
                       <span>
                         <i class="icon-folder-close"></i>
-                        <a href="#"><%= @forum_theme.title %></a></span>
+                        <%= link_to forum_theme_path(@forum_theme), method: :get do %>
+                          <%= @forum_theme.title %>
+                        <% end %>
+                      </span>
                       <span>
                         <i class="icon-calendar"></i>
                         <%= topic.created_at.strftime("%d/%m/%Y") %>
@@ -49,7 +52,7 @@
                       <span>
                         <i class="icon-comment"></i>
                         <%= link_to topic do %>
-                          <%= topic.forum_posts.count.to_s + " Comments"%>
+                          <%= pluralize(topic.forum_posts.count, "Comment") %>
                         <% end %>
                       </span>
                   </div>
