@@ -1,49 +1,54 @@
-<% provide(:title, "| Editar Evento") %>
+<section id="title" class="emerald">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h1>Central de Eventos</h1>
+        <p>Acompanhe a luta à violência contra a mulher.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-</br>
-<%= link_to 'Voltar', events_path %>
-</br>
+<section id="portfolio" class="container">
+	<div class="row">
+		<div class="col-md-12 center-block event_info">
+			<div class = "col-md-5 no_padding">
+				<%if @event.image_file.present? %>
+					<%= image_tag(@event.image_file.url(), class: "event_image center-block") %>
+				<%else%>
+					<%= image_tag("nikn_default_banner.png", class: "event_image center-block")  %>
+				<%end%>
+			</div>
 
-<div class="row">
-	<div class="col-md-12 center-block event_info">
-		<% if ong_signed_in? and (current_ong.has_role? :admin or 
-														 (current_ong.has_role? :ong and @event.ong_id === current_ong.id)) %>
-			<div class="btn-group pull-right" role="group" aria-label="...">
-				<%= link_to(edit_event_path(@event), type: "button", class: "btn btn-default") do %>
-					<span class="glyphicon glyphicon-pencil portal-button" aria-hidden="true"></span>
-				<% end %>
-				<%= link_to(@event, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-default") do %>
-					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+			<div class="basic_information col-md-7 ">
+				<h1><%= @event.title %></h1>
+				<p>Local: <%= @event.local %></p>
+				<p>Data: <%= @event.start_time.strftime("%d/%m/%Y") %>.</p>
+				<p>Começa às <%= @event.start_time.strftime("%I:%M%p") %>.</p>
+				<p>Termina às <%= @event.end_time.strftime("%I:%M%p") %>.</p>
+			</div>
+			<div class="description">
+				<h4>Descrição do evento:</h4>
+				<p><%= @event.description %></p>
+			</div>
+
+			<div class="portal-buttons", style="display:inline;float:left">
+				<% if ong_signed_in? and (current_ong.has_role? :admin or (current_ong.has_role? :ong and @event.ong_id === current_ong.id)) %>
+					<%= link_to(edit_event_path(@event), method: :get, type: "button", class: "btn btn-default") do %>
+						Editar
+					<% end %>
+					<%= link_to(@event, method: :delete, data: { confirm: 'Deseja realmente excluir esta postagem?' }, type: "button", class: "btn btn-danger") do %>
+						Excluir
+					<% end %>
 				<% end %>
 			</div>
-		<% end %>
 
-		<div class = "col-md-5 no_padding">
-			<%if @event.image_file.present? %>
-				<%= image_tag(@event.image_file.url(), class: "event_image center-block") %>
-			<%else%>
-				<%= image_tag("nikn_default_banner.png", class: "event_image center-block")  %>
-			<%end%>
+      <!-- Display all the social network buttons, like twitter and facebook -->
+      <div class="social-buttons", style="display:inline">
+        <div class="twitter_button each_button"><%= tweet_button %></div>
+        <div class="facebook_button each_button"><%= like_button(1627715594161634) %></div>
+        <div class="pinit_button each_button"><%= pinit_button %></div>
+      </div>
 		</div>
-
-		<div class="basic_information col-md-7 ">
-			<h1><%= @event.title %></h1>
-			<p>Local: <%= @event.local %></p>
-			<p>Data: <%= @event.start_time.strftime("%d/%m/%Y") %>.</p>
-			<p>Começa às <%= @event.start_time.strftime("%I:%M%p") %>.</p>
-			<p>Termina às <%= @event.end_time.strftime("%I:%M%p") %>.</p>
-		</div>
-		<div class="description">
-			<h4>Descrição do evento:</h4>
-			<p><%= @event.description %></p>
-		</div>
-
-        <!-- Display all the social network buttons, like twitter and facebook -->
-        <div class="social-buttons col-md-12">
-          <div class="twitter_button each_button"><%= tweet_button %></div>
-          <div class="facebook_button each_button"><%= like_button(1627715594161634) %></div>
-          <div class="pinit_button each_button"><%= pinit_button %></div>
-        </div>
 	</div>
-	<hr>
-</div>
+</section>
