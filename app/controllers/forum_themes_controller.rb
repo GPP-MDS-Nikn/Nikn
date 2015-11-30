@@ -20,6 +20,7 @@ class ForumThemesController < ApplicationController
     else
       @forum_topics = @forum_theme.forum_topics.all.order('created_at DESC').paginate(page: params[:page], per_page: PAGINATION_RANGE)
     end
+
     number_of_pages = (@forum_topics.count.to_f / PAGINATION_RANGE.to_f).ceil
     @pages = 1..number_of_pages
     @page = params[:page]

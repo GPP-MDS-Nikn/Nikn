@@ -64,7 +64,7 @@
                       </span>
                       <span>
                         <i class="icon-comment"></i>
-                        <%= link_to topic do %>
+                        <%= link_to forum_theme_forum_topic_path(@forum_theme, topic) do %>
                           <%= pluralize(topic.forum_posts.count, "Comment") %>
                         <% end %>
                       </span>
