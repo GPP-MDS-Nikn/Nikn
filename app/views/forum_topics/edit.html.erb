@@ -1,13 +1,29 @@
-<h3><%= @forum_topic.title %></h3>
+<section id="title" class="emerald">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1>Editar Tópico</h1>
+				<p></p> <!-- TODO write subtitle -->
+			</div>
+		</div>
+	</div>
+</section>
 
-<h1><%= action_name %></h1>
+<section id="portfolio" class="container">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for @forum_topic do |f| %>
+		  <div class="field">
+				<p><b>Título</b></p>
+				<%= f.text_field :title, class: 'form-control' %>
+			</div>
 
-<%= form_for @forum_topic do |f| %>
-  <p>Título: </p>
-  <%= f.text_field :title %>
-
-  <p>Texto: </p>
-  <%= f.text_field :body %>
-  
-  <%= f.submit %>
-<% end %>
+			<div class="field">
+				<p><b>Texto</b></p>
+				<%= f.text_area :body, class: 'form-control' %>
+			</div>
+		  
+		  <br />
+		  <%= f.submit "Atualizar tópico", class: "btn btn-default" %>
+		<% end %>
+	</div>
+</section>

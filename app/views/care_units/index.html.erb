@@ -1,11 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<div class='col-md-12'>
-  <div class="center-block">
-    <h1 class="center">Unidades de Atendimento a Mulher*</h1>
+<section id="title" class="emerald">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h1>Unidades de Atendimento à Mulher*</h1>
+        <p></p>
+      </div>
+    </div>
   </div>
+</section>
+
+<div class='col-md-12 uda-map'>
   <div id="multi_markers" style='width: 100%; height: 600px;'></div>
 </div>
+
 
 <%= javascript_tag do %>
     var handler = Gmaps.build('Google');
@@ -16,17 +23,16 @@
     });
 <% end %>
 
-<div class="img-responsive aspect data_background"></div>
-<br>
-
 <section id="portfolio" class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="img-responsive aspect data_background"></div>
+  <br>
   <div class="search-form">
     <%= form_tag(care_units_path, method: "get") do %>
       <%= text_field_tag :search, params[:search], placeholder: "Buscar UDA", class: "form-control search-form-field"%>
       <%= submit_tag "Buscar", class: "search-form-button btn btn-default" %>
     <% end %>
   </div>
-
   <% if @care_units.present? %>
     <table class="table table-striped w">
       <thead class="text-position">

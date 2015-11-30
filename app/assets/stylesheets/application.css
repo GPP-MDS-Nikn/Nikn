@@ -24,3 +24,21 @@
 	margin: 0px;
 	padding: 3px;
 }
+
+.emerald {
+	padding: 50px 0px 0px 0px;
+}
+
+#title > div > div > div * {
+	padding: 0px;
+	margin: 0px;
+}
+
+#title > div > div > div > h1 {
+	font-weight: normal;
+	font-size: 32px;
+}
+
+#title > div > div > div > p {
+	padding-top: 3px;
+}
