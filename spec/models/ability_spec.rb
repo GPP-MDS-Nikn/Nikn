@@ -1,14 +1,10 @@
-# This file includes tests for access restriction. 
-# The Ability model (from CanCanCan gem) is used to define abilities of users based on their roles. 
-# So, this tester basically tests the access restriction of users to any route and resource they may try to access.
-
 require "cancan/matchers"
 require 'rails_helper'
 
 describe Ability do
 	# First, load the seed.rb file in order to initialize default roles
 	Rails.application.load_seed
-	
+
 	context "when is an admin" do
 		it "should be able to manage all" do
 			ong = create_ong # Only valid data
@@ -22,7 +18,7 @@ describe Ability do
 			expect(ability).to be_able_to(:manage, Event)
 		end
 	end
-	
+
 	context "when is an ong" do
 		it "should be able to manage forum topics, events and portal posts they are owner" do
 			ong = create_ong # Only valid data
@@ -112,17 +108,20 @@ describe Ability do
 	end
 
 	# Methods below are used to create instances of models
-	private		
+	private
 
 		# Create Ong with default parameters, only valid fields
 		def create_ong(options={})
 			Ong.create({
 			email: "example@email.com",
 			password: "password",
-			password_confirmation: "password"
+			password_confirmation: "password",
+			name: 'new name',
+			phone: '23456789012',
+			cep: '12345678'
 			}.merge(options))
 		end
-		
+
 		# Create Event with default parameters, only valid fields
 		def create_event(options={})
 			Event.create({
@@ -133,7 +132,7 @@ describe Ability do
 			end_time: 2.days.from_now
 			}.merge(options))
 		end
-		
+
 		# Create PortalPost with default parameters, only valid fields
 		def create_portal_post(options={})
 			PortalPost.create({
@@ -142,7 +141,7 @@ describe Ability do
 			body: "Portal post body example"
 			}.merge(options))
 		end
-		
+
 		# Create MortalityRate with default parameters, only valid fields
 		def create_mortality_rate(options={})
 			MortalityRate.create({
@@ -151,15 +150,14 @@ describe Ability do
 			taxa: '10,5'
 			}.merge(options))
 		end
-		
+
 		# Create ForumPost with default parameters, only valid fields
 		def create_forum_post(options={})
 			ForumPost.create({
-			title: "Forum post title sample",
 			content: "Forum post content sample"
 			}.merge(options))
 		end
-		
+
 		# Create ForumTopic with default parameters, only valid fields
 		def create_forum_topic(options={})
 			ForumTopic.create({
@@ -167,7 +165,7 @@ describe Ability do
 			body: "Forum topic body sample"
 			}.merge(options))
 		end
-		
+
 		# Create ForumThemes with default parameters, only valid fields
 		def create_forum_theme(options={})
 			ForumTheme.create({
