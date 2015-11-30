@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  skip_authorization_check
+
   include ApplicationHelper
   MINIMUM_LIMIT_FOR_THE_LAST_POSTS_QUANTITY = 3
 

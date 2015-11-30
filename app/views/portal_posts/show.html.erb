@@ -11,15 +11,18 @@
 	</div>
 </section>
 
-<section id="portfolio" class="container">
-	<div class="show-post">
+<section id="portfolio" class="container text-center">
+	<div class="show-post text-left">
+		<div style="display:block" class="text-center">
 		<%if @portal_post.image_file.present? %>
 			<%= image_tag(@portal_post.image_file.url(), class: "image center-block") %>
 		<%else%>
 			<%= image_tag("nikn_default_banner.png", class: "image center-block") %>
 		<%end%>
+		</div>
+		<br><br><%= @portal_post.body.html_safe %><br><br>
 
-		<p class="body"><%= @portal_post.body %></p>
+
 <% if ong_signed_in? and (current_ong.has_role? :admin or
 												 (current_ong.has_role? :ong and @portal_post.ong_id === current_ong.id)) %>
 	<div class="btn-group pull-right" role="group" aria-label="...">

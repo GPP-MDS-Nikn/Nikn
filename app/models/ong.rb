@@ -4,6 +4,10 @@ class Ong < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
 	       :recoverable, :rememberable, :trackable, :validatable
 
+   # Give it roles
+  rolify
+	# Include default role to an user after its creation
+ 	after_create :default_role
 	# Attach images to ongs
 	# Paperclip gem sintax for upload image files.
 	has_attached_file :image_file, :styles => {}, :default_url => "/images/:style/missing.png"
