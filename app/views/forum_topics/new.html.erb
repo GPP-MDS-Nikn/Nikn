@@ -1,2 +1,29 @@
-<h3> Criar novo Tópico </h3>
-<%= render 'form_new_edit'%>
+<section id="title" class="emerald">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1>Criar novo tópico</h1>
+				<p></p> <!-- TODO write subtitle -->
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="portfolio" class="container">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for([@forum_theme, @forum_theme.forum_topics.build]) do |f| %>
+		  <div class="field">
+				<p><b>Título</b></p>
+				<%= f.text_field :title, class: 'form-control' %>
+			</div>
+
+			<div class="field">
+				<p><b>Texto</b></p>
+				<%= f.text_area :body, class: 'form-control' %>
+			</div>
+		  
+		  <br />
+		  <%= f.submit "Criar tópico", class: "btn btn-default" %>
+		<% end %>
+	</div>
+</section>
