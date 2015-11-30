@@ -26,6 +26,19 @@
   <br>
 
   <div class="blog">
+      <% unless @pages.count <= 1 %>
+        <ul class="pagination pagination-lg">
+          <% @pages.each do |page_number| %>
+            <% if page_number.to_i != @page.to_i %>
+              <li>
+            <% else %>
+              <li class="active">
+            <% end %>
+              <%= link_to "#{page_number}", "/forum_themes/#{ @forum_theme.id }?page=#{page_number}" %>
+            </li>
+          <% end %>
+        </ul><!--/.pagination-->
+      <% end %>
       <% @forum_topics.each do |topic| %>
           <div class="blog-item">
               <div class="blog-content">
@@ -73,13 +86,19 @@
               </div>
           </div><!--/.blog-item-->
       <%end%>
-      <ul class="pagination pagination-lg">
-        <li><a href="#"><i class="icon-angle-left"></i></a></li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#"><i class="icon-angle-right"></i></a></li>
-      </ul><!--/.pagination-->
+      <% unless @pages.count <= 1 %>
+        <ul class="pagination pagination-lg">
+          <% @pages.each do |page_number| %>
+            <% if page_number.to_i != @page.to_i %>
+              <li>
+            <% else %>
+              <li class="active">
+            <% end %>
+              <%= link_to "#{page_number}", "/forum_themes/#{ @forum_theme.id }?page=#{page_number}" %>
+            </li>
+          <% end %>
+        </ul><!--/.pagination-->
+      <% end %>
       <%= button_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme), :class => "btn btn-default", :method => :get%>
   </div><!--/.blog-->
 </section><!--/#blog-->
