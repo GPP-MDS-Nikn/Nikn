@@ -11,11 +11,11 @@ class ForumTopic < ActiveRecord::Base
 
   validates :title, presence: true, length: { minimum: TITLE_MIN_LENGTH }, uniqueness: true
   validates :body, presence: true, length: { minimum: BODY_MIN_LENGTH }
-
     # Method to search across the topics
     def self.search(search)
       where("body LIKE ? OR title LIKE ?", "%#{search}%", "%#{search}%")
     end
+
 
 	private
 		def default_values #this will initialize 'reports' attribute with default value 0
