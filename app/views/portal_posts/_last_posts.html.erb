@@ -18,7 +18,11 @@
 
 
                       <% @grouped_last_posts.each do |each_group_of_posts| %>
-                        <div class="<%= "item"  + (" active" if @grouped_last_posts.first == each_group_of_posts)%>">
+                        <% if @grouped_last_posts.first == each_group_of_posts %>
+                          <div class="item active">
+                        <% else %>
+                          <div class "item">
+                        <% end %>
                             <div class="row">
                                 <% each_group_of_posts.each do |each_post| %>
                                     <div class="col-xs-4">
