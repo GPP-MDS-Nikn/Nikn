@@ -9,11 +9,8 @@ class StaticPagesController < ApplicationController
   # so we decided that is more readable to take it here.
   def home
     # Class variables for increase maintainability
-    @@quantity_of_posts = 9 # Quantity of posts there will appear in the home page
-    @@posts_group_size = 3  # How many posts will appear per slice of posts in the home page
-
-    ungrouped_last_posts = get_last_posts(@@quantity_of_posts)
-    @grouped_last_posts = create_list_groups(ungrouped_last_posts, @@posts_group_size)
+    @@quantity_of_posts = 3 # Quantity of posts there will appear in the home page
+    @ungrouped_last_posts = get_last_posts(@@quantity_of_posts)
   end
 
   def about
