@@ -1,5 +1,6 @@
 class ForumThemesController < ApplicationController
   include ApplicationHelper
+  PAGINATION_RANGE = 5
 
   def index
     # Get last forum topics
@@ -10,15 +11,22 @@ class ForumThemesController < ApplicationController
     @forum_themes = ForumTheme.all
   end
 
-  def show 
+  def show
     # Get the theme that contains the topics
     set_forum_theme
     # If the user is searching for something, returns the result of the research
     if params[:search]
-      @forum_topics = @forum_theme.forum_topics.search(params[:search]).order("created_at DESC")
+      @forum_topics = @forum_theme.forum_topics.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: PAGINATION_RANGE)
     else
-      @forum_topics = @forum_theme.forum_topics.all.order('created_at DESC')
+      @forum_topics = @forum_theme.forum_topics.all.order('created_at DESC').paginate(page: params[:page], per_page: PAGINATION_RANGE)
     end
+    number_of_pages = (@forum_topics.count.to_f / PAGINATION_RANGE.to_f).ceil
+    @pages = 1..number_of_pages
+    @page = params[:page]
+    @page ||= 1
+    logger.debug "Quantity of paginated topics: #{ @forum_topics.count }."
+    logger.debug "Number of pages: #{ number_of_pages }."
+    logger.debug "Current page: #{ @page }."
   end
 
   def new
