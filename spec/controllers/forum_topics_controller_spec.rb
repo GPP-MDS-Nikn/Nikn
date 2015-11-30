@@ -2,7 +2,11 @@ require 'rails_helper'
 
 describe ForumTopicsController, :type => :controller do
     before(:each) do
-        @ong = create(:ong, email: 'newmail@ongmail.com')
+        @ong = create(:ong, email: 'newmail@ongmail.com',
+                            name: 'new name',
+                            phone: '23456789012',
+                            cep: '12345678'
+                    )
         @ong.add_role(:admin)
         sign_in @ong
     end
