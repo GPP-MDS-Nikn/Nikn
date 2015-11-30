@@ -24,106 +24,87 @@
                         <div class="blog-content">
                             <h3><%= @forum_topic.title %></h3>
                             <div class="entry-meta">
-                                <span><i class="icon-user"></i> <a href="#">John</a></span>
-                                <span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span>
-                                <span><i class="icon-calendar"></i> Sept 16th, 2012</span>
-                                <span><i class="icon-comment"></i> <a href="blog-item.html#comments">3 Comments</a></span>
+                                <span>
+                                    <i class="icon-user"></i>
+                                    <% unless @forum_topic.author.nil? %>
+                                      <%= @forum_topic.author %>
+                                    <% else %>
+                                      <%= "Anônimo" %>
+                                    <% end %>
+                                </span>
+                                <span>
+                                    <i class="icon-folder-close"></i>
+                                    <%= link_to forum_theme_path(@forum_theme), method: :get do %>
+                                      <%= @forum_theme.title %>
+                                    <% end %>
+                                </span>
+                                <span>
+                                    <i class="icon-calendar"></i>
+                                    <%= @forum_topic.created_at.strftime("%d/%m/%Y") %>
+                                </span>
+                                <span>
+                                    <i class="icon-comment"></i>
+                                    <%= pluralize(@forum_posts.count, "Comment") %>
+                                </span>
+                                <a class="pull-right" href="javascript:" onclick="window.open('<%=new_report_topic_path(@forum_topic)%>');">
+                                  <i class="icon-repeat"></i>
+                                  Reportar Tópico
+                                </a>
                             </div>
-                            <p class="lead">Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-
-                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-
-                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                            <!-- Body text -->
+                            <p class="lead">
+                              <%= @forum_topic.body %>
+                            </p>
 
                             <hr>
 
                             <div id="comments">
                                 <div id="comments-list">
-                                    <h3>3 Comments</h3>
-                                    <div class="media">
-                                        <div class="pull-left">
-                                            <img class="avatar img-circle" src="images/blog/avatar1.png" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="well">
-                                                <div class="media-heading">
-                                                    <strong>John Doe</strong>&nbsp; <small>27 Aug 2013</small>
-                                                    <a class="pull-right" href="#"><i class="icon-repeat"></i> Reply</a>
-                                                </div>
-                                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                            </div>
-                                            <div class="media">
-                                                <div class="pull-left">
-                                                    <img class="avatar img-circle" src="images/blog/avatar3.png" alt="">
-                                                </div>
-                                                <div class="media-body">
-                                                    <div class="well">
-                                                        <div class="media-heading">
-                                                            <strong>John Doe</strong>&nbsp; <small>27 Aug 2013</small>
-                                                            <a class="pull-right" href="#"><i class="icon-repeat"></i> Reply</a>
-                                                        </div>
-                                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
-                                                    </div>
-                                                </div>
-                                            </div><!--/.media-->
-                                        </div>
-                                    </div><!--/.media-->
-                                    <div class="media">
-                                        <div class="pull-left">
-                                            <img class="avatar img-circle" src="images/blog/avatar2.png" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="well">
-                                                <div class="media-heading">
-                                                    <strong>John Doe</strong>&nbsp; <small>27 Aug 2013</small>
-                                                    <a class="pull-right" href="#"><i class="icon-repeat"></i> Reply</a>
-                                                </div>
-                                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                            </div>
-                                        </div>
-                                    </div><!--/.media-->
-                                </div><!--/#comments-list-->  
+                                  <a href="javascript:" onclick="window.open('<%=new_report_topic_path(@forum_topic)%>');">denunciar tópico</a>
 
-                                <div id="comment-form">
-                                    <h3>Leave a comment</h3>
-                                    <form class="form-horizontal" role="form">
-                                        <div class="form-group">
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" placeholder="Name">
+                                    <h3>
+                                      <%= pluralize(@forum_posts.count, "Comment") %>
+                                    </h3>
+
+                                    <% @forum_posts.each do |each_post| %>
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <div class="well">
+                                                    <!-- Media header -->
+                                                    <div class="media-heading">
+                                                        <strong>
+                                                          <% unless each_post.author.nil? || each_post.author == "" %>
+                                                            <%= each_post.author %>
+                                                          <% else %>
+                                                            <%= "Anônimo" %>
+                                                          <% end %>
+                                                        </strong>&nbsp; <small><%= each_post.created_at.strftime("%d/%m/%Y") %></small>
+                                                        <a class="pull-right" href="javascript:" onclick="window.open('<%=new_report_post_path(each_post, @forum_topic)%>');">
+                                                          <i class="icon-repeat"></i>
+                                                          Reportar Comentário
+                                                        </a>
+                                                    </div>
+                                                    <!-- Comment's body -->
+                                                    <p>
+                                                        <%= each_post.content %>
+                                                    </p>
+                                                    <p><%= post.content %>
+                                                      <% if ong_signed_in? and current_ong.has_role? :admin %>
+                                                      <%= link_to 'apagar', forum_topic_forum_post_path(@forum_topic, post),
+                                                                :confirm => 'Are you sure?', :method => :delete %>
+
+                                                      <%= link_to 'editar', edit_forum_topic_forum_post_path(@forum_topic, post) %>
+                                                      <a href="javascript:" onclick="window.open('<%=new_report_post_path(post, @forum_topic)%>');">denunciar post</a>
+                                                    </p>
+                                                    <% end %>
+                                                </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <input type="email" class="form-control" placeholder="Email">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <textarea rows="8" class="form-control" placeholder="Comment"></textarea>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-danger btn-lg">Submit Comment</button>
-                                    </form>
-                                </div><!--/#comment-form-->
+                                        </div><!--/.media-->
+                                    <% end %>
+                                </div><!--/#comments-list-->
+                                <%= render 'forum_posts/form' %>
                             </div><!--/#comments-->
                         </div>
                     </div><!--/.blog-item-->
                 </div><!-- /.blog -->
     </section><!--/#blog-->
-
-
-<div class="list-group">
-  <div class="list-group-item"><%= @forum_topic.title %></div>
-  <div class="list-group-item-info"><%= @forum_topic.body %></div>
-</div>
-<a href="javascript:" onclick="window.open('<%=new_report_topic_path(@forum_topic)%>');">denunciar tópico</a>
-<%@forum_topic.forum_posts.each do |post|%>
-
-<p><%= post.content %>
-  <% if ong_signed_in? and current_ong.has_role? :admin %>
-  <%= link_to 'apagar', forum_topic_forum_post_path(@forum_topic, post),
-            :confirm => 'Are you sure?', :method => :delete %>
-
-  <%= link_to 'editar', edit_forum_topic_forum_post_path(@forum_topic, post) %>
-  <a href="javascript:" onclick="window.open('<%=new_report_post_path(post, @forum_topic)%>');">denunciar post</a>
-</p>
-<% end %>
-<%= render 'forum_posts/form' %>
