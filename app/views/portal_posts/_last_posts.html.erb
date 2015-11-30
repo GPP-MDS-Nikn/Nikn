@@ -5,10 +5,7 @@
             <div class="col-md-3">
                 <h3>Últimas notícias</h3>
                 <p>Acompanhe as últimas notícias de nosso portal, políticas públicas, legislação, direito e muito mais informações.</p>
-                <div class="btn-group">
-                    <a class="btn btn-danger" href="#scroller" data-slide="prev"><i class="icon-angle-left"></i></a>
-                    <a class="btn btn-danger" href="#scroller" data-slide="next"><i class="icon-angle-right"></i></a>
-                </div>
+                <%= link_to "Mais Notícias", portal_posts_path, class: "btn btn-default" %>
                 <p class="gap"></p>
             </div>
 
@@ -16,36 +13,28 @@
                 <div id="scroller" class="carousel slide">
                     <div class="carousel-inner">
 
-
-                      <% @grouped_last_posts.each do |each_group_of_posts| %>
-                        <% if @grouped_last_posts.first == each_group_of_posts %>
+                      <% @ungrouped_last_posts.each do |each_post| %>
+                        <% if @ungrouped_last_posts.first == each_post %>
                           <div class="item active">
                         <% else %>
                           <div class "item">
                         <% end %>
-                            <div class="row">
-                                <% each_group_of_posts.each do |each_post| %>
-                                    <div class="col-xs-4">
-                                        <div class="portfolio-item">
-                                            <div class="item-inner">
-                                                <img class="img-responsive" src="#" alt="">
-                                                <h5>
-                                                   <%= each_post.title %>
-                                                </h5>
-                                                <p>
-                                                  <%= each_post.body[0...200] + "... Leia Mais" %>
-                                                </p>
-                                                <div class="overlay">
-                                                    <%= link_to each_post, class: "preview btn btn-danger", title: "Veja mais" do %>
-                                                      <!-- Eye icon" -->
-                                                      <i class="icon-eye-open"></i>
-                                                    <% end %>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <% end %>
-                            </div><!-- End of row -->
+                                  <div class="col-xs-4">
+                                      <div class="portfolio-item">
+                                          <div class="item-inner">
+                                              <%= image_tag(each_post.image_file.url(), class: "img-responsive") %>
+                                              <h5>
+                                                 <%= each_post.title %>
+                                              </h5>
+                                              <div class="overlay">
+                                                  <%= link_to each_post, class: "preview btn btn-danger", title: "Veja mais" do %>
+                                                    <!-- Eye icon" -->
+                                                    <i class="icon-eye-open"></i>
+                                                  <% end %>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
                         </div><!-- End of each item -->
                       <% end %>
 
