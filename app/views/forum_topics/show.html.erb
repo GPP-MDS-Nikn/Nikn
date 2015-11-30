@@ -60,12 +60,9 @@
 
                             <div id="comments">
                                 <div id="comments-list">
-                                  <a href="javascript:" onclick="window.open('<%=new_report_topic_path(@forum_topic)%>');">denunciar tópico</a>
-
                                     <h3>
                                       <%= pluralize(@forum_posts.count, "Comment") %>
                                     </h3>
-
                                     <% @forum_posts.each do |each_post| %>
                                         <div class="media">
                                             <div class="media-body">
@@ -88,15 +85,9 @@
                                                     <p>
                                                         <%= each_post.content %>
                                                     </p>
-                                                    <p><%= post.content %>
-                                                      <% if ong_signed_in? and current_ong.has_role? :admin %>
-                                                      <%= link_to 'apagar', forum_topic_forum_post_path(@forum_topic, post),
-                                                                :confirm => 'Are you sure?', :method => :delete %>
-
-                                                      <%= link_to 'editar', edit_forum_topic_forum_post_path(@forum_topic, post) %>
-                                                      <a href="javascript:" onclick="window.open('<%=new_report_post_path(post, @forum_topic)%>');">denunciar post</a>
-                                                    </p>
-                                                    <% end %>
+                                                    <%= link_to 'Apagar', forum_topic_forum_post_path(@forum_topic, each_post),
+                                                                    :confirm => 'Are you sure?', :method => :delete,
+                                                                    class: "btn btn-danger" %>
                                                 </div>
                                             </div>
                                         </div><!--/.media-->

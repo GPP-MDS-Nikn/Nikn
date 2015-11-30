@@ -1,4 +1,7 @@
 class ForumTopicsController < ApplicationController
+	# Use this controller as a resource of CanCan and Rolify
+	load_and_authorize_resource
+
 	before_action :find_topic, :only => [:new_report_topic, :create_report_topic]
 	before_action :find_post, :only => [:new_report_post, :create_report_post]
 

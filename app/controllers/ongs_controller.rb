@@ -1,6 +1,9 @@
 class OngsController < ApplicationController
-	before_action :authenticate_ong!
+	skip_authorization_check
 	
+	# Use this controller as an user od CanCan and Rolify
+	before_action :authenticate_ong!
+
   def index
     @ong = Ong.all
   end

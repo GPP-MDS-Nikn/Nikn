@@ -15,13 +15,15 @@
     </div>
 </section><!--/#title-->
 
-<div class="search-form">
-  <%= form_tag forum_theme_path(@forum_theme), method: :get do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Buscar Tópico", class: "form-control search-form-field"%>
-    <%= submit_tag "Buscar", class: "search-form-button btn btn-default" %>
-  <% end %>
-</div>
-<br>
+<section id="blog" class="container">
+
+  <div class="search-form">
+    <%= form_tag forum_theme_path(@forum_theme), method: :get do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Buscar Tópico", class: "form-control search-form-field"%>
+      <%= submit_tag "Buscar", class: "search-form-button btn btn-default" %>
+    <% end %>
+  </div>
+  <br>
 
   <div class="blog">
       <% unless @pages.count <= 1 %>
@@ -41,9 +43,6 @@
           <div class="blog-item">
               <div class="blog-content">
                   <h3><%= link_to topic.title, forum_theme_forum_topic_path(@forum_theme, topic) %></h3>
-                  <% if ong_signed_in? and (current_ong.has_role? :admin or
-          																 (current_ong.has_role? :ong and topic.ong_id === current_ong.id)) %>
-
                   <div class="entry-meta">
                       <span>
                         <i class="icon-user"></i>
@@ -65,7 +64,7 @@
                       </span>
                       <span>
                         <i class="icon-comment"></i>
-                        <%= link_to topic do %>
+                        <%= link_to forum_theme_forum_topic_path(@forum_theme, topic) do %>
                           <%= pluralize(topic.forum_posts.count, "Comment") %>
                         <% end %>
                       </span>
@@ -81,6 +80,7 @@
                     <%= topic.body %>
                     <br><br>
                   <% end %>
+                
                   <%= link_to 'apagar', forum_theme_forum_topic_path(@forum_theme, topic),
                       :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger' %>
                   <%= link_to 'editar', edit_forum_theme_forum_topic_path(@forum_theme, topic), class: 'btn btn-default' %>
@@ -99,7 +99,6 @@
             </li>
           <% end %>
         </ul><!--/.pagination-->
-      <% end %>
       <% end %>
       <%= button_to 'Novo Tópico', new_forum_theme_forum_topic_path(@forum_theme), :class => "btn btn-default", :method => :get%>
   </div><!--/.blog-->

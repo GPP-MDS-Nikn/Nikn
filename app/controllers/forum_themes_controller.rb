@@ -1,8 +1,9 @@
 class ForumThemesController < ApplicationController
-  include ApplicationHelper
-	# Use this controller as a resource of CanCan and Rolify
+  # Use this controller as a resource of CanCan and Rolify
   load_and_authorize_resource
-  PAGINATION_RANGE = 5
+
+  include ApplicationHelper
+	PAGINATION_RANGE = 5
 
   def index
     # Get last forum topics
