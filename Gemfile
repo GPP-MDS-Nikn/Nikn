@@ -26,20 +26,26 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 # Use paperclip for upload image files
 gem "paperclip", "~> 4.3"
+# Tinymce is a professional html editor for newsletters and ong descriptions
+gem 'tinymce-rails'
 # Please, run "sudo apt-get install imagemagick"
 # Use fullcalendar-rails
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-
+# Gem to frontend
+gem "font-awesome-sass"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+# Pagination
+gem 'will_paginate', '~> 3.0.6'
 
 gem 'gmaps4rails'
 gem 'geocoder'
@@ -57,6 +63,7 @@ group :development, :test do
   gem 'byebug'
   gem 'simplecov'
   # Access an IRB console on exception pages or by using <%= console %> in views
+  gem "factory_girl_rails", "~> 4.0"
   gem 'web-console', '~> 2.0'
   gem 'rspec-rails'
   gem 'metric_fu'

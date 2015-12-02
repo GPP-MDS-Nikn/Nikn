@@ -1,10 +1,36 @@
-<%if ong_signed_in? %>
-<%= link_to 'Editar', edit_ong_registration_path, :get => :edit %>
-<%end%>
-<ul>
-<li><%=@ong.name%></li>
-<li><%=@ong.description%></li>
-<li><%=@ong.email%></li>
-<li><%=@ong.adress%></li>
+<section id="title" class="emerald">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1><%= @ong.name.upcase %></h1>
+				<p><%= @ong.description.capitalize %></p>
+			</div>
+		</div>
+	</div>
+</section>
 
-<%= link_to 'Back to Index', "/ongs" %>
+<section id="portfolio" class="container text-center">
+	<% if @ong.image_file.present? %>
+		<%= image_tag(@ong.image_file.url()) %>
+	<% else %>
+		<%= image_tag("nikn_default_banner.png") %>
+	<% end %>
+
+	<div>
+		<br>
+		<h4>Contato:</h4>
+		<p><%= @ong.email %></p>
+		<% unless @ong.site.blank? %>
+			<p><%= @ong.site %></p>
+		<% end %>
+		<p><%= @ong.phone %><% unless @ong.auxiliary_phone.blank? %> / <%= @ong.auxiliary_phone %><% end %></p> 
+		<p><%= @ong.uf %>, <%= @ong.city %></p>
+		<p><%= @ong.address %><% unless @ong.complement.blank? %> - <%= @ong.complement %><% end %></p>
+	</div>
+
+	<% if ong_signed_in? %>
+		<%= link_to 'Editar', edit_ong_registration_path, :get => :edit, class: "btn btn-default" %>
+	<% else %>
+		<%= link_to 'Voltar', "/ongs", class: "btn btn-primary" %>
+	<% end %>
+</section>

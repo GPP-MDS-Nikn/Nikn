@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :ongs, :controllers => { registrations: 'registrations' }
+  devise_for :ongs
   devise_for :admins
 
   resources :ongs

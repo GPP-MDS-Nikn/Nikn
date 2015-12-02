@@ -11,11 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/gcal
 //= require underscore
 //= require gmaps/google
+//= require turbolinks
+//= require tinymce

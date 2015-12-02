@@ -1,17 +1,101 @@
-<div class="list-group">
-  <div class="list-group-item"><%= @forum_topic.title %></div>
-  <div class="list-group-item-info"><%= @forum_topic.body %></div>
-</div>
-<a href="javascript:" onclick="window.open('<%=new_report_topic_path(@forum_topic)%>');">denunciar tópico</a>
-<%@forum_topic.forum_posts.each do |post|%>
 
-<p><%= post.content %>
-  <% if ong_signed_in? and current_ong.has_role? :admin %>
-  <%= link_to 'apagar', forum_topic_forum_post_path(@forum_topic, post),
-            :confirm => 'Are you sure?', :method => :delete %>
+    <section id="title" class="emerald">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1><%= @forum_theme.title %></h1>
+                    <p>Lembre-se, o seu anonimato está garantido para comentários nessa publicação.</p>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="breadcrumb pull-right">
+                        <li><%= link_to "Início", root_path %></li>
+                        <li><%= link_to "Temas", forum_theme_path %></li>
+                        <li><%= link_to @forum_theme.title, forum_theme_path(@forum_theme) %></li>
+                        <li class="active"><%= @forum_topic.title %></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!--/#title-->
 
-  <%= link_to 'editar', edit_forum_topic_forum_post_path(@forum_topic, post) %>
-  <a href="javascript:" onclick="window.open('<%=new_report_post_path(post, @forum_topic)%>');">denunciar post</a>
-</p>
-<% end %>
-<%= render 'forum_posts/form' %>
+    <section id="blog" class="container">
+                <div class="blog">
+                    <div class="blog-item">
+                        <div class="blog-content">
+                            <h3><%= @forum_topic.title %></h3>
+                            <div class="entry-meta">
+                                <span>
+                                    <i class="icon-user"></i>
+                                    <% unless @forum_topic.author.nil? %>
+                                      <%= @forum_topic.author %>
+                                    <% else %>
+                                      <%= "Anônimo" %>
+                                    <% end %>
+                                </span>
+                                <span>
+                                    <i class="icon-folder-close"></i>
+                                    <%= link_to forum_theme_path(@forum_theme), method: :get do %>
+                                      <%= @forum_theme.title %>
+                                    <% end %>
+                                </span>
+                                <span>
+                                    <i class="icon-calendar"></i>
+                                    <%= @forum_topic.created_at.strftime("%d/%m/%Y") %>
+                                </span>
+                                <span>
+                                    <i class="icon-comment"></i>
+                                    <%= pluralize(@forum_posts.count, "Comment") %>
+                                </span>
+                                <a class="pull-right" href = "<%= new_report_topic_path(@forum_theme.id, @forum_topic) %>">
+                                  <i class="icon-repeat"></i>
+                                  Reportar Tópico
+                                </a>
+                            </div>
+                            <!-- Body text -->
+                            <p class="lead">
+                              <%= @forum_topic.body %>
+                            </p>
+
+                            <hr>
+
+                            <div id="comments">
+                                <div id="comments-list">
+                                    <h3>
+                                      <%= pluralize(@forum_posts.count, "Comment") %>
+                                    </h3>
+                                    <% @forum_posts.each do |each_post| %>
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <div class="well">
+                                                    <!-- Media header -->
+                                                    <div class="media-heading">
+                                                        <strong>
+                                                          <% unless each_post.author.nil? || each_post.author == "" %>
+                                                            <%= each_post.author %>
+                                                          <% else %>
+                                                            <%= "Anônimo" %>
+                                                          <% end %>
+                                                        </strong>&nbsp; <small><%= each_post.created_at.strftime("%d/%m/%Y") %></small>
+                                                        <a class="pull-right" href= "<%= new_report_post_path(each_post, @forum_theme.id, @forum_topic)%>">
+                                                          <i class="icon-repeat"></i>
+                                                          Reportar Comentário
+                                                        </a>
+                                                    </div>
+                                                    <!-- Comment's body -->
+                                                    <p>
+                                                        <%= each_post.content %>
+                                                    </p>
+                                                    <%= link_to 'Apagar', forum_topic_forum_post_path(@forum_topic, each_post),
+                                                                    :confirm => 'Are you sure?', :method => :delete,
+                                                                    class: "btn btn-danger" %>
+                                                </div>
+                                            </div>
+                                        </div><!--/.media-->
+                                    <% end %>
+                                </div><!--/#comments-list-->
+                                <%= render 'forum_posts/form' %>
+                            </div><!--/#comments-->
+                        </div>
+                    </div><!--/.blog-item-->
+                </div><!-- /.blog -->
+    </section><!--/#blog-->

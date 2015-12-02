@@ -77,21 +77,18 @@ class CareUnit < ActiveRecord::Base
   geocoded_by :district
   geocoded_by :city
   after_validation :geocode
-  
+
+  # Method to turn the model searchable
+  # This will work in development with SQLite. If you switch to
+  # PostgreSQL in productionm you may need to change
+  def self.search(search)
+    where("category LIKE ? OR name LIKE ? OR city LIKE ? OR institution LIKE ? OR site LIKE ? OR address LIKE ?",
+    "%#{search}%", "%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%")
+  end
+
   private
     # Method to verify if the email field wasn't filled
     def blank_email?
       return email == ""
-    end
-
-    # Method to turn the model searchable
-    # This will work in development with SQLite. If you switch to
-    # PostgreSQL in productionm you may need to change
-    def self.search(search)
-      where("name LIKE ?", "%#{search}%")
-      where("city LIKE ?", "%#{search}%")
-      where("institution LIKE ?", "%#{search}%")
-      where("site LIKE ?", "%#{search}%")
-      where("address LIKE ?", "%#{search}")
     end
 end

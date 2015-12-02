@@ -21,7 +21,10 @@ public/assets/*
 *.swp
 *.save
 *.swo
-
+*.swn
+*.swl
+*.swm
+.sw*
 # Ignore images
 *.jpg
 *.png
@@ -53,3 +56,5 @@ bower.json
 # Ignore db/schema.rb
 db/schema.rb
 
+# Ignore backup files from sublime
+*.save

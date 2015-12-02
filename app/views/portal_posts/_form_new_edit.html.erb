@@ -1,21 +1,40 @@
-<h1><%= action_name %></h1>
+<%= tinymce_assets %>
 
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <%= form_for(@portal_post) do |field| %>
-            <p>Autor da postagem: </p>
-            <%= field.text_field :author, class: 'form-control' %>
+<section id="title" class="emerald">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1><%= action_command %></h1>
+				<p>As notícias são fundamentais para manter os usuários sempre informados de seus direitos, o que fazer em momentos críticos e atualizados a cerca do tema.</p>
+			</div>
+		</div>
+	</div>
+</section>
 
-            <p>Título da postagem: </p>
-            <%= field.text_field :title, class: 'form-control' %>
+<section id="portfolio" class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<%= form_for(@portal_post) do |f| %>
+				<div class="field">
+					<p><b>Autor</b></p>
+					<%= f.text_field :author, class: 'form-control' %>
+				</div>
+				<div class="field">
+					<p><b>Título</b></p>
+					<%= f.text_field :title, class: 'form-control' %>
+				</div>
+				<div class="field">
+					<p><b>Texto</b></p>
+					<%= f.text_area :body, content: "", rows: 15, class: 'form-control tinymce' %>
+					<%= tinymce %>
+				</div>
+				<div class="field">
+					<p><b>Imagem</b></p>
+					<%= f.file_field :image_file %>
+				</div>
+				</br><%= f.submit action_command, class: "btn btn-primary" %></br></br>
+			<% end %>
+		</div>
+	</div>
+</section>
 
-            <p>Texto: </p>
-            <%= field.text_area :body, class: 'form-control' %>
-
-            <p>Imagem: </p>
-            <%= field.file_field :image_file, class: 'form-control' %>
-            
-            </br><%= field.submit action_command, class: "btn btn-primary" %></br></br>
-        <% end %>
-    </div>
-</div>

@@ -1,90 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
+  <title>Νίκη</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 
-	<title>NIKN - Auxílio às mulheres vítimas de violência</title>
-  
-  <!-- Fonts -->
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    <%= render partial: "layouts/shim" %> <!-- Fix patch for IE. -->
+    <%= render partial: "mortality_rates/mortality_rate_charts_external_scripts" %>
+    <%= render partial: "care_units/google_maps_external_scripts" %>
 
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-	    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
-	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	<%= csrf_meta_tags %>
-</head>
-
+    <link rel="shortcut icon" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
+    <link rel="apple-touch-icon-precomposed" href="#">
+</head><!--/head-->
 <body>
-  <!-- Navigation -->
-  <%= render "layouts/header" %>
-  <div class="container">
-    <div class="row">
-      <div class="box">
-        <div class="col-lg-9 text-center">
-          <% flash.each do |message_type, message| %>
-            <%= content_tag :div, class: "alert alert-#{message_type}" do -%>
-              <%= message %>
-              <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-                <span class="sr-only">Close</span>
-              </button>
-            <% end -%>
-          <% end %>
-          <!-- Render the content of each page -->
-          <%= yield %>
-          <!-- This displays some useful information about each page using the built-in debug method and params variable
-          <%= debug(params) if Rails.env.development? %> -->
-        </div>
-        <div class="col-lg-3 text-center">
-          <a class="twitter-timeline"  href="https://twitter.com/appnikn" data-widget-id="661322310159331328">
-            Tweets by @appnikn
-          </a>
-          <script>
-            $(document).ready(function() {
-              !function(d,s,id){
-                var js,
-                fjs=d.getElementsByTagName(s)[0],
-                p=/^http:/.test(d.location)?'http':'https';
-                // Comment to fix bug with rails 4 and turbolinks
-                // if(!d.getElementById(id)){
-                  js=d.createElement(s);
-                  js.id=id;
-                  js.src=p+"://platform.twitter.com/widgets.js";
-                  fjs.parentNode.insertBefore(js,fjs);
-                // }
-              }
-              (document,"script","twitter-wjs");
-            });
-          </script>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <%= render "layouts/footer" %>
-
-  <!-- [TO FIX] The following line are bugging the javascript applications to be correctly rendered -->
-  <!-- jQuery -->
-  <!--<script src="assets/jquery.js"></script>-->
-
-  <!-- Script to Activate the Carousel -->
-  <script>
-    $(document).ready(function() {
-      $('.carousel').carousel({
-        interval: 5000 //changes the speed
-      });
-    });
-  </script>
+    <%= render partial: "/layouts/header_navbar" %>
+    <%= yield %>
+    <%= render partial: "/layouts/bottom" %>
+    <%= render partial: "/layouts/footer" %>
 </body>
 </html>

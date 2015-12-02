@@ -1,7 +1,9 @@
-<h4> Para concluir a denúncia, complete o captcha abaixo </h4>
-<%= @forum_post.content %>
+<div id="portfolio" class="container">
+  <h4> Para concluir a denúncia, complete o captcha abaixo </h4>
+  <%= @forum_post.content %>
 
-<%= form_for @forum_post, :url => url_for(:controller => 'forum_topics', :action => 'create_report_post') do |f| %>
-    <%= recaptcha_tags %>
-    <%= f.submit %>
-<% end %>
+  <%= form_for @forum_post, :url => url_for(:controller => 'forum_topics', :action => 'create_report_post') do |f| %>
+      <%= recaptcha_tags %>
+      <%= f.submit class: "btn btn-danger" %>
+  <% end %>
+</div>

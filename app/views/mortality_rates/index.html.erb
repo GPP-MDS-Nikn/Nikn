@@ -1,53 +1,62 @@
-<p id="notice"><%= notice %></p>
+<section id="title" class="emerald">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <!-- Top title of the page -->
+				<h1>Lista de mortalidade das 5 regiões do Brasil</h1>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- Render basic configuration of the mortality rate chart -->
-<!-- This sintax is necessary to render javascript when the request comes from a link -->
-<%= render(:partial =>'mortality_rate_chart', :format => :js) %>
+<section id="portfolio" class="container">
 
-<!-- Top title of the page -->
-<h1>Lista de mortalidade das 5 regiões do Brasil</h1>
+	<!-- Render basic configuration of the mortality rate chart -->
+	<!-- This sintax is necessary to render javascript when the request comes from a link -->
+	<%= render(:partial =>'mortality_rate_chart', :format => :js) %>
 
-<!-- Place where is displayed the mortality rate chart -->
-<div id="container" style="min-width: 420px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+	<!-- Place where is displayed the mortality rate chart -->
+	<div id="container" style="min-width: 420px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 
+	<!-- Here, we put all available data in repective 'tr' container to display in the chart view -->
+	<div style="display:none">
 
-<!-- Here, we put all available data in repective 'tr' container to display in the chart view -->
-<div style="display:none">
+		<table id="freq" border="0" cellspacing="0" cellpadding="0">
 
-	<table id="freq" border="0" cellspacing="0" cellpadding="0">
+			<!-- This 'tr' won't be displayed -->
+			<tr nowrap bgcolor="#CCCCFF">
+				<th colspan="9" class="hdr">Gráfico de Mortalidade</th> 
+			</tr>
 
-		<!-- This 'tr' won't be displayed -->
-		<tr nowrap bgcolor="#CCCCFF">
-			<th colspan="9" class="hdr">Gráfico de Mortalidade</th> 
-		</tr>
+			<!-- This is the subtitles of the chart -->
+			<tr nowrap bgcolor="#CCCCFF">
+				<!-- Here, the first 'th' will never be displayed -->
+	      <th class="freq">Taxas</th>
+				<th class="freq">&lt; 8 %</th>
+				<th class="freq">8-10 %</th>
+				<th class="freq">10-12 %</th>
+				<th class="freq">12-15 %</th>
+				<th class="freq">15-20 %</th>
+				<th class="freq">&gt; 20 %</th>
+			</tr>
 
-		<!-- This is the subtitles of the chart -->
-		<tr nowrap bgcolor="#CCCCFF">
-			<!-- Here, the first 'th' will never be displayed -->
-      <th class="freq">Taxas</th>
-			<th class="freq">&lt; 8 %</th>
-			<th class="freq">8-10 %</th>
-			<th class="freq">10-12 %</th>
-			<th class="freq">12-15 %</th>
-			<th class="freq">15-20 %</th>
-			<th class="freq">&gt; 20 %</th>
-		</tr>
+			<!-- Begginig in this section, all the rate data of each region
+			should be displayed in the respective block. -->
 
-		<!-- Begginig in this section, all the rate data of each region
-		should be displayed in the respective block. -->
+	        <%= @mortality_rates_frequencies.each do |region_name, frequencies_of_rates| %>
+	          <tr nowrap>
+	            <td class="dir"><%= region_name.to_s %></td>
+	            <%= frequencies_of_rates.each do |each_mortality_rate_frequency| %>
+				  <th class="data"><%= each_mortality_rate_frequency %></th>
+	            <% end %>
+	          </tr>
+	        <% end %>
+		</table>
+	</div>
+	<br>
 
-        <%= @mortality_rates_frequencies.each do |region_name, frequencies_of_rates| %>
-          <tr nowrap>
-            <td class="dir"><%= region_name.to_s %></td>
-            <%= frequencies_of_rates.each do |each_mortality_rate_frequency| %>
-			  <th class="data"><%= each_mortality_rate_frequency %></th>
-            <% end %>
-          </tr>
-        <% end %>
-	</table>
-</div>
-<br>
-
-<% if ong_signed_in? and current_ong.has_role? :admin %>
-	<%= link_to 'New Mortality rate', new_mortality_rate_path %>
-<% end %>
+	<% if ong_signed_in? and current_ong.has_role? :admin %>
+		<%= link_to 'Nova taxa de mortalidade', new_mortality_rate_path, class: 'btn btn-default' %>
+	<% end %>
+</section>

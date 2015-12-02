@@ -1,0 +1,47 @@
+<section id="recent-works">
+    <div class="container">
+        <div class="row">
+            <!-- Service explanation -->
+            <div class="col-md-3">
+                <h3>Últimas notícias</h3>
+                <p>Acompanhe as últimas notícias de nosso portal, políticas públicas, legislação, direito e muito mais informações.</p>
+                <%= link_to "Mais Notícias", portal_posts_path, class: "btn btn-default" %>
+                <p class="gap"></p>
+            </div>
+
+            <div class="col-md-9">
+                <div id="scroller" class="carousel slide">
+                    <div class="carousel-inner">
+
+                      <% @ungrouped_last_posts.each do |each_post| %>
+                        <% if @ungrouped_last_posts.first == each_post %>
+                          <div class="item active">
+                        <% else %>
+                          <div class "item">
+                        <% end %>
+                                  <div class="col-xs-4">
+                                      <div class="portfolio-item">
+                                          <div class="item-inner">
+                                              <%= image_tag(each_post.image_file.url(), class: "img-responsive") %>
+                                              <h5>
+                                                 <%= each_post.title %>
+                                              </h5>
+                                              <div class="overlay">
+                                                  <%= link_to each_post, class: "preview btn btn-danger", title: "Veja mais" do %>
+                                                    <!-- Eye icon" -->
+                                                    <i class="icon-eye-open"></i>
+                                                  <% end %>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                        </div><!-- End of each item -->
+                      <% end %>
+
+
+                    </div><!-- End of carrousel-inner -->
+                </div><!-- End of scroller -->
+            </div><!-- End of col-md-9 -->
+        </div><!--/.row-->
+    </div>
+</section><!--/#recent-works-->

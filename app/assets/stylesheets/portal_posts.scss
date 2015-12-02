@@ -2,29 +2,30 @@
   margin-top: 0;
   margin-bottom: 30px;
   padding: 0;
-  font-family:"Josefin Slab";
 }
 .portal-post {
   margin-top: 0;
   margin: 10px;
-  padding: 1px;
+  padding: 10px;
   width: 30%;
   display: inline-block;
-  background-color: #e8b8f8;
+  background-color: white;
+  vertical-align: top;
+  border: 1px solid #eee;
 }
 .portal-post:hover {
-  background-color: #d8a8f8;
+  background-color: #e4e4ff;
 }
 .portal-post .image {
   clear: both;
   display: block;
   padding: 0px;
   width: 100%;
+  border: 1px solid #eee;
 }
 .portal-post .title {
   padding: 5px;
-  color: black;
-  font-size: 20px;
+  font-weight: bold;
   display: inline-block;
 }
 .portal-post img{
@@ -37,8 +38,7 @@
   display: inline-block;
   padding: 0px 16px 0px 16px;
   margin: 0px;
-  font-family:"Josefin Slab";
-
+  width: 75%;
 }
 .show-post .post-title {
   display: block;
@@ -67,14 +67,29 @@
   color: black;
   font-size: 16px;
   text-align: left;
-  padding: 10px 16px 0px 16px;
+  padding-top: 10px;
   clear: both;
 }
 .show-post .image {
-  clear: both;
+  width: 50%;
+}
+
+// Index
+.portal-index-row {
+  margin-bottom: 30px;
   display: block;
-  padding: 10px;
-  width: 100%;
+}
+.portal-img-data {
+  display: inline-block;
+  margin: 0px 20px 0px 0px;
+}
+.portal-index-img {
+  width: 100px; 
+  height:100px; 
+  overflow:hidden;
+}
+.portal-index-info {
+  display: inline-block;
 }
 
 //Social Buttons

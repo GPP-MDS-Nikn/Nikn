@@ -1,71 +1,69 @@
-<div class="col-lg-12 text-center">
-  <div id="carousel-example-generic" class="carousel slide">
-    <!-- Indicators -->
-    <ol class="carousel-indicators hidden-xs">
-      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    </ol>
+<section id="main-slider" class="no-margin">
+    <div class="carousel slide wet-asphalt">
+        <ol class="carousel-indicators">
+            <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+            <li data-target="#main-slider" data-slide-to="1"></li>
+            <li data-target="#main-slider" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active" style="background-image: url(<%= asset_path "images/diverse.jpg"  %>)">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="carousel-content">
+                                <h1 class="boxed animation animated-item-1">"O caminho mais rápido para <br> mudar a sociedade é o de <br>mobilizar as mulheres do mundo."</h1>
+                                <br>
+                                <p class="boxed animation animated-item-2">(Charles Malik)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.item-->
+            <div class="item" style="background-image: url(<%= asset_path "images/sunset.jpg"  %>)">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="carousel-content center centered">
+                                <h2 class="boxed animation animated-item-1">"Ninguém pode fazer você se sentir inferior sem o seu consentimento."</h2>
+                                <p class="boxed animation animated-item-2"> (Eleanor Roosevel)</p>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.item-->
+            <div class="item" style="background-image: url(<%= asset_path "images/nice.jpg"  %>)">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="carousel-content centered">
+                                <h3 class="boxed animation animated-item-1">Toda vez que uma mulher é agredida<br>A sociedade inteira é agredida também</h3>
+                                <p class="boxed animation animated-item-2">NÃO SE OMITA.DENUNCIE.<br></p>
+                                <%= link_to "Visite nosso Fórum", forum_themes_path, class: "btn btn-md animation animated-item-3", method: :get %>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 hidden-xs animation animated-item-4">
+                            <div class="centered">
+                                <div class="embed-container">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/vFxLgVGpFRs" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.item-->
+        </div><!--/.carousel-inner-->
+    </div><!--/.carousel-->
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <img class="img-responsive img-full" <%= image_tag("grafico1_Ligue180_Balanco2014.png")%>>
-      </div>
-      <div class="item">
-        <img class="img-responsive img-full"<%= image_tag("infografico-sobre-estupro_anuario-brasileiro-de-seguranca-publica.jpg")%>>
-      </div>
-      <div class="item">
-        <img class="img-responsive img-full" <%= image_tag("Mapa-da-violencia_infografico-homicidios-femininos.jpg")%>>
-      </div>
-    </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-            <span class="icon-prev"></span>
+    <!-- Buttons to next and prev images -->
+    <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+        <i class="icon-angle-left"></i>
     </a>
-    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-            <span class="icon-next"></span>
+    <a class="next hidden-xs" href="#main-slider" data-slide="next">
+        <i class="icon-angle-right"></i>
     </a>
-  </div>
-  <h2 class="brand-before">Bem vindo à</h2>
-  <h1 class="brand-name">NIKN</h1>
-  <hr class="tagline-divider">
-  <h2>
-    <strong>Auxílio às mulheres vítimas de violência</strong>
-  </h2>
-</div>
+</section><!--/#main-slider-->
 
-<div class = "center jumbotron">
-  <a href="/portal_posts" class="btn btn-lg btn-primary">Acompanhe nossas informações!</a>
-</div>
-
-<div class="row">
-  <div class="box">
-    <div class="col-lg-12 text-center">
-      <div class="col-lg-12">
-        <hr>
-        <h2 class="intro-text text-center">O sistema <strong>Trata</strong></h2>
-        <hr>
-        <p>
-            Nikn visa prover informações sobre a violência contra as mulheres no Brasil e oferecer
-			suporte às pessoas que sofrem com isso. Usamos os dados abertos fornecidos pelo governo e
-			os organizamos de maneira útil e facilitada, oferecendo uma melhor opção para o acesso a
-			informação.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="box">
-	<div class="col-lg-12">
-      <hr>
-      <h2 class="intro-text text-center">Calendário de <strong>Eventos</strong></h2>
-      <hr>
-      <div class="text-center">
-        <a href="/events" class="btn btn-lg btn-primary">Acompanhe nosso Calendário!</a>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render partial: "portal_posts/last_posts" %>
+<%= render partial: "social_media" %>
+<%= render partial: "phrases" %>

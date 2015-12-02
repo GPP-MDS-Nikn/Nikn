@@ -1,32 +1,97 @@
-<h2>Sign up</h2>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<section id="title" class="emerald">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1>Cadastre sua ONG</h1>
+				<p> Cadastre uma ONG e participe da luta pelo fim da violência contra à mulher por aqui também! 
+				As ONGs podem publicar eventos, são identificadas nos fóruns e ainda aparecem no nosso mapa.</p>
+			</div>
+		</div>
+	</div>
+</section>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<section id="portfolio" class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<%= devise_error_messages! %>
+			<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+				<div>
+					<h3>Informações Básicas</h3>
+					<div class="field">
+						<p>* <b>Email</b></p>
+						<%= f.email_field :email, autofocus: true, class: 'form-control' %>
+					</div>
+					<div class="field">
+						<p>* <b>Senha</b> 
+						<% if @minimum_password_length %>
+							<em>(mínimo <%= @minimum_password_length %> caracteres)</em>
+						<% end %></p>
+						<%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+					</div>
+					<div class="field">
+						<p>* <b>Confirmação de senha</b></p>
+						<%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+					</div>
+					<div class="field">
+						<p>* <b>Nome</b></p>
+						<%= f.text_field :name, class: 'form-control' %>
+					</div>
+					<div class="field">
+						<p>* <b>Descrição</b></p>
+						<%= f.text_area :description, class: 'form-control' %>
+					</div>
+					<div class="field">
+						<p><b>Adicione uma imagem à sua ONG</b></p>
+						<%= f.file_field :image_file %>
+					</div>
+				</div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+				<div>
+					<h3>Detalhes para contato</h3>
+					<div class="field">
+						<p><b>Site</b></p>
+						<%= f.text_field :site, class: 'form-control' %>
+					</div>
+					<div class="field">
+						<p>* <b>Telefone principal</b></p>
+						<%= f.text_field :phone, class: 'form-control' %>
+					</div>
+					<div class="field">
+						<p><b>Telefone alternativo</b></p>
+						<%= f.text_field :auxiliary_phone, class: 'form-control' %>
+					</div>
+				</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+				<div>
+					<h3>Localização</h3>
+					<div class="field">
+						<p>* <b>CEP</b></p>
+						<%= f.text_field :cep, class: 'form-control' %>
+					</div>
+					<div class="field">
+						<p>* <b>Endereço</b></p>
+						<%= f.text_field :address, class: 'form-control' %>
+					</div>
+					<div class="field">
+						<p><b>Complemento</b></p>
+						<%= f.text_field :complement, class: 'form-control' %>
+					</div>
+					<div class="field">
+						<p>* <b>UF</b></p>
+						<%= f.text_field :uf, class: 'form-control' %>
+					</div>
+					<div class="field">
+						<p>* <b>Cidade</b></p>
+						<%= f.text_field :city, class: 'form-control' %>
+					</div>
+				</div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-  </div>
-</div>
+				<br />
+				<div class="actions">
+					<%= f.submit "Cadastrar", class: "btn btn-primary" %>
+				</div>
+				<br><p><em>(*) Campos obrigatórios.</em></p>
+			<% end %>
+		</div>
+	</div>
+</section><!--/#portfolio-->

@@ -1,5 +1,17 @@
-<%= form_for ([@forum_topic, @forum_topic.forum_posts.build]) do |f| %>
-  <%= f.label :content, "conteúdo" %>
-  <%= f.text_field :content, :placeholder => "escreva seu post aqui..."%>
-  <%= f.submit "criar post" %>
-<% end %>
+<div id="comment-form">
+  <h3>Deixe um comentário</h3>
+  <%= form_for [@forum_topic, @forum_topic.forum_posts.build], class: "form-horizontal", role: "form" do |f| %>
+    <div class="form-group">
+        <div class="col-sm-6" style="padding:0px">
+            <%= f.text_field :author, class: "form-control", placeholder: "Nome (Este campo não é obrigatório)" %>
+        </div>
+    </div>
+    <br><br>
+    <div class="form-group">
+        <div class="col-sm-12" style="padding:0px">
+            <%= f.text_area :content, class: "form-control", rows: "8", placeholder: "Comentário"%>
+        </div>
+    </div>
+    <%= f.submit "Enviar Comentário", class: "btn btn-danger btn-lg" %>
+  <% end %>
+</div><!--/#comment-form-->

@@ -1,69 +1,84 @@
-<%= form_for(@care_unit) do |f| %>
-  <% if @care_unit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@care_unit.errors.count, "error") %> prohibited this care_unit from being saved:</h2>
+<section id="title" class="emerald">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h1><%= action_name %></h1>
+        <p><%= action_command %></p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <ul>
-      <% @care_unit.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<section id="portfolio" class="container">
+  <%= form_for(@care_unit) do |f| %>
+    <div class="col-md-6 col-md-offset-3">
+      <% if @care_unit.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@care_unit.errors.count, "Erro") %> prohibited this care_unit from being saved:</h2>
+          <ul>
+          <% @care_unit.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+
+      <div class="field">
+        <p><b>Distrito</b></p>
+        <%= f.text_field :district, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <p><b>Categoria</b></p>
+        <%= f.text_field :category, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <p><b>Instituição</b></p>
+        <%= f.text_field :institution, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <p><b>Descrição</b></p>
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <p><b>Nome</b></p>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <p><b>Endereço</b></p>
+        <%= f.text_field :address, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <p><b>CEP</b></p>
+        <%= f.text_field :zip_code, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <p><b>Cidade</b></p>
+        <%= f.text_field :city, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <p><b>Telefone</b></p>
+        <%= f.text_field :phone, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <p><b>E-mail</b></p>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <p><b>Site</b></p>
+        <%= f.text_field :site, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <p><b>Latitude</b></p>
+        <%= f.text_field :latitude, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <p><b>Longitude</b></p>
+        <%= f.text_field :longitude, class: 'form-control' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit action_name, class: "btn btn-primary" %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :district %><br>
-    <%= f.text_field :district %>
-  </div>
-  <div class="field">
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :institution %><br>
-    <%= f.text_field :institution %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :zip_code %><br>
-    <%= f.text_field :zip_code %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :site %><br>
-    <%= f.text_field :site %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</section>
